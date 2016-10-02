@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Interface ICloneable</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Interface ICloneable</h1>
+    <p class="post-meta">
+      <time datetime="2011-04-01 09:06:00 -0300" itemprop="datePublished">Apr 1, 2011</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">C#</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="o-que-">O que é?</h2>
+<p>A interface <code class="highlighter-rouge">ICloneable</code> contém o método <code class="highlighter-rouge">Clone</code>, responsável por clonar (criar uma cópia) de um objeto.</p>
+
+<h2 id="porque-utilizar">Porque utilizar</h2>
+<p>Se ao desenvolver você se depara com um cenário que necessita criar um objeto a partir de outro, mas não quer que ele aponte para o mesmo endereço de memôria do original, você precisará clonar este objeto.</p>
+
+<!--more-->
+<p>Se você criar um objeto e atribuir o objeto original para este novo, você estará apenas apontando este objeto novo para o mesmo endereço de memôria do antigo, conforme exemplo abaixo. Isto ocorre devido ao .NET ter como princípio que todo objeto é passado como referência.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">PessoaEntity</span> <span class="n">pOriginal</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PessoaEntity</span><span class="p">();</span>
+<span class="n">pOriginal</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="s">"Jose Otavio"</span><span class="p">;</span>
+
+<span class="cm">/*
+Ao atribuir o objeto original ao novo, você estará apontando para o mesmo
+endereço de memória. Se algum dos objetos sofrerem alguma alteração, esta
+será realizada no mesmo endereço de memôria, ou seja, a alteração será
+feita para os dois objetos (original e novo).
+*/</span>
+<span class="n">PessoaEntity</span> <span class="n">pNovo</span> <span class="p">=</span> <span class="n">pOriginal</span><span class="p">;</span></code></pre></figure>
+
+<p>Muitas pessoas utilizam uma forma alternativa para clonar um objeto, confome exemplo abaixo.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">PessoaEntity</span> <span class="n">pOriginal</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PessoaEntity</span><span class="p">();</span>
+<span class="n">pOriginal</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="s">"Jose Otavio"</span><span class="p">;</span>
+
+<span class="n">PessoaEntity</span> <span class="n">pNovo</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PessoaEntity</span><span class="p">();</span>
+<span class="n">pNovo</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="n">pOriginal</span><span class="p">.</span><span class="n">Nome</span><span class="p">;</span></code></pre></figure>
+
+<p>Esta forma é bastante comum para quem não conhece a interface <code class="highlighter-rouge">ICloneable</code>.</p>
+
+<p>Mas imagine que seu objeto tenha várias propriedades, você criará um método com várias linhas para fazer a cópia? Acredito que você achará “feio” fazer desta maneira.</p>
+
+<p>Porque não utilizar o que o .NET te proporciona?</p>
+
+<h2 id="exemplo">Exemplo</h2>
+<p>Vamos ao exemplo e criar uma classe que implementa a interface <code class="highlighter-rouge">ICloneable</code>.</p>
+
+<p>No método <code class="highlighter-rouge">Clone</code>, iremos utilizar o método <code class="highlighter-rouge">MemberwiseClone</code> responsável por criar a cópia deste objeto.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">PessoaEntity</span> <span class="p">:</span> <span class="n">ICloneable</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Clone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nf">MemberwiseClone</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Utilizando esta classe ficaria:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">PessoaEntity</span> <span class="n">pOriginal</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PessoaEntity</span><span class="p">();</span>
+    <span class="n">pOriginal</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="s">"Jose Otavio"</span><span class="p">;</span>
+    <span class="n">pOriginal</span><span class="p">.</span><span class="n">Idade</span> <span class="p">=</span> <span class="m">27</span><span class="p">;</span>
+
+    <span class="n">PessoaEntity</span> <span class="n">pNovo</span> <span class="p">=</span> <span class="p">(</span><span class="n">PessoaEntity</span><span class="p">)</span><span class="n">pOriginal</span><span class="p">.</span><span class="nf">Clone</span><span class="p">();</span>
+    <span class="n">pNovo</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="s">"jQuaglio"</span><span class="p">;</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Nome Original: {0}"</span><span class="p">,</span> <span class="n">pOriginal</span><span class="p">.</span><span class="n">Nome</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Idade Original: {0}"</span><span class="p">,</span> <span class="n">pOriginal</span><span class="p">.</span><span class="n">Idade</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Nome Novo: {0}"</span><span class="p">,</span> <span class="n">pNovo</span><span class="p">.</span><span class="n">Nome</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Idade Novo: {0}"</span><span class="p">,</span> <span class="n">pNovo</span><span class="p">.</span><span class="n">Idade</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Saída:</p>
+
+<p><img src="/images/posts/saida_clone.png" alt="Exemplo de clonagem simples" title="Exemplo de clonagem simples" /></p>
+
+<p>Agora vamos enriquecer a classe Pessoa e mostrar o que muitas pessoas não tem conhecimento.</p>
+
+<p>Imaginamos o cenário de que nesta classe exista uma propriedade com o tipo de um outro objeto.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">PessoaEntity</span> <span class="p">:</span> <span class="n">ICloneable</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">//Objeto EnderecoEntity
+</span>    <span class="k">public</span> <span class="n">EnderecoEntity</span> <span class="n">Endereco</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Clone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nf">MemberwiseClone</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">EnderecoEntity</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Logradouro</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">CEP</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Utilização da classe:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">PessoaEntity</span> <span class="n">pOriginal</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PessoaEntity</span><span class="p">();</span>
+    <span class="n">pOriginal</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="s">"Jose Otavio"</span><span class="p">;</span>
+    <span class="n">pOriginal</span><span class="p">.</span><span class="n">Idade</span> <span class="p">=</span> <span class="m">27</span><span class="p">;</span>
+    <span class="n">pOriginal</span><span class="p">.</span><span class="n">Endereco</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">EnderecoEntity</span><span class="p">();</span>
+    <span class="n">pOriginal</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="n">Logradouro</span> <span class="p">=</span> <span class="s">"Rua XYZ, 15"</span><span class="p">;</span>
+    <span class="n">pOriginal</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="n">CEP</span> <span class="p">=</span> <span class="s">"00000-000"</span><span class="p">;</span>
+
+    <span class="n">PessoaEntity</span> <span class="n">pNovo</span> <span class="p">=</span> <span class="p">(</span><span class="n">PessoaEntity</span><span class="p">)</span><span class="n">pOriginal</span><span class="p">.</span><span class="nf">Clone</span><span class="p">();</span>
+    <span class="n">pNovo</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="s">"jQuaglio"</span><span class="p">;</span>
+    <span class="n">pNovo</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="n">Logradouro</span> <span class="p">=</span> <span class="s">"Avenida ABC, 4000"</span><span class="p">;</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Nome Original: {0}"</span><span class="p">,</span> <span class="n">pOriginal</span><span class="p">.</span><span class="n">Nome</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Idade Original: {0}"</span><span class="p">,</span> <span class="n">pOriginal</span><span class="p">.</span><span class="n">Idade</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Endereco Original: {0} {1}"</span><span class="p">,</span> <span class="n">pOriginal</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="n">Logradouro</span><span class="p">,</span> <span class="n">pOriginal</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="n">CEP</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Nome Novo: {0}"</span><span class="p">,</span> <span class="n">pNovo</span><span class="p">.</span><span class="n">Nome</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Idade Novo: {0}"</span><span class="p">,</span> <span class="n">pNovo</span><span class="p">.</span><span class="n">Idade</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Endereco Novo: {0} {1}"</span><span class="p">,</span> <span class="n">pNovo</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="n">Logradouro</span><span class="p">,</span> <span class="n">pNovo</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="n">CEP</span><span class="p">);</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Ao executar podemos identificar que o valor das propriedades do objeto original (Endereco) foram alteradas, pois como disse anteriormente, todo objeto é passado por referência, então se alterarmos qualquer instância que aponte para o mesmo endereço, todas as instâncias serão alteradas.</p>
+
+<p>Saída:</p>
+
+<p><img src="/images/posts/saida2_clone.png" alt="Exemplo de clonagem complexa com mapeamento incorreto" title="Exemplo de clonagem complexa com mapeamento incorreto" /></p>
+
+<p>Para resolver este problemas, não podemos esquecer de implementar a interface <code class="highlighter-rouge">ICloneable</code> na classe <code class="highlighter-rouge">EnderecoEntity</code> e alterar o método <code class="highlighter-rouge">Clone</code> da classe <code class="highlighter-rouge">PessoaEntity</code> para poder clonar este outro objeto.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">PessoaEntity</span> <span class="p">:</span> <span class="n">ICloneable</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">EnderecoEntity</span> <span class="n">Endereco</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Clone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">PessoaEntity</span> <span class="n">p</span> <span class="p">=</span> <span class="p">(</span><span class="n">PessoaEntity</span><span class="p">)</span><span class="k">this</span><span class="p">.</span><span class="nf">MemberwiseClone</span><span class="p">();</span>
+        <span class="n">p</span><span class="p">.</span><span class="n">Endereco</span> <span class="p">=</span> <span class="p">(</span><span class="n">EnderecoEntity</span><span class="p">)</span><span class="n">p</span><span class="p">.</span><span class="n">Endereco</span><span class="p">.</span><span class="nf">Clone</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">EnderecoEntity</span> <span class="p">:</span> <span class="n">ICloneable</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Logradouro</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">CEP</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Clone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nf">MemberwiseClone</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Ao executarmos a mesma saída, teremos:</p>
+
+<p><img src="/images/posts/saida3_clone.png" alt="Exemplo de clonagem complexa correto" title="Exemplo de clonagem complexa correto" /></p>
+
+<p>Lembre-se, ao utilizar a interface <code class="highlighter-rouge">ICloneable</code>, não esqueça de clonar todos os objetos que pertencem (associados) ao objeto que será clonado.</p>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/04/01/interface-icloneable.html&t=Interface ICloneable" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/04/01/interface-icloneable.html&text=Interface ICloneable: http://127.0.0.1:4000/2011/04/01/interface-icloneable.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/04/01/interface-icloneable.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/04/01/interface-icloneable.html&description=Interface ICloneable" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/04/01/interface-icloneable.html&title=Interface ICloneable&summary=&source=http://127.0.0.1:4000/2011/04/01/interface-icloneable.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2011/04/01/interface-icloneable.html';
+    this.page.identifier = '/2011/04/01/interface-icloneable.html';
+    this.page.title = 'Interface ICloneable';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Habilitar Trace no WCF (System.Diagnostics)</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Habilitar Trace no WCF (System.Diagnostics)</h1>
+    <p class="post-meta">
+      <time datetime="2011-05-17 10:42:00 -0300" itemprop="datePublished">May 17, 2011</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">WCF</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Muitas vezes nos deparamos com alguns problemas no WCF que de primeira não conseguimos entender ou diagnosticar e acabamos demorando horas e horas pesquisando por um erro que na verdade não é o REAL erro.</p>
+
+<p>Diante de minha experiência, percebi que O WCF tem o comportamento de encapsular (se é assim que posso dizer) o erro original e nos enviar um erro genérico.</p>
+
+<p>Mas com a ajuda do <code class="highlighter-rouge">System.Diagnostics</code>, podemos realizar o <em>trace</em> das chamadas do serviço e identificar o real problema. (Esta configuração pode ser adicionada tanto no client como no host do WCF.)</p>
+
+<!--more-->
+<p>Adicione a configuração abaixo dentro da tag <code class="highlighter-rouge">configuration</code> do arquivo de configuração e realize a chamada que está retornando um erro.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;system.diagnostics&gt;</span>
+  <span class="nt">&lt;sources&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">name=</span><span class="s">"System.ServiceModel"</span> <span class="na">switchValue=</span><span class="s">"Verbose,ActivityTracing"</span> <span class="na">propagateActivity=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;listeners&gt;</span>
+        <span class="nt">&lt;add</span> <span class="na">type=</span><span class="s">"System.Diagnostics.DefaultTraceListener"</span> <span class="na">name=</span><span class="s">"Default"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;add</span> <span class="na">name=</span><span class="s">"xml"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/listeners&gt;</span>
+    <span class="nt">&lt;/source&gt;</span>
+  <span class="nt">&lt;/sources&gt;</span>
+  <span class="nt">&lt;sharedListeners&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">initializeData=</span><span class="s">"c:\temp\WCFTrace.svclog"</span>
+      <span class="na">type=</span><span class="s">"System.Diagnostics.XmlWriterTraceListener"</span> <span class="na">name=</span><span class="s">"xml"</span>
+      <span class="na">traceOutputOptions=</span><span class="s">"LogicalOperationStack, DateTime, Timestamp, ProcessId, ThreadId, Callstack"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/sharedListeners&gt;</span>
+  <span class="nt">&lt;trace</span> <span class="na">autoflush=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/system.diagnostics&gt;</span></code></pre></figure>
+
+<p>Com esta configuração, será gerado um arquivo com a extensão <code class="highlighter-rouge">svclog</code> (vide linha 11 da configuração). Esta extensão é conhecida pelo software <em>Microsoft Service Trace Viewer</em> que vem junto na suite do <em>Microsoft Visual Studio 2010</em>.</p>
+
+<p>Ao abrir o arquivo <code class="highlighter-rouge">svclog</code>, o software (Trace Viewer) será aberto contendo na esquerda as atividades realizadas na chamada do serviço.</p>
+
+<p><img src="/images/posts/trace_viewer1.png" alt="Trace Viewer contendo as atividades realizadas" title="Trace Viewer contendo as atividades realizadas" /></p>
+
+<p>Procure alguma atividade que esteja na cor vermelha, que significa atividade com erros, e selecione.</p>
+
+<p><img src="/images/posts/trace_viewer2.png" alt="Trace Viewer contendo os erros na cor vermelha" title="Trace Viewer contendo os erros na cor vermelha" /></p>
+
+<p>No lado direito aparecerá uma lista com as ações feitas naquela atividade. Procure nesta lista os itens com a cor vermelha (erros) e selecione.</p>
+
+<p><img src="/images/posts/trace_viewer3.png" alt="Trace Viewer contendo o detalhe do erro" title="Trace Viewer contendo o detalhe do erro" /></p>
+
+<p>Ao selecionar, na parte inferior aparecerão os detalhes da ação selecionada, vá até a seção <em>Exception</em> e navegue pela <em>Exception Tree</em> até a última exception e verifique logo abaixo a mensagem original de erro.</p>
+
+<p><img src="/images/posts/trace_viewer4.png" alt="Trace Viewer contendo o detalhe da InnerException" title="Trace Viewer contendo o detalhe da InnerException" /></p>
+
+<blockquote>
+  <p><strong>ATENÇÃO:</strong> Não deixe esta configuração habilitada pois o arquivo gerado pode crescer rapidamente, visto que o <em>trace</em> realiza um <em>append</em> no arquivo.</p>
+</blockquote>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html&t=Habilitar Trace no WCF (System.Diagnostics)" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html&text=Habilitar Trace no WCF (System.Diagnostics): http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html&description=Habilitar Trace no WCF (System.Diagnostics)" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html&title=Habilitar Trace no WCF (System.Diagnostics)&summary=&source=http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2011/05/17/habilitar-trace-no-wcf.html';
+    this.page.identifier = '/2011/05/17/habilitar-trace-no-wcf.html';
+    this.page.title = 'Habilitar Trace no WCF (System.Diagnostics)';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Distribuindo Transação no WCF</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Distribuindo Transação no WCF</h1>
+    <p class="post-meta">
+      <time datetime="2011-09-05 11:39:00 -0300" itemprop="datePublished">Sep 5, 2011</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">C#</span></li>
+    
+      <li><span class="post-tag">WCF</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Existem cenários em que é necessário realizar transações distribuídas e, ainda mais onde a arquitetura da solução foi desenvolvida utilizando o conceito de serviços. Para isto o WCF (Windows Communication Foundation) permite que você controle a transação contida no método através da chamada no <em>client</em> (isto, somente se no server estiver habilitado).</p>
+
+<p>A implementação é bem simples e requer que o MSDTC das máquinas estejam habilitados e configurados corretamente, isto garantirá que as máquinas tenham uma comunicação eficaz e garanta o conceito <a href="http://pt.wikipedia.org/wiki/ACID">ACID</a> na ação.</p>
+
+<!--more-->
+<p><strong>Exemplo de configuração do MSDTC:</strong></p>
+
+<p>Para acessar o MSDTC, acesse o “Control Panel” do Windows e entre na opção “Administrative Tools” e logo em seguida em “Component Services”. Ao abrir a janela, expanda os itens “Component Services” e “Computers”. Clique com o botão direito sobre o “My Computer” e acesse o item “Properties”, conforme imagem abaixo.</p>
+
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-BPMDzvH6Bfk/TmE-umspx0I/AAAAAAAAAE4/QR0kZ4vpjeU/s1600/msdtc_tela.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="281" width="308" src="http://3.bp.blogspot.com/-BPMDzvH6Bfk/TmE-umspx0I/AAAAAAAAAE4/QR0kZ4vpjeU/s400/msdtc_tela.png" /></a></div>
+
+<p>Na aba MSDTC, habilite-o e realize a configuração.</p>
+
+<p>Exemplo de configuração: &lt;div class="separator" style="clear: both; text-align: center;"&gt;<a href="http://4.bp.blogspot.com/-w_zVz98GWV8/TmE--Z0H56I/AAAAAAAAAFA/uBnnBmX-NR4/s1600/msdtc_exemplo1.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="400" width="333" src="http://4.bp.blogspot.com/-w_zVz98GWV8/TmE--Z0H56I/AAAAAAAAAFA/uBnnBmX-NR4/s400/msdtc_exemplo1.png" /></a>&lt;/div&gt;</p>
+
+<p>Exemplo de configuração do “Security Configuration”: &lt;div class="separator" style="clear: both; text-align: center;"&gt;<a href="http://2.bp.blogspot.com/-_3PcA5g6L9U/TmE_NgkQ1DI/AAAAAAAAAFI/TL8A5CweBzA/s1600/msdtc_exemplo2.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="391" width="400" src="http://2.bp.blogspot.com/-_3PcA5g6L9U/TmE_NgkQ1DI/AAAAAAAAAFI/TL8A5CweBzA/s400/msdtc_exemplo2.png" /></a>&lt;/div&gt;</p>
+
+<p><strong>Habilitando a transação distribuída no código:</strong></p>
+
+<p>Em primeiro momento para habilitar a transação no serviço você necessitará alterar o arquivo de configuração, colocando no <em>binding</em> o atributo <em>transactionFlow</em> e também habilitar a sessão (<em>reliableSession</em>), conforme exemplo abaixo que expoe o protocolo <em>net.tcp</em>:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;netTcpBinding&gt;</span>
+  <span class="nt">&lt;binding</span> <span class="na">name=</span><span class="s">"TransacaoBinding"</span> <span class="na">transactionFlow=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;reliableSession</span> <span class="na">enabled=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;security</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/binding&gt;</span>
+<span class="nt">&lt;/netTcpBinding&gt;</span></code></pre></figure>
+
+<p>Na interface do serviço precisaremos identificar que aquele contrato tem o atributo <em>SessionMode</em> como <em>Required</em> no <em>attribute ServiceContract</em>.
+Para todos os métodos que necessitarem da transação distribuída, deve-se adicionar o <em>attribute TransactionFlow</em> com a opção <em>Allowed</em> (permite transação) ou <em>Mandatory</em> (transação obrigatória).</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">//Interface do Serviço
+</span><span class="na">[ServiceContract(SessionMode = SessionMode.Required)]</span>
+<span class="k">public</span> <span class="k">interface</span> <span class="n">ITesteService</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">OperationContract</span><span class="p">]</span>
+   <span class="p">[</span><span class="nf">TransactionFlow</span><span class="p">(</span><span class="n">TransactionFlowOption</span><span class="p">.</span><span class="n">Allowed</span><span class="p">)]</span>
+   <span class="kt">bool</span> <span class="nf">EfetuarTransferencia</span><span class="p">(...);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Na implementação do serviço será necessário habilitar o atributo <code class="highlighter-rouge">TransactionScopeRequired</code>, informando que ele é necessário para este caso.</p>
+
+<p>Dentro da implementação do serviço, utilize o objeto <code class="highlighter-rouge">TransactionScope</code> com o atributo <code class="highlighter-rouge">TransactionScopeOption</code> na opção <code class="highlighter-rouge">Required</code>, para que a transação criada pelo <em>client</em> possa ser utilizada e permita que o conceito ACID seja aplicado.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">//Implementação do Serviço
+</span><span class="na">[ServiceBehavior()]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TesteService</span> <span class="p">:</span> <span class="n">ITesteService</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="nf">OperationBehavior</span><span class="p">(</span><span class="n">TransactionScopeRequired</span> <span class="p">=</span> <span class="k">true</span><span class="p">)]</span>
+   <span class="k">public</span> <span class="kt">bool</span> <span class="nf">EfetuarTransferencia</span><span class="p">(...)</span>
+   <span class="p">{</span>
+      <span class="c1">//Utilize o TransactionScopeOption como Required, para que a transação utilizada seja a mesma da chamada do client.
+</span>      <span class="k">using</span> <span class="p">(</span><span class="n">TransactionScope</span> <span class="n">ts</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TransactionScope</span><span class="p">(</span><span class="n">TransactionScopeOption</span><span class="p">.</span><span class="n">Required</span><span class="p">))</span>
+      <span class="p">{</span>
+         <span class="c1">//Realizar alguma ação para gravar em banco de dados.
+</span>         <span class="n">ts</span><span class="p">.</span><span class="nf">Complete</span><span class="p">();</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p><strong>IMPORTANTE:</strong> Nesta implementação quando for chamado o método <code class="highlighter-rouge">Complete</code> do <code class="highlighter-rouge">TransactionScope</code> no serviço, o que estiver dentro da transação será marcado como ok, e somente se o <em>client</em> realizar o <code class="highlighter-rouge">Complete</code> da mesma transação, as ações que participarem desta transação serão aplicadas em definitivo. Lembrando que no <code class="highlighter-rouge">Dispose</code> do objeto, as informações são descartadas (é efetuado o <em>rollback</em>).</p>
+</blockquote>
+
+<p><strong>No lado do client:</strong></p>
+
+<p>Para o client, será necessário somente adicionar a referência do serviço e realizar a chamada ao método que requer transação utilizando o <code class="highlighter-rouge">TransactionScopeOption</code> como <code class="highlighter-rouge">RequiresNew</code> ou <code class="highlighter-rouge">Required</code>.</p>
+
+<p>Exemplo:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">using</span> <span class="p">(</span><span class="n">TransactionScope</span> <span class="n">ts</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TransactionScope</span><span class="p">(</span><span class="n">TransactionScopeOption</span><span class="p">.</span><span class="n">RequiresNew</span><span class="p">))</span>
+   <span class="p">{</span>
+      <span class="c1">//Realizar alguma ação que necessite da transação
+</span>
+      <span class="c1">//Chamar o serviço
+</span>      <span class="n">ServiceReference1</span><span class="p">.</span><span class="n">TesteServiceClient</span> <span class="n">servico</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceReference1</span><span class="p">.</span><span class="nf">TesteServiceClient</span><span class="p">();</span>
+      <span class="n">servico</span><span class="p">.</span><span class="nf">EfetuarTransferencia</span><span class="p">(...);</span>
+
+      <span class="c1">//Commit da transação
+</span>      <span class="n">ts</span><span class="p">.</span><span class="nf">Complete</span><span class="p">();</span>
+
+      <span class="n">servico</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>Referências:</strong>
+<a href="http://msdn.microsoft.com/en-us/library/ms752261.aspx">MSDN - WS Transaction Flow</a>
+<a href="http://msdn.microsoft.com/en-us/magazine/cc163432.aspx">MSDN - WCF Transaction Propagation</a></p>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html&t=Distribuindo Transação no WCF" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html&text=Distribuindo Transação no WCF: http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html&description=Distribuindo Transação no WCF" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html&title=Distribuindo Transação no WCF&summary=&source=http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2011/09/05/distribuindo-transacao-no-wcf.html';
+    this.page.identifier = '/2011/09/05/distribuindo-transacao-no-wcf.html';
+    this.page.title = 'Distribuindo Transação no WCF';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

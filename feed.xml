@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>José Otávio Quaglio</title>
+    <description></description>
+    <link>http://127.0.0.1:4000/</link>
+    <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 02 Oct 2016 19:03:15 -0300</pubDate>
+    <lastBuildDate>Sun, 02 Oct 2016 19:03:15 -0300</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Hangout: Mobile Híbrido X Nativo</title>
+        <description>&lt;p&gt;Hoje participei de um hangout com o intuito de discutir sobre o desenvolvimento mobile Nativo vs Híbrido.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/cpslOJeW-ho&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Thu, 26 Nov 2015 00:36:00 -0200</pubDate>
+        <link>http://127.0.0.1:4000/2015/11/26/hangout-mobile-hibrido-x-nativo.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/26/hangout-mobile-hibrido-x-nativo.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>Objective-C</category>
+        
+        <category>Xcode</category>
+        
+        <category>Parse.Framework</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Hangout: Bate-papo sobre Node.js</title>
+        <description>&lt;p&gt;Algumas semanas atrás participei de um hangout sobre node.js. Foi muito interessante, pois agrega muito conhecimento para os iniciantes em node.js.&lt;/p&gt;
+
+&lt;p&gt;Recomendo a visualização do video deste hangout!&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Z_Z-0lD5SWI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Thu, 12 Nov 2015 10:57:00 -0200</pubDate>
+        <link>http://127.0.0.1:4000/2015/11/12/hangout-bate-papo-sobre-nodejs.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/12/hangout-bate-papo-sobre-nodejs.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>Node.js</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Erro: Could not establish trust relationship for the SSL/TLS secure channel with authority.</title>
+        <description>&lt;p&gt;Ao tentar acessar um serviço (webservice) HTTPS, você se depara com o seguinte erro:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Could not establish trust relationship for the SSL/TLS secure channel with authority.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Este erro significa que a URL que você está tentando acessar não é segura, ou seja, o certificado atribuído ao protocolo HTTPS não é um certificado válido.&lt;/p&gt;
+
+&lt;p&gt;Caso queira ignorar a validação do certificado, adicione o código abaixo antes de realizar a chamada ao serviço:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cs&quot; data-lang=&quot;cs&quot;&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ServicePointManager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ServerCertificateValidationCallback&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;se&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sslerror&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Thu, 29 Oct 2015 15:16:00 -0200</pubDate>
+        <link>http://127.0.0.1:4000/2015/10/29/erro-could-not-establish-trust.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/10/29/erro-could-not-establish-trust.html</guid>
+        
+        <category>.NET</category>
+        
+        <category>WCF</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>VocalApp - Rede Social de Sons</title>
+        <description>&lt;p&gt;Alguns meses atrás comecei a estudar sobre Objective-C, Facebook API e Parse Framework e após uma ideia resolvi desenvolver um aplicativo e publicá-lo para colocar o aprendizado em prática e consequentemente aprender mais.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que--o-vocalapp&quot;&gt;O que é o VocalApp?&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/iconeVocalApp.png&quot; alt=&quot;Ícone do aplicativo VocalApp&quot; title=&quot;Ícone do aplicativo VocalApp&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“Rede Social de Sons”, como diz o título do post! O aplicativo é uma rede social no qual os usuários conseguem gravar vários sons (cada som pode ter no máximo 15 segundos) e postar em sua timeline para que seus seguidores possam comentar e avaliar.&lt;/p&gt;
+
+&lt;p&gt;Assim como em outras redes social, os usuários podem comentar e qualificar os posts (sons), mas no caso do VocalApp a qualificação é feita através de estrelas. Os usuários podem dar uma nota de 0 à 10 para cada post.&lt;/p&gt;
+
+&lt;p&gt;Para destacar os melhores sons de todos os usuários, foi criado um ranking (Top 10) que exibe os 10 melhores sons da semana.&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;## Arquitetura da Solução&lt;/p&gt;
+
+&lt;h3 id=&quot;client&quot;&gt;Client&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;O aplicativo foi desenvolvido em Objective-C no Xcode 5 para iPhone com iOS 7.1 (ou superior);&lt;/li&gt;
+  &lt;li&gt;O usuário realiza o login utilizando a API do Facebook através dos componentes disponíveis no SDK;&lt;/li&gt;
+  &lt;li&gt;As informações são acessadas utilizando a API do próprio Parse Framework através do SDK de iOS (&lt;a href=&quot;https://parse.com/docs/ios_guide#top/iOS&quot;&gt;vide doc aqui&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;server&quot;&gt;Server&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Parse Framework para armazenar as informações inseridas pelos usuários;&lt;/li&gt;
+  &lt;li&gt;No Cloud Code (do Parse) foram adicionadas regras de negocio desenvolvidas em JavaScript.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Para finalizar, o aplicativo foi publicado na AppStore e pode ser baixado acessando o site do VocalApp (&lt;a href=&quot;http://www.vocalapp.net&quot;&gt;http://www.vocalapp.net&lt;/a&gt;) ou diretamente na AppStore (&lt;a href=&quot;https://itunes.apple.com/br/app/vocalapp/id876605993?mt=8&quot;&gt;https://itunes.apple.com/br/app/vocalapp/id876605993?mt=8&lt;/a&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Se você curtiu a ideia e aplicativo, curta a página do VocalApp no Facebook:
+&lt;a href=&quot;https://www.facebook.com/vocalapp&quot;&gt;https://www.facebook.com/vocalapp&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Jun 2014 13:20:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2014/06/25/vocalapp-rede-social-de-sons.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2014/06/25/vocalapp-rede-social-de-sons.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>Objective-C</category>
+        
+        <category>Xcode</category>
+        
+        <category>Cloud Code</category>
+        
+        <category>Parse.Framework</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Erro: Unable to start debugging on the web server</title>
+        <description>&lt;p&gt;Ao executar (F5) seu projeto Web o erro abaixo é reportado pelo Microsoft Visual Studio 2010.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Unable to start debugging on the web server. The remote debugging components are not registered or running on the web server. Ensure the proper version of msvsmon is running on the remote computer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.microsoft.com/en-us/download/details.aspx?id=2728&quot;&gt;Para resolver este problema, instale o “Visual Studio 2010 Remote Debugger with Service Pack 1”&lt;/a&gt; e reinicie a máquina.&lt;/p&gt;
+
+&lt;p&gt;Ambiente que o problema ocorreu: Windows 7 com IIS 7.5.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 May 2014 10:07:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2014/05/12/erro-unable-to-start-debugging-on-web.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2014/05/12/erro-unable-to-start-debugging-on-web.html</guid>
+        
+        <category>Visual Studio 2010</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Erro: Chave inválida para uso no estado especificado (ID1073)</title>
+        <description>&lt;p&gt;Ao tentar acessar a URL de seu Web Application, você se depara com o seguinte erro?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[CryptographicException: The data is invalid.]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;(ou “Chave inválida para uso no estado especificado.”)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Security&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cryptography&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ProtectedData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Unprotect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encryptedData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;Byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optionalEntropy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataProtectionScope&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;318&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ProtectedDataCookieTransform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;203&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[InvalidOperationException: ID1073: A CryptographicException occurred when attempting to decrypt the cookie using the ProtectedData API (see inner exception for details). If you are using IIS 7.5, this could be due to the loadUserProfile setting on the Application Pool being set to false. ]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;(ou: “Ocorreu uma CryptographicException ao tentar descriptografar o cookie usando a API ProtectedData (consulte a exceção interna para obter detalhes). Se estiver usando o IIS 7.5, isso pode ser devido à configuração de loadUserProfile no Pool de Aplicativos estar definida como falso.”)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ProtectedDataCookieTransform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;319&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSecurityTokenHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ApplyTransforms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outbound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;217&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSecurityTokenHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ReadToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;XmlReader&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;SecurityTokenResolver&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenResolver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1951&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSecurityTokenHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ReadToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;SecurityTokenResolver&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenResolver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;149&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionAuthenticationModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ReadSessionTokenFromCookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionCookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;598&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionAuthenticationModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TryReadSessionTokenFromCookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SessionSecurityToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;120&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IdentityModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionAuthenticationModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OnAuthenticateRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eventArgs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;113&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SyncEventExecutionStep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IExecutionStep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;136&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ExecuteStep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IExecutionStep&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completedSynchronously&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;69&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Para resolver este problema remova os cookies do seu browser e tente novamente.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Tue, 06 May 2014 11:21:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2014/05/06/resolvendo-erro-chave-invalida-para-uso.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2014/05/06/resolvendo-erro-chave-invalida-para-uso.html</guid>
+        
+        <category>.NET</category>
+        
+        <category>ASP.NET</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>App não atualiza no iOS Simulator após alteração no código/storyboard</title>
+        <description>&lt;h2 id=&quot;problema&quot;&gt;Problema&lt;/h2&gt;
+
+&lt;p&gt;As alterações realizadas no Storyboard ou no código não refletem no iOS Simulator.&lt;/p&gt;
+
+&lt;h2 id=&quot;soluo&quot;&gt;Solução&lt;/h2&gt;
+
+&lt;p&gt;1) Realize um Clean do seu Projeto (Menu: Product / Clean)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/xcode_product_clean.png&quot; alt=&quot;Exibição de onde está localizado a opção Clean no Xcode&quot; title=&quot;Exibição de onde está localizado a opção Clean no Xcode&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2) Abra o iOS Simulator e exclua o seu aplicativo do simulador (Se existir vários ícones de seu aplicativo, exclua todos). &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/InteractingwiththeiOSSimulator/InteractingwiththeiOSSimulator.html#//apple_ref/doc/uid/TP40012848-CH3-SW8&quot;&gt;Caso não saiba como fazer, clique aqui&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3) Execute o seu projeto novamente no iOS Simulator&lt;/p&gt;
+</description>
+        <pubDate>Thu, 17 Apr 2014 09:47:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</guid>
+        
+        <category>Objective-C</category>
+        
+        <category>Xcode</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Método de cálculo de média no Cloud Code do Parse Framework</title>
+        <description>&lt;p&gt;Para quem não conhece, o &lt;a href=&quot;http://www.parse.com&quot;&gt;Parse&lt;/a&gt; (comprado pelo Facebook) é uma plataforma de desenvolvimento que nos oferece push notifications, data storage (NoSQL) e uma ferramenta chamada Cloud Code que permite a inclusão de código JavaScript no server para facilitar e diminuir as chamadas feitas por dispositivos mobile.&lt;/p&gt;
+
+&lt;p&gt;O desenvolvimento utilizando o SDK do Parse é muito fácil e rápido. O Parse disponibiliza um SDK para várias linguagens: Objective-C, .NET, Java (Android) e JavaScript.&lt;/p&gt;
+
+&lt;p&gt;Esses dias estive estudando o Parse.Framework e precisei fazer um cálculo de média para as notas atribuídas por usuários a cada Post. Como a API não contém métodos para média, optei por utilizar o Cloud Code e criar um método para calcular a média das notas.&lt;/p&gt;
+
+&lt;p&gt;Entretanto, como minha estrutura de classes estava com o formato abaixo, a consulta de notas por &lt;em&gt;Post&lt;/em&gt; tem que ser feita de uma forma diferente, pois a coluna &lt;em&gt;Post&lt;/em&gt; é um &lt;em&gt;Pointer&lt;/em&gt; da classe &lt;em&gt;Posts&lt;/em&gt; (vide no método &lt;code class=&quot;highlighter-rouge&quot;&gt;MediaNotas&lt;/code&gt; o valor do parâmetro do método &lt;code class=&quot;highlighter-rouge&quot;&gt;equalTo&lt;/code&gt;).&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;&lt;strong&gt;Notas:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*
+Schema de Notas:
+[{ Usuario: Pointer&amp;lt;User&amp;gt;, Post: Pointer&amp;lt;Posts&amp;gt;, Nota: Number }]
+*/&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cloud&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MediaNotas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Notas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Post&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//Este método trás as informações do Pointer
+&lt;/span&gt;
+
+   &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equalTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Post&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;__type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Pointer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Posts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;objectId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postid&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+   &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;somatoria&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+           &lt;span class=&quot;nx&quot;&gt;somatoria&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Nota&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;somatoria&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;erro na função: MediaNotas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Após desenvolver a função e realizar o deploy para o Cloud Code, podemos realizar a chamada ao método.&lt;/p&gt;
+
+&lt;p&gt;Como estou desenvolvendo para iOS, em Objective-C a chamada ao método ficaria da seguinte forma:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-objective-c&quot; data-lang=&quot;objective-c&quot;&gt;NSString *postId = @&quot;dRAw7I0Dbd&quot;;
+
+[PFCloud callFunctionInBackground:@&quot;MediaNotas&quot;
+                   withParameters:@{ @&quot;postid&quot;: postId }
+                            block:^(NSNumber *result, NSError *error) {
+   if (!error)
+   {
+     self.lblNota.text = [result stringValue];
+   }
+   else
+   {
+     self.lblNota.text = @&quot;0&quot;;
+   }
+}];&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Referência Cloud Code:&lt;/strong&gt;
+&lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide?language=iOS#started&quot;&gt;https://www.parse.com/docs/cloud_code_guide?language=iOS#started&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 Apr 2014 11:16:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>Objective-C</category>
+        
+        <category>Cloud Code</category>
+        
+        <category>Parse.Framework</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>LINQ - Agrupar por objeto</title>
+        <description>&lt;p&gt;Utilizar &lt;code class=&quot;highlighter-rouge&quot;&gt;LINQ&lt;/code&gt; é bem simples, mas quando você começa a se aprofundar nas consultas, existem coisas que você precisa fazer para que a sintaxe funcione perfeitamente. Como é o caso do agrupamento por objeto.&lt;/p&gt;
+
+&lt;p&gt;No exemplo a seguir ilustrei uma situação de agrupamento de produtos pela categoria.&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;Criei uma classe chamada “Produto”, no qual, eu parto do princípio que um produto pode ter somente uma categoria.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Produto&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Criei também uma classe chamada “Categoria”, que possui somente as propriedades ID e Nome.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;(A implementação do ICloneable foi proposital somente para exemplificar. Ela não será necessária no seu desenvolvimento. Para saber mais informações sobre esta interface, &lt;a href=&quot;/2011/04/01/interface-icloneable.html&quot;&gt;vide post clicando aqui&lt;/a&gt;.)&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICloneable&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Nome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;region&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Implementa&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;çã&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;da&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICloneable&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MemberwiseClone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endregion&lt;/span&gt;
+
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;region&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;é&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;todos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;utilizados&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;na&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;para&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;realizar&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compara&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;çã&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Equals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Equals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetHashCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetHashCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endregion&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Vamos ao código do &lt;code class=&quot;highlighter-rouge&quot;&gt;LINQ&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Irei criar apenas duas categorias. Consoles e Jogos.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Nome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Consoles&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;categoriaJogos&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Nome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jogos&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Após criar as categorias, crio uma lista de produtos e vinculo os produtos entre essas duas categorias.&lt;/p&gt;
+
+&lt;p&gt;Conforme mencionado anteriormente, o método &lt;code class=&quot;highlighter-rouge&quot;&gt;Clone&lt;/code&gt; foi chamado somente para criar instâncias diferentes e não invalidar a comparação.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaJogos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaJogos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Faço a sintaxe do &lt;code class=&quot;highlighter-rouge&quot;&gt;LINQ&lt;/code&gt; criando o agrupamento pela propriedade “Categ” e exibo no console a categoria e a quantidade de itens dentro dela.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamentoPorCategoria&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;
+                                &lt;span class=&quot;k&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamento&lt;/span&gt;
+                                &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;
+                                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                                    &lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamento&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                    &lt;span class=&quot;n&quot;&gt;Quantidade&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamento&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                                &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamentoPorCategoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0} ({1})&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Nome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Quantidade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Mas como a &lt;em&gt;mágica&lt;/em&gt; do agrupamento foi feita sendo que as instâncias da classe “Categoria” são diferentes?&lt;/p&gt;
+
+&lt;p&gt;A resposta está na classe “Categoria”. Nela eu sobrescrevo os métodos “Equals” e “GetHashCode”. Esses métodos serão utilizados pela sintaxe &lt;code class=&quot;highlighter-rouge&quot;&gt;LINQ&lt;/code&gt; no momento do agrupamento, comparando os objetos da lista pela propriedade “Categ”.&lt;/p&gt;
+
+&lt;p&gt;Para eu identificar que uma instância é igual ou diferente da outra, eu utilizo a propriedade ID da classe, que em nosso cenário é única.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Equals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Equals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetHashCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetHashCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;O código no método “Main”, ficará:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Nome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Consoles&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;categoriaJogos&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Nome&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jogos&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaJogos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaJogos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Produto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;categoriaConsoles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamentoPorCategoria&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listaProdutos&lt;/span&gt;
+                                    &lt;span class=&quot;k&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categ&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamento&lt;/span&gt;
+                                    &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;
+                                    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                                        &lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamento&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                        &lt;span class=&quot;n&quot;&gt;Quantidade&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamento&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                                    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;agrupamentoPorCategoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0} ({1})&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Categoria&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Nome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Quantidade&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Após executar a aplicação o retorno será:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/AgrupamentoLinq.png&quot; alt=&quot;Resultado do agrupamento&quot; title=&quot;Resultado do agrupamento&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 09 Apr 2014 16:59:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2014/04/09/linq-agrupar-por-objeto.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2014/04/09/linq-agrupar-por-objeto.html</guid>
+        
+        <category>.NET</category>
+        
+        <category>C#</category>
+        
+        <category>LINQ</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Any CPU, x86, x64, Itanium ou Mixed Platforms</title>
+        <description>&lt;h2 id=&quot;o-que-so-any-cpu-x86-x64-e-itanium&quot;&gt;O que são: Any CPU, x86, x64 e Itanium&lt;/h2&gt;
+
+&lt;p&gt;São configurações de compilação que indicam a plataforma onde o assembly será executado.&lt;/p&gt;
+
+&lt;h2 id=&quot;qual-a-diferena-entre-eles&quot;&gt;Qual a diferença entre eles?&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Any CPU&lt;/code&gt; - O assembly será compilado em uma forma independente, ou seja, tanto faz qual versão do .NET Framework (x86 ou x64) executará o assembly, ele será executado de acordo com a versão instalada.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x86&lt;/code&gt; - O assembly será executado como x86, independente se o sistema operacional é x86 ou x64. Caso o assembly seja executado em uma arquitetura x64, o assembly será carregado em modo WOW64.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x64&lt;/code&gt; - O assembly será executado somente como x64, não sendo possível sua execução em uma arquitetura x86.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Itanium&lt;/code&gt; - O assembly será executado somente em uma plataforma que contenha o processador Itanium.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Mixed Platforms&lt;/code&gt; - Indica que na solution existem projetos configurados para vários tipos de plataformas.&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;## Qual a melhor a ser utilizada?&lt;/p&gt;
+
+&lt;p&gt;Depende do cenário!&lt;/p&gt;
+
+&lt;p&gt;Recomendo utilizar o Any CPU quando o desenvolvedor não tem conhecimento da plataforma do servidor de produção.&lt;/p&gt;
+
+&lt;p&gt;Utilize x86 em cenários que necessitam de interoperabilidade com códigos não gerenciados ou quando o servidor de produção é somente x86.&lt;/p&gt;
+
+&lt;h2 id=&quot;como-alterar-essa-configurao-no-microsoft-visual-studio-2010-para-os-meus-projetos-no-sln-solution&quot;&gt;Como alterar essa configuração no Microsoft Visual Studio 2010 para os meus projetos no SLN (solution)?&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Antes de realizar a alteração de plataforma faça uma análise de impacto para que você não tenha problemas ao alterar um arquitetura x86 para x64, por exemplo!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Dentro do Microsoft Visual Studio 2010, logo abaixo do menu na barra de ícones, localize as listas que informam a configuração do projeto (Ex.: Debug, Release) e as plataformas (Any CPU, x86, x64, Itanium), conforme exemplo da imagem abaixo:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/Solution_Plataform.png&quot; alt=&quot;&amp;quot;Exemplo de onde está a opção de configuração de plataforma no Visual Studio&amp;quot;&quot; title=&quot;Exemplo de onde está a opção de configuração de plataforma no Visual Studio&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Clique na listagem de plataformas e selecione a plataforma que quiser e compile a aplicação.&lt;/p&gt;
+
+&lt;p&gt;Caso as outras opções de plataformas não apareçam na listagem ou você queira saber quais configurações de plataformas estão para cada projeto da solution, clique no item “Configuration Manager…”.&lt;/p&gt;
+
+&lt;p&gt;Ao abrir o Configuration Manager, serão exibidos todos os projetos contidos na solution.&lt;/p&gt;
+
+&lt;p&gt;Clique sobre a célula da coluna “Platform” e o projeto que deseja alterar e, selecione “New…”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/Configuration_Manager_New_Plataform.png&quot; alt=&quot;Tela exibindo onde está a opção New&quot; title=&quot;Tela exibindo onde está a opção New&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Irá abrir uma janela para que você adicione a nova plataforma a partir de outra existente.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/Configuration_Manager_New_Plataform_Window.png&quot; alt=&quot;Tela para adicionar uma nova plataforma&quot; title=&quot;Tela para adicionar uma nova plataforma&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Clique em “OK”. Agora verifique se o projeto foi alterado para a configuração que foi criada anteriormente.&lt;/p&gt;
+
+&lt;p&gt;Se estiver tudo ok, o próximo passo é efetuar um build do projeto que foi alterado com a nova configuração de plataforma.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 18 Mar 2014 15:20:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html</guid>
+        
+        <category>.NET</category>
+        
+        <category>Visual Studio 2010</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

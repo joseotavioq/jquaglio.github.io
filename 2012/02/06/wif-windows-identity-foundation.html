@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>WIF - Windows Identity Foundation (Configuração do Client)</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">WIF - Windows Identity Foundation (Configuração do Client)</h1>
+    <p class="post-meta">
+      <time datetime="2012-02-06 14:04:00 -0200" itemprop="datePublished">Feb 6, 2012</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">ASP.NET</span></li>
+    
+      <li><span class="post-tag">Web Forms</span></li>
+    
+      <li><span class="post-tag">C#</span></li>
+    
+      <li><span class="post-tag">WIF</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="o-que-">O que é?</h2>
+
+<p>De acordo com o <a href="http://msdn.microsoft.com/en-us/security/aa570351">site da Microsoft</a>, o WIF permite que desenvolvedores .NET terceirizem a lógica de acesso (login) em suas aplicações.</p>
+
+<p>Imagine que você trabalha em uma empresa que contêm milhares de sistemas .NET e que cada um tenha o seu própio controle de acesso e que todos trabalhem com o mesmo esquema de usuários atribuidos à perfis (roles).</p>
+
+<p>Nesta situação, seria um trabalho árduo realizar uma manutenção nestes sistemas caso ocorra alguma alteração na lógica do controle de acesso da empresa.</p>
+
+<blockquote>
+  <p>Porque não centralizar em um único local (<em>STS</em>) a parte do controle de acesso e focar mais no negócio de sua aplicação?</p>
+</blockquote>
+
+<p>Neste post, explicarei um passo a passo de como configurar o WIF em uma aplicação <em>ASP.NET Web Forms</em> (com HTTPS) e como apontá-lo para um STS (<em>Security Token Service</em>: Serviço responsável por autenticar o usuário).
+<!--more--></p>
+
+<h2 id="instalao">Instalação</h2>
+
+<p>Para começar a utilizar o WIF, será necessário instalar o SDK disponível aqui: <a href="http://www.microsoft.com/download/en/details.aspx?id=4451">WindowsIdentityFoundation-SDK-3.5.msi</a>.</p>
+
+<p>Para este post utilizarei a versão 3.5 do WIF mas, neste link, já está disponível a versão 4.0.</p>
+
+<p>Caso esteja utilizando o Windows Server 2003, instale este KB antes do SDK, que contém o <em>runtime</em> e será necessário para utilizar o WIF (<a href="http://www.microsoft.com/download/en/details.aspx?id=23190">Windows5.2-KB974405-x86.exe</a>)</p>
+
+<h2 id="configurao">Configuração</h2>
+
+<p>Vamos partir do presuposto que já temos os STSs criados:</p>
+
+<p>Primeiramente, para configurar o WIF no seu projeto web adicione as DLLs <code class="highlighter-rouge">Microsoft.IdentityModel</code> e <code class="highlighter-rouge">System.IdentityModel</code> como referência no projeto.</p>
+
+<p><img src="/images/posts/wif_referencia.png" alt="Referências do WIF" title="Referências do WIF" /></p>
+
+<p>Com as DLLs adicionadas no projeto, edite o arquivo <code class="highlighter-rouge">Web.config</code> e adicione as seguintes tags:</p>
+
+<p>1) Em <code class="highlighter-rouge">configSections</code> (dentro de <code class="highlighter-rouge">configuration</code>), adicione a <code class="highlighter-rouge">section</code> do <em>Identity</em>:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">"microsoft.identityModel"</span> <span class="na">type=</span><span class="s">"Microsoft.IdentityModel.Configuration.MicrosoftIdentityModelSection, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"</span><span class="nt">/&gt;</span></code></pre></figure>
+
+<blockquote>
+  <p>Obs.: Lembre-se que a tag <code class="highlighter-rouge">configSections</code> deve, obrigatoriamente, ser a primeira tag dentro de <code class="highlighter-rouge">configuration</code>.</p>
+</blockquote>
+
+<p>2) Dentro da tag <code class="highlighter-rouge">configuration</code> adicione a tag <code class="highlighter-rouge">microsoft.identityModel</code>:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;microsoft.identityModel&gt;</span>
+  <span class="nt">&lt;service&gt;</span>
+   <span class="nt">&lt;audienceuris&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">value=</span><span class="s">"https://localhost/Sistema/default.aspx"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/audienceUris&gt;</span>
+   <span class="nt">&lt;federatedauthentication&gt;</span>
+    <span class="nt">&lt;wsfederation</span> <span class="na">passiveRedirectEnabled=</span><span class="s">"false"</span> <span class="na">persistentCookiesOnPassiveRedirects=</span><span class="s">"false"</span> <span class="na">issuer=</span><span class="s">"https://localhost"</span> <span class="na">realm=</span><span class="s">"https://localhost/"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;cookiehandler</span> <span class="na">requireSsl=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/federatedAuthentication&gt;</span>
+   <span class="nt">&lt;certificatevalidation</span> <span class="na">certificateValidationMode=</span><span class="s">"None"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;issuernameregistry</span> <span class="na">type=</span><span class="s">"Microsoft.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;trustedissuers&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">name=</span><span class="s">"CN=localhost"</span> <span class="na">thumbprint=</span><span class="s">"..."</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/trustedIssuers&gt;</span>
+  <span class="nt">&lt;/issuerNameRegistry&gt;</span>
+ <span class="nt">&lt;/service&gt;</span>
+<span class="nt">&lt;/microsoft.identityModel&gt;</span></code></pre></figure>
+
+<blockquote>
+  <p>Obs.: Em <code class="highlighter-rouge">audienceuris</code> adicione a URL de sua aplicação.</p>
+</blockquote>
+
+<p>3) Em <code class="highlighter-rouge">system.web</code>, adicione a tag <code class="highlighter-rouge">httpRuntime</code> contendo o atributo <code class="highlighter-rouge">requestValidationMode</code> igual à <em>2.0</em>:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;httpRuntime</span> <span class="na">requestValidationMode=</span><span class="s">"2.0"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>4) Em <code class="highlighter-rouge">system.web</code>, adicione a tag <code class="highlighter-rouge">pages</code> contendo os atributos <code class="highlighter-rouge">validateRequest</code> igual à <em>false</em>, <code class="highlighter-rouge">controlRenderingCompatibilityVersion</code> igual à <em>3.5</em> e <code class="highlighter-rouge">clientIDMode</code> igual à <em>AutoID</em>:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;pages</span> <span class="na">validateRequest=</span><span class="s">"false"</span> <span class="na">controlRenderingCompatibilityVersion=</span><span class="s">"3.5"</span> <span class="na">clientIDMode=</span><span class="s">"AutoID"</span><span class="nt">&gt;&lt;/pages&gt;</span></code></pre></figure>
+
+<p>5) Em <code class="highlighter-rouge">system.web</code>, adicione dentro da tag <code class="highlighter-rouge">httpModules</code>, os módulos do WIF:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;httpModules&gt;</span>
+  <span class="nt">&lt;add</span> <span class="na">name=</span><span class="s">"WSFederationAuthenticationModule"</span> <span class="na">type=</span><span class="s">"Microsoft.IdentityModel.Web.WSFederationAuthenticationModule, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;add</span> <span class="na">name=</span><span class="s">"SessionAuthenticationModule"</span> <span class="na">type=</span><span class="s">"Microsoft.IdentityModel.Web.SessionAuthenticationModule, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/httpModules&gt;</span></code></pre></figure>
+
+<blockquote>
+  <p>Obs.: Caso esteja utilizando o IIS 7.0 (Internet Information Services) ou superior, adicione os módulos dentro de: <code class="highlighter-rouge">system.webServer/modules</code>.</p>
+</blockquote>
+
+<p>6) Altere o <code class="highlighter-rouge">authentication mode</code> para <code class="highlighter-rouge">None</code> ou <code class="highlighter-rouge">Forms</code>:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">"None"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>7) Por fim, altere as configuraçõe do seu <em>WebApplication</em> para que a aplicação execute através do protocolo HTTPS (SSL).</p>
+
+<h2 id="desenvolvimento">Desenvolvimento</h2>
+
+<p>Após configurar a o projeto com o WIF, podemos agora criar a página de login apontando para um STS:</p>
+
+<p>1) No projeto web, abra/crie o arquivo “default.aspx” na raiz da aplicação.</p>
+
+<p>2) Neste arquivo, adicione um registro de referência aos controles ASP.NET Web Forms disponibilizados na DLL do WIF:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="err">&lt;</span>%@ Register assembly="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+ namespace="Microsoft.IdentityModel.Web.Controls" tagprefix="wif" %&gt;</code></pre></figure>
+
+<p>3) Após incluir a tag de referência aos controles do WIF, adicione o controle FederatedPassiveSignIn:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;wif:FederatedPassiveSignIn</span> <span class="na">ID=</span><span class="s">"UsuarioSenhaFazendario_FederatedPassiveSignIn"</span> <span class="na">runat=</span><span class="s">"server"</span>
+  <span class="na">OnRedirectingToIdentityProvider=</span><span class="s">"FedSigninWin_RedirectingToIdentityProvider"</span>
+  <span class="na">Issuer=</span><span class="s">"https://servidor/UsuarioSenhaSTS/Default.aspx"</span>
+  <span class="na">RequireHttps=</span><span class="s">"true"</span> 
+  <span class="na">Realm=</span><span class="s">"https://localhost/Sistema/default.aspx"</span> 
+  <span class="na">Reply=</span><span class="s">"https://localhost/Sistema/default.aspx"</span> 
+  <span class="na">VisibleWhenSignedIn=</span><span class="s">"False"</span> <span class="na">SignInMode=</span><span class="s">"Session"</span>
+  <span class="na">DisplayRememberMe=</span><span class="s">"false"</span> <span class="na">ShowButtonImage=</span><span class="s">"false"</span> 
+  <span class="na">SignInText=</span><span class="s">"Acessar"</span> <span class="na">TitleText=</span><span class="s">"Clique no botão abaixo para ser redirecionado ao STS:"</span>
+  <span class="na">TitleTextStyle-HorizontalAlign=</span><span class="s">"Left"</span>
+  <span class="na">OnSignInError=</span><span class="s">"FederatedPassiveSignIn_SignInError"</span> <span class="na">UseFederationPropertiesFromConfiguration=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/wif:FederatedPassiveSignIn&gt;</span></code></pre></figure>
+
+<blockquote>
+  <p>Obs.: A propriedade <code class="highlighter-rouge">Issuer</code> identifica o endereço do STS. Adicione a URL de sua aplicação nas propriedades <code class="highlighter-rouge">Realm</code> e <code class="highlighter-rouge">Reply</code>.</p>
+</blockquote>
+
+<p>4) Como podemos observar, existe na configuração do controle uma referência a dois eventos que devem ser implementados.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">protected</span> <span class="k">void</span> <span class="nf">FedSigninWin_RedirectingToIdentityProvider</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">RedirectingToIdentityProviderEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="k">protected</span> <span class="k">void</span> <span class="nf">FederatedPassiveSignIn_SignInError</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">IdentityModel</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">ErrorEventArgs</span> <span class="n">error</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">lblMensagem</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">"Usuário e/ou senha incorreto(s)"</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>Seu <em>Web Forms</em> está pronto para utilização!</strong></p>
+
+<p><strong>Referências</strong>
+<a href="http://msdn.microsoft.com/en-us/security/aa570351">http://msdn.microsoft.com/en-us/security/aa570351</a>
+<a href="http://msdn.microsoft.com/en-us/library/ee517286.aspx">http://msdn.microsoft.com/en-us/library/ee517286.aspx</a></p>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&t=WIF - Windows Identity Foundation (Configuração do Client)" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&text=WIF - Windows Identity Foundation (Configuração do Client): http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&description=WIF - Windows Identity Foundation (Configuração do Client)" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&title=WIF - Windows Identity Foundation (Configuração do Client)&summary=&source=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html';
+    this.page.identifier = '/2012/02/06/wif-windows-identity-foundation.html';
+    this.page.title = 'WIF - Windows Identity Foundation (Configuração do Client)';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

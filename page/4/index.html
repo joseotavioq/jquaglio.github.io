@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>José Otávio Quaglio</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<h1 class="page-heading">Posts</h1>
+
+<ul class="post-list">
+  
+    <li>
+      <span class="post-meta">Apr 20, 2012</span>
+      <h2>
+        <a class="post-link" href="/2012/04/20/signout-no-wif.html">SignOut no WIF</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">.NET</span></li>
+        
+          <li><span class="post-tag">ASP.NET</span></li>
+        
+          <li><span class="post-tag">WIF</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Para realizar um SignOut no WIF, basta executar os métodos abaixo no <em>codebehind</em>.</p>
+
+<p>Estes métodos pertencem a classe <code class="highlighter-rouge">FederatedAuthentication</code> do <em>namespace</em> <code class="highlighter-rouge">Microsoft.IdentityModel.Web</code>.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">FederatedAuthentication</span><span class="p">.</span><span class="n">SessionAuthenticationModule</span><span class="p">.</span><span class="nf">SignOut</span><span class="p">();</span>
+<span class="n">FederatedAuthentication</span><span class="p">.</span><span class="n">SessionAuthenticationModule</span><span class="p">.</span><span class="nf">DeleteSessionTokenCookie</span><span class="p">();</span>
+<span class="n">FederatedAuthentication</span><span class="p">.</span><span class="n">WSFederationAuthenticationModule</span><span class="p">.</span><span class="nf">SignOut</span><span class="p">(</span><span class="k">false</span><span class="p">);</span></code></pre></figure>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2012/04/20/signout-no-wif.html&t=SignOut no WIF" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2012/04/20/signout-no-wif.html&text=SignOut no WIF: http://127.0.0.1:4000/2012/04/20/signout-no-wif.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2012/04/20/signout-no-wif.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2012/04/20/signout-no-wif.html&description=SignOut no WIF" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2012/04/20/signout-no-wif.html&title=SignOut no WIF&summary=&source=http://127.0.0.1:4000/2012/04/20/signout-no-wif.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Mar 12, 2012</span>
+      <h2>
+        <a class="post-link" href="/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html">Tabela Dinâmica com jQuery Template, JSON e ASHX</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">.NET</span></li>
+        
+          <li><span class="post-tag">ASP.</span></li>
+        
+          <li><span class="post-tag">Web Forms</span></li>
+        
+          <li><span class="post-tag">HTML</span></li>
+        
+          <li><span class="post-tag">JSON</span></li>
+        
+          <li><span class="post-tag">Visual Studio 2010</span></li>
+        
+          <li><span class="post-tag">jQuery</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Neste post irei explicar em um passo a passo como criamos uma tabela dinamicamente utilizando jQuery (ajax), jQuery Template e ASHX (Generic Handler) retornando JSON com o auxílio da classe <code class="highlighter-rouge">JavaScriptSerializer</code>.</p>
+
+<p>1) Adicione a referência do jQuery e do jQuery Template no seu projeto web.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://code.jquery.com/jquery-latest.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&t=Tabela Dinâmica com jQuery Template, JSON e ASHX" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&text=Tabela Dinâmica com jQuery Template, JSON e ASHX: http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&description=Tabela Dinâmica com jQuery Template, JSON e ASHX" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&title=Tabela Dinâmica com jQuery Template, JSON e ASHX&summary=&source=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Feb 6, 2012</span>
+      <h2>
+        <a class="post-link" href="/2012/02/06/wif-windows-identity-foundation.html">WIF - Windows Identity Foundation (Configuração do Client)</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">.NET</span></li>
+        
+          <li><span class="post-tag">ASP.NET</span></li>
+        
+          <li><span class="post-tag">Web Forms</span></li>
+        
+          <li><span class="post-tag">C#</span></li>
+        
+          <li><span class="post-tag">WIF</span></li>
+        
+        </ul>
+      </div>
+      <p><h2 id="o-que-">O que é?</h2>
+
+<p>De acordo com o <a href="http://msdn.microsoft.com/en-us/security/aa570351">site da Microsoft</a>, o WIF permite que desenvolvedores .NET terceirizem a lógica de acesso (login) em suas aplicações.</p>
+
+<p>Imagine que você trabalha em uma empresa que contêm milhares de sistemas .NET e que cada um tenha o seu própio controle de acesso e que todos trabalhem com o mesmo esquema de usuários atribuidos à perfis (roles).</p>
+
+<p>Nesta situação, seria um trabalho árduo realizar uma manutenção nestes sistemas caso ocorra alguma alteração na lógica do controle de acesso da empresa.</p>
+
+<blockquote>
+  <p>Porque não centralizar em um único local (<em>STS</em>) a parte do controle de acesso e focar mais no negócio de sua aplicação?</p>
+</blockquote>
+
+<p>Neste post, explicarei um passo a passo de como configurar o WIF em uma aplicação <em>ASP.NET Web Forms</em> (com HTTPS) e como apontá-lo para um STS (<em>Security Token Service</em>: Serviço responsável por autenticar o usuário).</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&t=WIF - Windows Identity Foundation (Configuração do Client)" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&text=WIF - Windows Identity Foundation (Configuração do Client): http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&description=WIF - Windows Identity Foundation (Configuração do Client)" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html&title=WIF - Windows Identity Foundation (Configuração do Client)&summary=&source=http://127.0.0.1:4000/2012/02/06/wif-windows-identity-foundation.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Jan 5, 2012</span>
+      <h2>
+        <a class="post-link" href="/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html">Compactando Arquivos Estáticos no ASP.NET</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">CSS</span></li>
+        
+          <li><span class="post-tag">.NET</span></li>
+        
+          <li><span class="post-tag">ASP.NET</span></li>
+        
+          <li><span class="post-tag">Web Forms</span></li>
+        
+          <li><span class="post-tag">HTML</span></li>
+        
+          <li><span class="post-tag">C#</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Você já se deparou com um cenário no qual utilize vários arquivos CSS e JS e eles possuem tamanhos grandes e que possa causar uma lentidão no carregamento das páginas no cliente?</p>
+
+<p>Eu tive este cenário alguns dias atrás e necessitava urgentemente compactar os arquivos estáticos do <em>jQuery UI</em> para garantir performance no carregamento das páginas.</p>
+
+<p>A minha solução foi bastante simples. Pensei em obter os arquivos estáticos e compactá-los em runtime utilizando o algoritmo do GZip (classe <code class="highlighter-rouge">GZipStream</code>) e passar para o browser este conteúdo compactado identificando que este era um conteúdo com o <em>encoding</em> do tipo GZip.</p>
+
+<p>Para implementar esta solução, primeiro criei um arquivo do tipo <code class="highlighter-rouge">Generic Handler</code> (ziparArquivo.ashx), e em seguida alterei o método <code class="highlighter-rouge">ProcessRequest</code> para que realizasse o que eu estava imaginando, conforme código comentado:</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&t=Compactando Arquivos Estáticos no ASP.NET" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&text=Compactando Arquivos Estáticos no ASP.NET: http://127.0.0.1:4000/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&description=Compactando Arquivos Estáticos no ASP.NET" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&title=Compactando Arquivos Estáticos no ASP.NET&summary=&source=http://127.0.0.1:4000/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Dec 14, 2011</span>
+      <h2>
+        <a class="post-link" href="/2011/12/14/retirar-x-do-jqueryui-dialog.html">Retirar &quot;X&quot; do jQuery UI Dialog</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">JavaScript</span></li>
+        
+          <li><span class="post-tag">CSS</span></li>
+        
+          <li><span class="post-tag">jQuery</span></li>
+        
+          <li><span class="post-tag">jQuery UI</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Em um projeto que trabalhávamos, nos foi solicitado pelo usuário que o “X” do Dialog do jQuery fosse retirado.</p>
+
+<p>Não havia um porque da retirada do “X”, dado que neste dialog só continha apenas um botão (ok), mas, para evitar conflitos junto ao usuário, resolvemos pesquisar sobre.</p>
+
+<p>Ao verificar a documentação do <a href="http://jqueryui.com/demos/dialog/">jQuery UI Dialog</a> não encontramos nenhuma informação sobre como ocultar o “X”.</p>
+
+<p>Refletindo um pouco mais, chegamos a conclusão de que quando invocamos o método <code class="highlighter-rouge">alert</code> no JavaScript, a janela exibida também contêm o “X”, conforme imagem abaixo, e não há como retirar, ou seja, o dialog tem o mesmo comportamento.</p>
+
+<p><img src="/images/posts/alert_javascript.png" alt="Exemplo do alert via JavaScript" title="Exemplo do alert via JavaScript" /></p>
+
+<p>Diante desta análise identificamos dois modos de retirar este item.</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/12/14/retirar-x-do-jqueryui-dialog.html&t=Retirar &quot;X&quot; do jQuery UI Dialog" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/12/14/retirar-x-do-jqueryui-dialog.html&text=Retirar &quot;X&quot; do jQuery UI Dialog: http://127.0.0.1:4000/2011/12/14/retirar-x-do-jqueryui-dialog.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/12/14/retirar-x-do-jqueryui-dialog.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/12/14/retirar-x-do-jqueryui-dialog.html&description=Retirar &quot;X&quot; do jQuery UI Dialog" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/12/14/retirar-x-do-jqueryui-dialog.html&title=Retirar &quot;X&quot; do jQuery UI Dialog&summary=&source=http://127.0.0.1:4000/2011/12/14/retirar-x-do-jqueryui-dialog.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Sep 20, 2011</span>
+      <h2>
+        <a class="post-link" href="/2011/09/20/utilizando-corretamente-o-atributo-modal.html">Utilizando corretamente o atributo MODAL do Dialog no jQuery UI</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">JavaScript</span></li>
+        
+          <li><span class="post-tag">HTML</span></li>
+        
+          <li><span class="post-tag">jQuery</span></li>
+        
+          <li><span class="post-tag">jQuery UI</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Você sabia que o atributo <code class="highlighter-rouge">modal</code> do <em>widget</em> <a href="http://jqueryui.com/demos/dialog/"><code class="highlighter-rouge">Dialog</code></a> do <a href="http://jqueryui.com/">jQuery UI</a> ao ser habilitado, altera não só as características de visualização da tela “travando” o <em>background</em> mas também desabilita alguns elementos na página, evitando que suas ações sejam realizadas?</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&t=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&text=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI: http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&description=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&title=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI&summary=&source=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+</ul>
+
+
+<hr />
+<div class="pagination">
+  
+    <a href="/page/3/">&laquo; Anterior</a>
+  
+
+  
+    
+      <a href="/page/3/">1</a>
+    
+  
+    
+      <a href="/page/2/">2</a>
+    
+  
+    
+      <a href="/page/3/">3</a>
+    
+  
+    
+      <em>4</em>
+    
+  
+    
+      <a href="/page/5/">5</a>
+    
+  
+    
+      <a href="/page/6/">6</a>
+    
+  
+    
+      <a href="/page/7/">7</a>
+    
+  
+    
+      <a href="/page/8/">8</a>
+    
+  
+    
+      <a href="/page/9/">9</a>
+    
+  
+
+  
+    <a href="/page/5/">Próximo &raquo;</a>
+  
+</div>
+
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

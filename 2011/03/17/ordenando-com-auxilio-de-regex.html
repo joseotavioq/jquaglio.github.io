@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Ordenando com auxílio de RegEx</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Ordenando com auxílio de RegEx</h1>
+    <p class="post-meta">
+      <time datetime="2011-03-17 09:30:00 -0300" itemprop="datePublished">Mar 17, 2011</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">C#</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Outro dia o <a href="http://www.twitter.com/gustavobergamim">Gustavo Bergamim</a> fez uma pergunta para o <a href="http://www.twitter.com/frenezabr">Fabrício Doi</a> e eu referente ao desenvolvimento de uma ordenação da seguinte lista utilizando <em>Regular Expression</em>.</p>
+
+<ul>
+  <li>1.3.5 - TESTE</li>
+  <li>1.3.42 - TESTE</li>
+  <li>2.1.4 - TESTE</li>
+  <li>1 - TESTE</li>
+  <li>10.1 - TESTE</li>
+  <li>1.1 - TESTE</li>
+  <li>2.1 - TESTE</li>
+  <li>20.3 - TESTE</li>
+  <li>2.5 - TESTE</li>
+  <li>1.3 - TESTE</li>
+  <li>XYZ</li>
+  <li>Abc</li>
+  <li>Comparer</li>
+</ul>
+
+<p>Se você adicionar estes itens em uma lista genérica de string e tentar realizar uma ordenação simples utilizando o método <code class="highlighter-rouge">Sort</code>, o resultado sairá errado, por isso utilizamos <code class="highlighter-rouge">RegEx</code> para facilitar a ordenação.</p>
+
+<!--more-->
+<p>Vamos ao trabalho!!</p>
+
+<p>Colocamos os itens em uma lista genérica de string e utilizamos o método <code class="highlighter-rouge">Sort</code>, passando por parâmetro a instância de uma classe que implementa a interface <code class="highlighter-rouge">IComparer&lt;&gt;</code>.</p>
+
+<p>Classe Program:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">lista</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"1.3.5 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"1.3.42 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"1.3.42 - ABC"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"2.1.4 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"1 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"10.1 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"1.1 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"2.1 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"20.3 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"2.5 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"1.3 - TESTE"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Comparer"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"XYZ"</span><span class="p">);</span>
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Abc"</span><span class="p">);</span>
+
+        <span class="n">lista</span><span class="p">.</span><span class="nf">Sort</span><span class="p">(</span><span class="k">new</span> <span class="nf">numeracaoComparer</span><span class="p">());</span>
+
+        <span class="n">lista</span><span class="p">.</span><span class="nf">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">p</span><span class="p">));</span>
+
+        <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Na classe abaixo (<code class="highlighter-rouge">numeracaoComparer</code>), que implementa a interface <code class="highlighter-rouge">IComparer</code> utilizamos uma <code class="highlighter-rouge">RegEx</code> para capturarmos as informações da numeração e assim poder ordenar pelos números contidos da numeração.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">numeracaoComparer</span> <span class="p">:</span> <span class="n">IComparer</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="err">#</span><span class="n">region</span> <span class="n">IComparer</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">Members</span>
+
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">Compare</span><span class="p">(</span><span class="kt">string</span> <span class="n">x</span><span class="p">,</span> <span class="kt">string</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Regex</span> <span class="n">rg</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Regex</span><span class="p">(</span><span class="s">@"((\d+)((\.(\d+))*)*)*(.*?)"</span><span class="p">);</span>
+
+        <span class="n">Match</span> <span class="n">mX</span> <span class="p">=</span> <span class="n">rg</span><span class="p">.</span><span class="nf">Match</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+        <span class="n">Match</span> <span class="n">mY</span> <span class="p">=</span> <span class="n">rg</span><span class="p">.</span><span class="nf">Match</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="kt">int</span><span class="p">.</span><span class="nf">TryParse</span><span class="p">(</span><span class="n">mX</span><span class="p">.</span><span class="n">Groups</span><span class="p">[</span><span class="m">2</span><span class="p">].</span><span class="n">Value</span><span class="p">,</span> <span class="k">out</span> <span class="n">a</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="kt">int</span><span class="p">.</span><span class="nf">TryParse</span><span class="p">(</span><span class="n">mY</span><span class="p">.</span><span class="n">Groups</span><span class="p">[</span><span class="m">2</span><span class="p">].</span><span class="n">Value</span><span class="p">,</span> <span class="k">out</span> <span class="n">b</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">retorno</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="nf">CompareTo</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">retorno</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">CaptureCollection</span> <span class="n">cX</span> <span class="p">=</span> <span class="n">mX</span><span class="p">.</span><span class="n">Groups</span><span class="p">[</span><span class="m">5</span><span class="p">].</span><span class="n">Captures</span><span class="p">;</span>
+                <span class="n">CaptureCollection</span> <span class="n">cY</span> <span class="p">=</span> <span class="n">mY</span><span class="p">.</span><span class="n">Groups</span><span class="p">[</span><span class="m">5</span><span class="p">].</span><span class="n">Captures</span><span class="p">;</span>
+
+                <span class="kt">int</span> <span class="n">qtdPontos</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="nf">Min</span><span class="p">(</span><span class="n">cX</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span> <span class="n">cY</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+
+                <span class="kt">int</span> <span class="n">c</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">qtdPontos</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+                <span class="p">{</span>
+                    <span class="n">c</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="nf">ToInt32</span><span class="p">(</span><span class="n">cX</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Value</span><span class="p">).</span><span class="nf">CompareTo</span><span class="p">(</span><span class="n">Convert</span><span class="p">.</span><span class="nf">ToInt32</span><span class="p">(</span><span class="n">cY</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Value</span><span class="p">));</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="p">!=</span> <span class="m">0</span><span class="p">)</span>
+                        <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">((</span><span class="n">cX</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="n">cY</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span> <span class="p">!=</span> <span class="m">0</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="p">(</span><span class="n">cX</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="n">cY</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+                <span class="k">else</span>
+                    <span class="k">return</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">retorno</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Compare</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="err">#</span><span class="n">endregion</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Resultado da execução da classe Program:</p>
+
+<p><img src="/images/posts/resultado_icomparer.png" alt="Resultado da execução" title="Resultado da execução" /></p>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html&t=Ordenando com auxílio de RegEx" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html&text=Ordenando com auxílio de RegEx: http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html&description=Ordenando com auxílio de RegEx" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html&title=Ordenando com auxílio de RegEx&summary=&source=http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2011/03/17/ordenando-com-auxilio-de-regex.html';
+    this.page.identifier = '/2011/03/17/ordenando-com-auxilio-de-regex.html';
+    this.page.title = 'Ordenando com auxílio de RegEx';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

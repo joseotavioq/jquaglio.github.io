@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Analisando Problemas de Performance em Aplicações .NET</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Analisando Problemas de Performance em Aplicações .NET</h1>
+    <p class="post-meta">
+      <time datetime="2012-06-27 10:51:00 -0300" itemprop="datePublished">Jun 27, 2012</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">ASP.NET</span></li>
+    
+      <li><span class="post-tag">Web Forms</span></li>
+    
+      <li><span class="post-tag">Visual Studio 2010</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Muitos de vocês já devem ter passado por algum problema de performance de alguma aplicação, seja ela ASP.NET, Console, Windows Forms, Windows Services, WCF, entre outros tipos.</p>
+
+<p>Muito bem, o <em>Microsoft Visual Studio 2010</em> contém uma ferramenta (que, acredito eu, poucas são as pessoas que conhecem) que realiza a análise de performance de aplicação e nos exibe vários relatórios para identificarmos em que parte da aplicação está ocorrendo lentidão, consumo de memoria elevado e até mesmo os comandos SQL com a quantidade de vezes que foram executados e o tempo gasto.</p>
+
+<p>Para demonstrar a utilização desta ferramenta criei uma aplicação Web simples e adicionei um problema de performance em uma página aspx.</p>
+
+<!--more-->
+<p><img src="/images/posts/webapplication.png" alt="Solution Explorer contendo os arquivos da aplicação" title="Solution Explorer contendo os arquivos da aplicação" /></p>
+
+<p>Com a solution aberta, siga os seguintes passos para realizar a sua análise:</p>
+
+<p>1) Abra a aba do <em>Performance Explorer</em>, localizada em “View / Other Windows / Performance Explorer”.</p>
+
+<p><img src="/images/posts/performance_explorer.png" alt="Onde encontrar o Performance Explorer no Visual Studio 2010" title="Onde encontrar o Performance Explorer no Visual Studio 2010" /></p>
+
+<p>Aba do <em>Performance Explorer</em> aberta:</p>
+
+<p><img src="/images/posts/aba_performance_explorer.png" alt="Aba Performance Explorer" title="Aba Performance Explorer" /></p>
+
+<p>2) Clique sobre o primeiro ícone contido nesta aba (ou selecione no menu “Analyze / Launch Performance Wizard…”) para abrir o Wizard do Profiler.</p>
+
+<p><img src="/images/posts/aba_performance_explorer_wizard.png" alt="Ícone que abre o Wizard para configurar o Profiler" title="Ícone que abre o Wizard para configurar o Profiler" /></p>
+
+<p>3) Ao abrir a janela do Wizard, você verá 4 métodos de profiling.</p>
+
+<p><img src="/images/posts/performance_explorer_wizard.png" alt="Tela contendo os métodos de profiling" title="Tela contendo os métodos de profiling]" /></p>
+
+<p><strong>CPU Sampling</strong> - Utilize esta opção quando você ainda não tem noção qual é o problema de performance que sua aplicação tem.</p>
+
+<p><strong>Instrumentation</strong> - Utilize esta opção para você saber exatamente qual método e em qual camada está ocorrendo o problema de performance. Neste item o profiler irá injetar no código de sua aplicação instruções para que seja possível mensurar o tempo gasto em cada método.</p>
+
+<p><strong>.NET Memory Allocation</strong> - Utilize esta opação para analisar a alocaçao de memória de sua aplicação .NET.</p>
+
+<p><strong>Concurrency</strong> - Utilize esta opção para analisar qual thread está prendendo algum recurso.</p>
+
+<p>4) Como sabemos que existe um problema de performance no carregamento de uma determinada página aspx, iremos utilizar a opção “Instrumentation” e clicar em “Next”.</p>
+
+<p>Nesta próxima janela temos as seguintes opções:</p>
+
+<p><img src="/images/posts/performance_explorer_wizard1.png" alt="Tela contendo os projetos que devem ser instrumentados" title="Tela contendo os projetos que devem ser instrumentados" /></p>
+
+<p><strong>One or more available projects</strong> - Nesta opção você verá os projetos que estão em sua solution, selecione um ou mais projetos para que o profiler possa instrumentá-los.</p>
+
+<p><strong>An executable (.EXE file)</strong> - Caso você queira fazer um profiler de um executável que não se encontra em sua solution, selecione este item.</p>
+
+<p><strong>An ASP.NET or JavaScript application</strong> - Caso você queira fazer um profiler de uma aplicação web que não esteja em sua solution.</p>
+
+<p><strong>A dynamic-link library (.DLL file)</strong> - Caso você queira fazer um profiler de uma DLL que não esteja em sua solution.</p>
+
+<blockquote>
+  <p>Obs.: O profiler irá realizar a análise somente de assemblies que estejam em sua própria máquina.</p>
+</blockquote>
+
+<p>5) Para nosso cenário, iremos selecionar o primeiro item e clicar em “Next”.</p>
+
+<p>Nesta próxima janela poderemos selecionar se queremos adicionar algo a mais no profiler, como:</p>
+
+<p><img src="/images/posts/performance_explorer_wizard2.png" alt="Tela contendo opção para habilitar o profiling de JavaScript e de comandos SQL" title="Tela contendo opção para habilitar o profiling de JavaScript e de comandos SQL" /></p>
+
+<p><strong>Enable Tier Interaction Profiling</strong> - Ao selecionar este item, o profiler irá colher informações referente ao acesso a base de dados, mostrando quais procedures/queries estão sendo executadas e quantas vezes e em quanto tempo ela são executadas.</p>
+
+<p><strong>Profile JavaScript</strong> - Ao selecionar este item, o profiler irá medir a performance dos códigos em JavaScript adicionados nas páginas web.</p>
+
+<p>6) Para este cenário, não iremos selecionar nenhum item e clicamos em “Next”.</p>
+
+<p>7) Nesta próxima janela, caso deseje executar automaticamente o profiler, deixe selecionado a opção e clique em “Finish”. Não irei selicionar, para que eu possa mostrar a vocês como executar o profiler pela aba do <em>Performance Explorer</em>.</p>
+
+<p><img src="/images/posts/performance_explorer_wizard3.png" alt="Tela contendo opção para executar automaticamente o profiler ao finalizar o Wizard" title="Tela contendo opção para executar automaticamente o profiler ao finalizar o Wizard" /></p>
+
+<p>8) Ao finalizar o wizard, serão adicionados os itens na aba <em>Performance Explorer</em>.</p>
+
+<p><img src="/images/posts/aba_performance_explorer_com_itens.png" alt="Aba do Performance Explorer com o profiler configurado" title="Aba do Performance Explorer com o profiler configurado" /></p>
+
+<p>9) Para iniciar a análise, clique no terceiro ícone desta aba.</p>
+
+<p><img src="/images/posts/aba_performance_explorer_com_itens_play.png" alt="Aba do Performance Explorer com o destaque para o ícone que inicia a análise" title="Aba do Performance Explorer com o destaque para o ícone que inicia a análise" /></p>
+
+<p>10) Ao clicar neste item, o Visual Studio irá realizar a instrumentação no código e em seguida fazer o build da aplicação e irá (no nosso caso) abrir o Internet Explorer para que possamos navegar no site até o ponto em que ocorre a lentidão.</p>
+
+<p><img src="/images/posts/analisando.png" alt="Profiler executando" title="Profiler executando" /></p>
+
+<p>11) Após realizar todas as ações no site, feche o Internet Explorer (ou clique em <i>Stop profiling</i>), para que o Visual Studio gere o relatório contendo as métricas colhidas nesta análise.</p>
+
+<p><img src="/images/posts/analise.png" alt="Resultado da análise" title="Resultado da análise" /></p>
+
+<p>12) Logo abaixo do gráfico neste relatório, já podemos identificar que 99% do tempo foi gasto na tela “about” no método <code class="highlighter-rouge">ProcessRequest</code> (ou seja, o método Page_Load do codebehind).</p>
+
+<p><img src="/images/posts/analise2.png" alt="Hot Path da análise" title="Hot Path da análise" /></p>
+
+<p>Para este problema em uma aplicação simples, conseguimos identificar que ao carregar a página About ocorre uma lentidão.</p>
+
+<p>Clique sobre o método para que o Visual Studio redirecione para o ponto em que ocorre o problema.</p>
+
+<p>Iremos resolver o problema de performance neste ponto e executar a aplicação novamente para verificar se existe outro ponto de lentidão.</p>
+
+<blockquote>
+  <p>Para finalizar, vale salientar que este profiler pode ser instalado na máquina sem que o Visual Studio esteja instalado e deverá ser executado via linha de comando.</p>
+</blockquote>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html&t=Analisando Problemas de Performance em Aplicações .NET" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html&text=Analisando Problemas de Performance em Aplicações .NET: http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html&description=Analisando Problemas de Performance em Aplicações .NET" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html&title=Analisando Problemas de Performance em Aplicações .NET&summary=&source=http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html';
+    this.page.identifier = '/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html';
+    this.page.title = 'Analisando Problemas de Performance em Aplicações .NET';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

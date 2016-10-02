@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Any CPU, x86, x64, Itanium ou Mixed Platforms</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Any CPU, x86, x64, Itanium ou Mixed Platforms</h1>
+    <p class="post-meta">
+      <time datetime="2014-03-18 15:20:00 -0300" itemprop="datePublished">Mar 18, 2014</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">Visual Studio 2010</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="o-que-so-any-cpu-x86-x64-e-itanium">O que são: Any CPU, x86, x64 e Itanium</h2>
+
+<p>São configurações de compilação que indicam a plataforma onde o assembly será executado.</p>
+
+<h2 id="qual-a-diferena-entre-eles">Qual a diferença entre eles?</h2>
+
+<p><code class="highlighter-rouge">Any CPU</code> - O assembly será compilado em uma forma independente, ou seja, tanto faz qual versão do .NET Framework (x86 ou x64) executará o assembly, ele será executado de acordo com a versão instalada.</p>
+
+<p><code class="highlighter-rouge">x86</code> - O assembly será executado como x86, independente se o sistema operacional é x86 ou x64. Caso o assembly seja executado em uma arquitetura x64, o assembly será carregado em modo WOW64.</p>
+
+<p><code class="highlighter-rouge">x64</code> - O assembly será executado somente como x64, não sendo possível sua execução em uma arquitetura x86.</p>
+
+<p><code class="highlighter-rouge">Itanium</code> - O assembly será executado somente em uma plataforma que contenha o processador Itanium.</p>
+
+<p><code class="highlighter-rouge">Mixed Platforms</code> - Indica que na solution existem projetos configurados para vários tipos de plataformas.</p>
+
+<!--more-->
+<p>## Qual a melhor a ser utilizada?</p>
+
+<p>Depende do cenário!</p>
+
+<p>Recomendo utilizar o Any CPU quando o desenvolvedor não tem conhecimento da plataforma do servidor de produção.</p>
+
+<p>Utilize x86 em cenários que necessitam de interoperabilidade com códigos não gerenciados ou quando o servidor de produção é somente x86.</p>
+
+<h2 id="como-alterar-essa-configurao-no-microsoft-visual-studio-2010-para-os-meus-projetos-no-sln-solution">Como alterar essa configuração no Microsoft Visual Studio 2010 para os meus projetos no SLN (solution)?</h2>
+
+<blockquote>
+  <p>Antes de realizar a alteração de plataforma faça uma análise de impacto para que você não tenha problemas ao alterar um arquitetura x86 para x64, por exemplo!</p>
+</blockquote>
+
+<p>Dentro do Microsoft Visual Studio 2010, logo abaixo do menu na barra de ícones, localize as listas que informam a configuração do projeto (Ex.: Debug, Release) e as plataformas (Any CPU, x86, x64, Itanium), conforme exemplo da imagem abaixo:</p>
+
+<p><img src="/images/posts/Solution_Plataform.png" alt="&quot;Exemplo de onde está a opção de configuração de plataforma no Visual Studio&quot;" title="Exemplo de onde está a opção de configuração de plataforma no Visual Studio" /></p>
+
+<p>Clique na listagem de plataformas e selecione a plataforma que quiser e compile a aplicação.</p>
+
+<p>Caso as outras opções de plataformas não apareçam na listagem ou você queira saber quais configurações de plataformas estão para cada projeto da solution, clique no item “Configuration Manager…”.</p>
+
+<p>Ao abrir o Configuration Manager, serão exibidos todos os projetos contidos na solution.</p>
+
+<p>Clique sobre a célula da coluna “Platform” e o projeto que deseja alterar e, selecione “New…”.</p>
+
+<p><img src="/images/posts/Configuration_Manager_New_Plataform.png" alt="Tela exibindo onde está a opção New" title="Tela exibindo onde está a opção New" /></p>
+
+<p>Irá abrir uma janela para que você adicione a nova plataforma a partir de outra existente.</p>
+
+<p><img src="/images/posts/Configuration_Manager_New_Plataform_Window.png" alt="Tela para adicionar uma nova plataforma" title="Tela para adicionar uma nova plataforma" /></p>
+
+<p>Clique em “OK”. Agora verifique se o projeto foi alterado para a configuração que foi criada anteriormente.</p>
+
+<p>Se estiver tudo ok, o próximo passo é efetuar um build do projeto que foi alterado com a nova configuração de plataforma.</p>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html&t=Any CPU, x86, x64, Itanium ou Mixed Platforms" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html&text=Any CPU, x86, x64, Itanium ou Mixed Platforms: http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html&description=Any CPU, x86, x64, Itanium ou Mixed Platforms" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html&title=Any CPU, x86, x64, Itanium ou Mixed Platforms&summary=&source=http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html';
+    this.page.identifier = '/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html';
+    this.page.title = 'Any CPU, x86, x64, Itanium ou Mixed Platforms';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

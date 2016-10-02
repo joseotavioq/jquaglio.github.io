@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Tabela Dinâmica com jQuery Template, JSON e ASHX</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Tabela Dinâmica com jQuery Template, JSON e ASHX</h1>
+    <p class="post-meta">
+      <time datetime="2012-03-12 11:29:00 -0300" itemprop="datePublished">Mar 12, 2012</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">.NET</span></li>
+    
+      <li><span class="post-tag">ASP.</span></li>
+    
+      <li><span class="post-tag">Web Forms</span></li>
+    
+      <li><span class="post-tag">HTML</span></li>
+    
+      <li><span class="post-tag">JSON</span></li>
+    
+      <li><span class="post-tag">Visual Studio 2010</span></li>
+    
+      <li><span class="post-tag">jQuery</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Neste post irei explicar em um passo a passo como criamos uma tabela dinamicamente utilizando jQuery (ajax), jQuery Template e ASHX (Generic Handler) retornando JSON com o auxílio da classe <code class="highlighter-rouge">JavaScriptSerializer</code>.</p>
+
+<p>1) Adicione a referência do jQuery e do jQuery Template no seu projeto web.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://code.jquery.com/jquery-latest.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+
+<!--more-->
+<p>2) Adicione no seu ASPX uma tabela contendo somente o Header, um campo <code class="highlighter-rouge">text</code> e um <code class="highlighter-rouge">button</code>. (Não se esqueça de atribuir um ID para a tabela. Caso queira utilizar uma <code class="highlighter-rouge">GridView</code>, o procedimento é o mesmo, somente altere a propriedade <code class="highlighter-rouge">ClientIDMode</code> para <code class="highlighter-rouge">Static</code> para facilitar a manipulação da tabela pelo jQuery.)</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"tabInfo"</span> <span class="na">border=</span><span class="s">"1"</span> <span class="na">cellpadding=</span><span class="s">"0"</span> <span class="na">cellspacing=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span>ID<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Nome<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"txtQtd"</span> <span class="na">value=</span><span class="s">"10"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"btnProcessar"</span> <span class="na">value=</span><span class="s">"Processar"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>3) Crie uma classe DTO no seu projeto para que a manipulação dos dados seja mais fácil.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">ItemDTO</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>4) Adicione ao seu projeto um arquivo ASHX (Generic Handler).</p>
+
+<p><img src="/images/posts/generic_handler.png" alt="Tela do Visual Studio para adicionar o Generic Handler" title="Tela do Visual Studio para adicionar o Generic Handler" /></p>
+
+<p>5) Após adicionar o arquivo ASHX, vamos alterar o método <code class="highlighter-rouge">ProcessRequest</code>. Como iremos utilizar a classe <code class="highlighter-rouge">JavaScriptSerializer</code> para serializar os objetos em JSON, adicione o <em>namespace</em> <code class="highlighter-rouge">System.Web.Script.Serialization</code> no ASHX.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">public void ProcessRequest(HttpContext context)
+{
+    int qtdRegistros = Convert.ToInt32(context.Request.QueryString["i"]);
+            
+    List<span class="nt">&lt;ItemDTO&gt;</span> listaItem = new List<span class="nt">&lt;ItemDTO&gt;</span>();
+
+    for (int i = 0; i <span class="nt">&lt; qtdRegistros</span><span class="err">;</span> <span class="na">i</span><span class="err">++)</span>
+    <span class="err">{</span>
+        <span class="na">ItemDTO</span> <span class="na">item =</span><span class="err"> </span><span class="s">new</span> <span class="na">ItemDTO</span><span class="err">();</span>
+        <span class="na">item</span><span class="err">.</span><span class="na">ID =</span><span class="err"> </span><span class="s">i;</span>
+        <span class="na">item</span><span class="err">.</span><span class="na">Nome =</span><span class="err"> </span><span class="s">string.Concat("Teste</span> <span class="err">",</span> <span class="na">i</span><span class="err">.</span><span class="na">ToString</span><span class="err">());</span>
+        <span class="na">listaItem</span><span class="err">.</span><span class="na">Add</span><span class="err">(</span><span class="na">item</span><span class="err">);</span>
+    <span class="err">}</span>
+
+    <span class="na">JavaScriptSerializer</span> <span class="na">js =</span><span class="err"> </span><span class="s">new</span> <span class="na">JavaScriptSerializer</span><span class="err">();</span>
+    <span class="na">context</span><span class="err">.</span><span class="na">Response</span><span class="err">.</span><span class="na">Write</span><span class="err">(</span><span class="na">js</span><span class="err">.</span><span class="na">Serialize</span><span class="err">(</span><span class="na">listaItem</span><span class="err">));</span>
+<span class="err">}</span></code></pre></figure>
+
+<p>6) Voltamos para o ASPX, e adicionamos um template para cada linha que será adicionada.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"linhaTemplate"</span> <span class="na">type=</span><span class="s">"text/x-jquery-tmpl"</span><span class="nt">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">{</span><span class="nx">ID</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td&gt;</span><span class="err">
+</span>        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">{</span><span class="nx">Nome</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td&gt;</span><span class="err">
+</span>    <span class="o">&lt;</span><span class="sr">/tr&gt;</span><span class="err">
+</span><span class="nt">&lt;/script&gt;</span></code></pre></figure>
+
+<p>7) Para finalizar, iremos chamar o arquivo ASHX via JavaScript no click do botão e, no retorno adicionar as linhas à tabela utilizando o template criado.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#btnProcessar'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="na">type</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+            <span class="na">dataType</span><span class="p">:</span> <span class="s1">'json'</span><span class="p">,</span>
+            <span class="na">cache</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">url</span><span class="p">:</span> <span class="s1">'CarregarTabela.ashx'</span><span class="p">,</span>
+            <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"i"</span><span class="p">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#txtQtd'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="p">},</span>
+            <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">$</span><span class="p">(</span><span class="s2">"#linhaTemplate"</span><span class="p">).</span><span class="nx">tmpl</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">"#tabInfo"</span><span class="p">);</span>
+            <span class="p">},</span>
+            <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s1">'Ocorreu um erro'</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&t=Tabela Dinâmica com jQuery Template, JSON e ASHX" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&text=Tabela Dinâmica com jQuery Template, JSON e ASHX: http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&description=Tabela Dinâmica com jQuery Template, JSON e ASHX" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html&title=Tabela Dinâmica com jQuery Template, JSON e ASHX&summary=&source=http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html';
+    this.page.identifier = '/2012/03/12/tabela-dinamica-com-jquery-template-json-ashx.html';
+    this.page.title = 'Tabela Dinâmica com jQuery Template, JSON e ASHX';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

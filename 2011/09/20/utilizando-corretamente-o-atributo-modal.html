@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>Utilizando corretamente o atributo MODAL do Dialog no jQuery UI</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Utilizando corretamente o atributo MODAL do Dialog no jQuery UI</h1>
+    <p class="post-meta">
+      <time datetime="2011-09-20 14:28:00 -0300" itemprop="datePublished">Sep 20, 2011</time>
+    </p>
+
+    <ul class="post-tags">
+    
+      <li><span class="post-tag">JavaScript</span></li>
+    
+      <li><span class="post-tag">HTML</span></li>
+    
+      <li><span class="post-tag">jQuery</span></li>
+    
+      <li><span class="post-tag">jQuery UI</span></li>
+    
+    </ul>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Você sabia que o atributo <code class="highlighter-rouge">modal</code> do <em>widget</em> <a href="http://jqueryui.com/demos/dialog/"><code class="highlighter-rouge">Dialog</code></a> do <a href="http://jqueryui.com/">jQuery UI</a> ao ser habilitado, altera não só as características de visualização da tela “travando” o <em>background</em> mas também desabilita alguns elementos na página, evitando que suas ações sejam realizadas?</p>
+
+<!--more-->
+<p>Muito bem!</p>
+
+<p>Descobri esta informação hoje ao enfrentar um problema no qual eu não conseguia disparar um <em>click</em> de um botão em um <em>Web Forms</em> com o <em>Dialog</em> aberto.</p>
+
+<p>Vamos a um exemplo para ser mais específico!</p>
+
+<p>Digamos que eu tenha uma página contendo o seguinte <code class="highlighter-rouge">html</code>:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+ <span class="nt">&lt;title&gt;</span>Teste Dialog<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;form&gt;</span>
+
+Texto: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"texto"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"btnEnviar"</span> <span class="na">value=</span><span class="s">"Enviar"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p><img src="/images/posts/dialog1.png" alt="Exibição do código HTML descrito acima" title="Exibição do código HTML descrito acima" /></p>
+
+<p>Com esta tela, o usuário solicita que você inclua uma mensagem de confirmação que é exibida ao clicar no botão Enviar, para que o usuário possa decidir se deseja continuar ou não.</p>
+
+<p>Como você conhece <em>jQuery</em> e quer utilizar os <em>widgets</em> que existem na biblioteca do <em>jQuery UI</em>, você acaba optando pelo “Dialog”.</p>
+
+<p>Seu código html ficará da seguinte forma:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+ <span class="nt">&lt;title&gt;</span>Teste Dialog<span class="nt">&lt;/title&gt;</span>
+ <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">media=</span><span class="s">"all"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+ <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+ <span class="nt">&lt;script </span><span class="na">language=</span><span class="s">"JavaScript"</span><span class="nt">&gt;</span>
+     <span class="kd">var</span> <span class="nx">botaoFoiClicado</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+     <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+         <span class="nx">$</span><span class="p">(</span><span class="s1">'#btnEnviar'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">botaoFoiClicado</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+                 <span class="nx">$</span><span class="p">(</span><span class="s1">'#DialogConfirmacao'</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="s1">'open'</span><span class="p">);</span>
+             <span class="p">}</span>
+         <span class="p">});</span>
+
+         <span class="nx">$</span><span class="p">(</span><span class="s1">'#DialogConfirmacao'</span><span class="p">).</span><span class="nx">dialog</span><span class="p">({</span>
+             <span class="na">autoOpen</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+             <span class="na">width</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+             <span class="na">height</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+             <span class="na">buttons</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="s2">"Não"</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                     <span class="nx">botaoFoiClicado</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                     <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="s2">"close"</span><span class="p">);</span>
+                 <span class="p">},</span>
+                 <span class="s2">"Sim"</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                     <span class="nx">botaoFoiClicado</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                     <span class="nx">$</span><span class="p">(</span><span class="s1">'#btnEnviar'</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+                 <span class="p">}</span>
+             <span class="p">}</span>
+         <span class="p">});</span>
+
+     <span class="p">});</span>
+ <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;form&gt;</span>
+
+Texto: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"texto"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"btnEnviar"</span> <span class="na">value=</span><span class="s">"Enviar"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"DialogConfirmacao"</span> <span class="na">title=</span><span class="s">"Confirmação"</span><span class="nt">&gt;</span>
+ Tem certeza que deseja enviar esta informação?
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p><img src="/images/posts/dialog2.png" alt="Exibição da página após incluir o widget Dialog do jQuery UI" title="Exibição da página após incluir o widget Dialog do jQuery UI" /></p>
+
+<p>Com este código, você apresenta a tela para o usuário e ele diz:</p>
+
+<blockquote>
+  <p>“Muito bom! Era isso que eu estava pensando!! Mas só uma coisa, deste modo em que está, a pessoa poderá alterar o texto que está no campo. Não tem como bloquear o fundo?”</p>
+</blockquote>
+
+<p>Você mostrando que a solução para isto é simples, rapidamente e adiciona o atributo “modal” na criação do dialog, ficando assim:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">'#DialogConfirmacao'</span><span class="p">).</span><span class="nx">dialog</span><span class="p">({</span>
+    <span class="na">autoOpen</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="na">modal</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">buttons</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Não"</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> 
+            <span class="nx">botaoFoiClicado</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="s2">"close"</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="s2">"Sim"</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">botaoFoiClicado</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">'#btnEnviar'</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Você atualiza a página e mostra para o usuário que aquilo era simples!</p>
+
+<p><img src="/images/posts/dialog3.png" alt="Exibição da página após adicionar o atributo modal" title="Exibição da página após adicionar o atributo modal" /></p>
+
+<p>Ele te elogia e diz que está perfeito e que você é um ótimo desenvolvedor. Você agradece e vai para sua mesa.</p>
+
+<p>Logo que você volta, o usuário liga no seu ramal e diz que o botão “Sim” não está funcionando. Você fica com um ponto de interrogação na cabeça pensando como aquilo seria possível diante de tão simples programação.</p>
+
+<p>Depois de horas pesquisando, você se depara com o texto na documentação do jQuery UI, falando sobre o modal:</p>
+
+<blockquote>
+  <p>If set to true, the dialog will have modal behavior; other items on the page will be disabled (i.e. cannot be interacted with).</p>
+</blockquote>
+
+<p>Você para por alguns instantes e diz:</p>
+
+<blockquote>
+  <p>“Caramba! Que coisa simples! É exatamente o funcionamento correto de uma modal! Porque não pensei nisso antes!?”</p>
+</blockquote>
+
+<p>Concluindo, para resolver este problema tive que fechar a modal antes de clicar no botão Enviar, conforme exemplo abaixo:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">'#DialogConfirmacao'</span><span class="p">).</span><span class="nx">dialog</span><span class="p">({</span>
+    <span class="na">autoOpen</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="na">modal</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">buttons</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Não"</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">botaoFoiClicado</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="s2">"close"</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="s2">"Sim"</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">botaoFoiClicado</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="s2">"close"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">'#btnEnviar'</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p><strong>Referências:</strong>
+<a href="http://docs.jquery.com/UI/Dialog#option-modal">http://docs.jquery.com/UI/Dialog#option-modal</a>
+<a href="http://jqueryui.com/demos/dialog/">http://jqueryui.com/demos/dialog/</a></p>
+
+  </div>
+  
+  <div>
+    <ul class="share-buttons">
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&t=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&text=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI: http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&description=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html&title=Utilizando corretamente o atributo MODAL do Dialog no jQuery UI&summary=&source=http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+    </ul>
+  </div>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function () {
+    this.page.url = 'http://127.0.0.1:4000/2011/09/20/utilizando-corretamente-o-atributo-modal.html';
+    this.page.identifier = '/2011/09/20/utilizando-corretamente-o-atributo-modal.html';
+    this.page.title = 'Utilizando corretamente o atributo MODAL do Dialog no jQuery UI';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//joseotavio.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>

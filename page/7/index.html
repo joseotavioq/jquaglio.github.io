@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="José Otávio Quaglio">
+
+  <title>José Otávio Quaglio</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
+  <link rel="alternate" type="application/rss+xml" title="José Otávio Quaglio" href="/feed.xml">
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" href="/">José Otávio Quaglio</a>
+      <nav class="site-nav">
+        <a href="#" class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </a>
+        <div class="trigger">
+          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/html5game/">HTML5 Game</a>
+          <a class="page-link" href="/sobre/">Sobre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+
+<h1 class="page-heading">Posts</h1>
+
+<ul class="post-list">
+  
+    <li>
+      <span class="post-meta">Jan 13, 2011</span>
+      <h2>
+        <a class="post-link" href="/2011/01/13/mock.html">Mock</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">.NET</span></li>
+        
+          <li><span class="post-tag">Inversão de Controle</span></li>
+        
+          <li><span class="post-tag">Mock</span></li>
+        
+          <li><span class="post-tag">C#</span></li>
+        
+          <li><span class="post-tag">Injeção de Dependência</span></li>
+        
+          <li><span class="post-tag">Teste de Unidade</span></li>
+        
+        </ul>
+      </div>
+      <p><p><strong>O que são Mocks?</strong></p>
+
+<p>Mocks são objetos que simulam o comportamento de outros objetos (como se fossem dublês).</p>
+
+<p><strong>Finalidade</strong></p>
+
+<p>Mocks são geralmente utilizados em testes de unidade.
+Conforme meu post sobre <a href="/2010/09/23/conceito-de-teste-de-unidade.html">conceito de teste de unidade</a>, um teste de unidade é um código que testa UMA unidade de código, ou seja, se estou testando uma única unidade de código, eu não quero que meu código teste uma outra unidade de código que não seja a que eu estou querendo.</p>
+
+<p>Vamos imaginar a situação mais comum, no qual temos uma camada <em>Business</em> e esta camada realiza chamadas para a camada de <em>DAL</em> (Data Access Layer).</p>
+
+<p>Se meus testes estão cobrindo somente os códigos da minha camada de negôcio (<em>Business</em>), então teoricamente eu não deveria deixar a camada <em>Business</em> chamar a camada <em>DAL</em>, pois neste caso eu estaria testando também o código contido na <em>DAL</em>.
+Eu quero testar somente a regra de negôcio contida na camada <em>Business</em>. Quero garantir que meus testes cubram somente as regras de negôcio desenvolvidas e não o acesso a base de dados.</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2011/01/13/mock.html&t=Mock" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2011/01/13/mock.html&text=Mock: http://127.0.0.1:4000/2011/01/13/mock.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2011/01/13/mock.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2011/01/13/mock.html&description=Mock" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2011/01/13/mock.html&title=Mock&summary=&source=http://127.0.0.1:4000/2011/01/13/mock.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Sep 23, 2010</span>
+      <h2>
+        <a class="post-link" href="/2010/09/23/conceito-de-teste-de-unidade.html">Conceito de Teste de Unidade</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">Teste de Unidade</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Há algum tempo, eu possuía um conceito errado sobre teste de unidade. Pensava que se resumia em realizar um teste manual daquilo que você havia desenvolvido.</p>
+
+<p><strong>Exemplo:</strong></p>
+
+<p>Em uma atividade como “Desenvolver uma tela que insere uma informação X”, o meu antigo pensamento seria: “Vou adicionar uma sub-atividade chamada de <em>Teste de Unidade</em>, para testar manualmente a inserção desta informação!”.</p>
+
+<p>Este teste de unidade era, simplesmente, acessar a tela, preencher o campo e clicar em um botão para que a informação fosse inserida. Mas, a cada leitura/experiência, pude verificar que o meu entendimento sobre teste de unidade estava incorreto. O que eu fazia antes é considerado como um teste integrado e NÃO teste de unidade.</p>
+
+<p>Antes pensava que fosse preciso apenas testar manualmente uma tela, mas após alguns estudos, notei que teste de unidade é um código que testa código!</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2010/09/23/conceito-de-teste-de-unidade.html&t=Conceito de Teste de Unidade" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2010/09/23/conceito-de-teste-de-unidade.html&text=Conceito de Teste de Unidade: http://127.0.0.1:4000/2010/09/23/conceito-de-teste-de-unidade.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2010/09/23/conceito-de-teste-de-unidade.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2010/09/23/conceito-de-teste-de-unidade.html&description=Conceito de Teste de Unidade" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2010/09/23/conceito-de-teste-de-unidade.html&title=Conceito de Teste de Unidade&summary=&source=http://127.0.0.1:4000/2010/09/23/conceito-de-teste-de-unidade.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Nov 4, 2008</span>
+      <h2>
+        <a class="post-link" href="/2008/11/04/ctrlc.html">Ctrl+C</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">JavaScript</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Função que faz uma cópia (copy) do conteúdo de um <code class="highlighter-rouge">input text</code> para o <em>clipboard</em>.</p>
+
+<p><strong>HTML</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"txt"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">onClick=</span><span class="s">"Copiar('txt')"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p><strong>JavaScript</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">function Copiar(pCmp)
+{
+    var valor = document.getElementById(pCmp).value;
+    window.clipboardData.setData("Text", valor);
+}</code></pre></figure>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2008/11/04/ctrlc.html&t=Ctrl+C" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2008/11/04/ctrlc.html&text=Ctrl+C: http://127.0.0.1:4000/2008/11/04/ctrlc.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2008/11/04/ctrlc.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2008/11/04/ctrlc.html&description=Ctrl+C" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2008/11/04/ctrlc.html&title=Ctrl+C&summary=&source=http://127.0.0.1:4000/2008/11/04/ctrlc.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Oct 28, 2008</span>
+      <h2>
+        <a class="post-link" href="/2008/10/28/doctype.html">DOCTYPE</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">CSS</span></li>
+        
+          <li><span class="post-tag">HTML</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Estes dias alguns webcontrols (ASP.NET) que eu havia feito estavam com comportamentos estranhos após inserir no html o elemento <code class="highlighter-rouge">DOCTYPE</code>, que é requerido pelos controles do <a href="http://www.asp.net/ajax/ajaxcontroltoolkit/samples/">AjaxToolkit</a>. Alguns elementos da página estavam incorretos.</p>
+
+<p>Não tinha como opção retirar o <code class="highlighter-rouge">DOCTYPE</code> da página, pois eu necessitava utilizar um controle do <em>AjaxControlToolkit</em>. Diante disto, resolvi entender o que exatamente é este elemento.</p>
+
+<h2 id="o-que--um-doctype">O que é um DOCTYPE?</h2>
+
+<p><code class="highlighter-rouge">DOCTYPE</code> (Document Type Declaration ou DTD) é utilizado pelo browser para interpretar a versão do html corrente.</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2008/10/28/doctype.html&t=DOCTYPE" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2008/10/28/doctype.html&text=DOCTYPE: http://127.0.0.1:4000/2008/10/28/doctype.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2008/10/28/doctype.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2008/10/28/doctype.html&description=DOCTYPE" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2008/10/28/doctype.html&title=DOCTYPE&summary=&source=http://127.0.0.1:4000/2008/10/28/doctype.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Oct 27, 2008</span>
+      <h2>
+        <a class="post-link" href="/2008/10/27/to-upperlower-case.html">To Upper/Lower Case</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">JavaScript</span></li>
+        
+          <li><span class="post-tag">CSS</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Outro dia necessitava fazer que um <code class="highlighter-rouge">input text</code> ficasse com as letras maíusculas no momento em que eu fosse inserindo cada caracter.</p>
+
+<p>Fiz o código abaixo utilizando o evento <code class="highlighter-rouge">OnKeyUp</code>, no qual ele altera os caracteres para maíusculo:</p>
+
+<p><strong>HTML</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">OnKeyUp=</span><span class="s">"ToUpper(this)"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p><strong>JavaScript</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ToUpper</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="nx">el</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span> <span class="c1">//.toLowerCase()
+</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Não gostei muito do efeito, pois quando eu adicionava um caracter novo, o mesmo entrava em minúsculo e depois ele era alterado para maiúsculo.</p>
+
+<p>Em uma busca na internet, encontrei um CSS que altera a aparência do valor do TextBox. É, eu disse que altera a aparência porque este CSS não mantém o valor em maíusculo, ou seja, se você digitar sem utilizar um caps lock ou um shift (para que o caracter fique maiúsculo), os caracteres continuarão minúsculos, e somente a aparência será de maíusculo.</p>
+
+<p><strong>CSS</strong></p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">input</span><span class="nc">.maiusculo</span>
+<span class="p">{</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span> <span class="c">/* (ou lowercase) */</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Conclusão, juntei o JavaScript com o CSS!</p>
+
+<p><strong>HTML Alterado</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">OnKeyUp=</span><span class="s">"ToUpper(this)"</span> <span class="na">class=</span><span class="s">"maiusculo"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>Acredito que existem outras formas de transformar um caracter em maísculo/minúsculo utilizando JavaScript. Se alguem quiser contribuir, fique à vontade!</p>
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2008/10/27/to-upperlower-case.html&t=To Upper/Lower Case" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2008/10/27/to-upperlower-case.html&text=To Upper/Lower Case: http://127.0.0.1:4000/2008/10/27/to-upperlower-case.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2008/10/27/to-upperlower-case.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2008/10/27/to-upperlower-case.html&description=To Upper/Lower Case" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2008/10/27/to-upperlower-case.html&title=To Upper/Lower Case&summary=&source=http://127.0.0.1:4000/2008/10/27/to-upperlower-case.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Mar 30, 2008</span>
+      <h2>
+        <a class="post-link" href="/2008/03/30/o-elemento-undefined.html">O elemento é undefined?</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><span class="post-tag">JavaScript</span></li>
+        
+          <li><span class="post-tag">jQuery</span></li>
+        
+        </ul>
+      </div>
+      <p><p>Abaixo está um código que verifica se um determinado elemento não está definido no <code class="highlighter-rouge">html</code>, ou seja, se ele é <code class="highlighter-rouge">undefined</code>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="s2">"document.getElementById('idElemento')==undefined"</span><span class="p">))</span>
+<span class="p">{</span>
+ <span class="nx">alert</span><span class="p">(</span><span class="s1">'Elemento = undefined'</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>jQuery:</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">existe</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#idElemento'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">existe</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="nx">alert</span><span class="p">(</span><span class="s1">'Elemento = undefined'</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:4000/2008/03/30/o-elemento-undefined.html&t=O elemento é undefined?" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://127.0.0.1:4000/2008/03/30/o-elemento-undefined.html&text=O elemento é undefined?: http://127.0.0.1:4000/2008/03/30/o-elemento-undefined.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://127.0.0.1:4000/2008/03/30/o-elemento-undefined.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://127.0.0.1:4000/2008/03/30/o-elemento-undefined.html&description=O elemento é undefined?" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://127.0.0.1:4000/2008/03/30/o-elemento-undefined.html&title=O elemento é undefined?&summary=&source=http://127.0.0.1:4000/2008/03/30/o-elemento-undefined.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+</ul>
+
+
+<hr />
+<div class="pagination">
+  
+    <a href="/page/6/">&laquo; Anterior</a>
+  
+
+  
+    
+      <a href="/page/6/">1</a>
+    
+  
+    
+      <a href="/page/2/">2</a>
+    
+  
+    
+      <a href="/page/3/">3</a>
+    
+  
+    
+      <a href="/page/4/">4</a>
+    
+  
+    
+      <a href="/page/5/">5</a>
+    
+  
+    
+      <a href="/page/6/">6</a>
+    
+  
+    
+      <em>7</em>
+    
+  
+    
+      <a href="/page/8/">8</a>
+    
+  
+    
+      <a href="/page/9/">9</a>
+    
+  
+
+  
+    <a href="/page/8/">Próximo &raquo;</a>
+  
+</div>
+
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <p class="rss-subscribe"><a href="/feed.xml">RSS</a></p>
+        </div>
+        <div class="footer-col footer-col-2">
+        </div>
+        <div class="footer-col footer-col-3">
+          <div class="article-tag">
+            <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
+<div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
+<div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script id="dsq-count-scr" type="text/javascript" src="//joseotavio.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <noscript>Seu browser não suporta JavaScript.</noscript>
+</body>
+
+</html>
