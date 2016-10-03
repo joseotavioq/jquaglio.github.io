@@ -5,3 +5,12 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-2946000-2', 'joseotavio.com');
 ga('send', 'pageview');
+
+$(function(){
+    $('.tag-item-name').each(function(){
+        var content = $(this).html();
+        var link = $('<a>').attr('href', '/tags/#' + content).html(content);
+        $(this).html('');
+        $(this).append(link);
+    });
+});

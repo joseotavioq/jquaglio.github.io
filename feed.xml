@@ -5,9 +5,97 @@
     <description></description>
     <link>http://127.0.0.1:4000/</link>
     <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 02 Oct 2016 19:26:11 -0300</pubDate>
-    <lastBuildDate>Sun, 02 Oct 2016 19:26:11 -0300</lastBuildDate>
+    <pubDate>Mon, 03 Oct 2016 19:53:36 -0300</pubDate>
+    <lastBuildDate>Mon, 03 Oct 2016 19:53:36 -0300</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Customizando a validação de campos no Xamarin.Forms através de Behavior</title>
+        <description>&lt;p&gt;Para customizar a validação de campos de formulário do &lt;em&gt;Xamarin.Forms&lt;/em&gt;, você precisará criar uma classe que herde de &lt;code class=&quot;highlighter-rouge&quot;&gt;Behavior&amp;lt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;No exemplo a seguir, mostrarei como criar uma validação de e-mail em um campo do tipo &lt;code class=&quot;highlighter-rouge&quot;&gt;Entry&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Neste exemplo, quando o campo e-mail estiver no formato inválido a cor da fonte ficará vermelha, e caso esteja correto ficará na cor padrão do sistema operacional.&lt;/p&gt;
+
+&lt;p&gt;Vamos ao código! &lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesta primeira etapa, iremos criar a classe de validação herdando de &lt;code class=&quot;highlighter-rouge&quot;&gt;Behavior&lt;/code&gt;.
+Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highlighter-rouge&quot;&gt;Entry&lt;/code&gt;, iremos utilizar a classe genérica &lt;code class=&quot;highlighter-rouge&quot;&gt;Behavior&amp;lt;Entry&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cs&quot; data-lang=&quot;cs&quot;&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Xamarin.Forms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Text.RegularExpressions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;jQuaglio&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EmailValidatorBehavior&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Behavior&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emailRegex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;@&quot;^(?(&quot;&quot;)(&quot;&quot;.+?(?&amp;lt;!\\)&quot;&quot;@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&amp;amp;'\*\+/=\?\^`\{\}\|~\w])*)(?&amp;lt;=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;readonly&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BindablePropertyKey&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IsValidPropertyKey&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BindableProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CreateReadOnly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IsValid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmailValidatorBehavior&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+		&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;readonly&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BindableProperty&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IsValidProperty&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IsValidPropertyKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BindableProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IsValid&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsValidProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;SetValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsValidPropertyKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//Método responsável por vincular o evento de &quot;TextChanged&quot; ao Entry
+&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OnAttachedTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Entry&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bindable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;bindable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextChanged&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Entry_TextChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OnAttachedTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bindable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//Método responsável por desvincular o evento de &quot;TextChanged&quot; ao Entry
+&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OnDetachingFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Entry&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bindable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;bindable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextChanged&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Entry_TextChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;OnDetachingFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bindable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//Método responsável por executar a validação do campo
+&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Entry_TextChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextChangedEventArgs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;IsValid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Regex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewTextValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emailRegex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RegexOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IgnoreCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;Entry&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entry&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextColor&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IsValid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Como forma de vincular o &lt;code class=&quot;highlighter-rouge&quot;&gt;Behavior&lt;/code&gt; criado anteriormente ao campo que você deseja realizar a validação, deveremos alterar o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;XAML&lt;/code&gt;, conforme exemplo a seguir:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Entry&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;entryEmail&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Keyboard=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Email&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E-mail&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Entry&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Behaviors&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;local:EmailValidatorBehavior&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x:Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;emailValidator&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;/Entry.Behaviors&amp;gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Entry&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Obs: Não esqueça de adicionar o &lt;em&gt;namespace&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;local&lt;/code&gt; no &lt;code class=&quot;highlighter-rouge&quot;&gt;XAML&lt;/code&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;xmlns:local=&quot;clr-namespace:jQuaglio&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;No arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.cs&lt;/code&gt; (relacionado ao &lt;code class=&quot;highlighter-rouge&quot;&gt;XAML&lt;/code&gt;), você conseguirá realizar a validação utilizando o &lt;em&gt;x:Name&lt;/em&gt; do &lt;code class=&quot;highlighter-rouge&quot;&gt;Behavior&lt;/code&gt; informado no &lt;code class=&quot;highlighter-rouge&quot;&gt;XAML&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cs&quot; data-lang=&quot;cs&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emailValidator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//Sua lógica, caso o e-mail esteja válido!
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Mon, 03 Oct 2016 19:50:00 -0300</pubDate>
+        <link>http://127.0.0.1:4000/2016/10/03/customizando-validacao-xamarin-atraves-behavior.html</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/10/03/customizando-validacao-xamarin-atraves-behavior.html</guid>
+        
+        <category>Xamarin</category>
+        
+        <category>C#</category>
+        
+        
+      </item>
     
       <item>
         <title>Hangout: Mobile Híbrido X Nativo</title>
@@ -88,10 +176,10 @@
 
 &lt;p&gt;Assim como em outras redes social, os usuários podem comentar e qualificar os posts (sons), mas no caso do VocalApp a qualificação é feita através de estrelas. Os usuários podem dar uma nota de 0 à 10 para cada post.&lt;/p&gt;
 
-&lt;p&gt;Para destacar os melhores sons de todos os usuários, foi criado um ranking (Top 10) que exibe os 10 melhores sons da semana.&lt;/p&gt;
+&lt;p&gt;Para destacar os melhores sons de todos os usuários, foi criado um ranking (Top 10) que exibe os 10 melhores sons da semana.
+&lt;!--more--&gt;&lt;/p&gt;
 
-&lt;!--more--&gt;
-&lt;p&gt;## Arquitetura da Solução&lt;/p&gt;
+&lt;h2 id=&quot;arquitetura-da-soluo&quot;&gt;Arquitetura da Solução&lt;/h2&gt;
 
 &lt;h3 id=&quot;client&quot;&gt;Client&lt;/h3&gt;
 &lt;ul&gt;
@@ -491,72 +579,6 @@ Schema de Notas:
         <category>C#</category>
         
         <category>LINQ</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Any CPU, x86, x64, Itanium ou Mixed Platforms</title>
-        <description>&lt;h2 id=&quot;o-que-so-any-cpu-x86-x64-e-itanium&quot;&gt;O que são: Any CPU, x86, x64 e Itanium&lt;/h2&gt;
-
-&lt;p&gt;São configurações de compilação que indicam a plataforma onde o assembly será executado.&lt;/p&gt;
-
-&lt;h2 id=&quot;qual-a-diferena-entre-eles&quot;&gt;Qual a diferença entre eles?&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Any CPU&lt;/code&gt; - O assembly será compilado em uma forma independente, ou seja, tanto faz qual versão do .NET Framework (x86 ou x64) executará o assembly, ele será executado de acordo com a versão instalada.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x86&lt;/code&gt; - O assembly será executado como x86, independente se o sistema operacional é x86 ou x64. Caso o assembly seja executado em uma arquitetura x64, o assembly será carregado em modo WOW64.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x64&lt;/code&gt; - O assembly será executado somente como x64, não sendo possível sua execução em uma arquitetura x86.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Itanium&lt;/code&gt; - O assembly será executado somente em uma plataforma que contenha o processador Itanium.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Mixed Platforms&lt;/code&gt; - Indica que na solution existem projetos configurados para vários tipos de plataformas.&lt;/p&gt;
-
-&lt;!--more--&gt;
-&lt;p&gt;## Qual a melhor a ser utilizada?&lt;/p&gt;
-
-&lt;p&gt;Depende do cenário!&lt;/p&gt;
-
-&lt;p&gt;Recomendo utilizar o Any CPU quando o desenvolvedor não tem conhecimento da plataforma do servidor de produção.&lt;/p&gt;
-
-&lt;p&gt;Utilize x86 em cenários que necessitam de interoperabilidade com códigos não gerenciados ou quando o servidor de produção é somente x86.&lt;/p&gt;
-
-&lt;h2 id=&quot;como-alterar-essa-configurao-no-microsoft-visual-studio-2010-para-os-meus-projetos-no-sln-solution&quot;&gt;Como alterar essa configuração no Microsoft Visual Studio 2010 para os meus projetos no SLN (solution)?&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Antes de realizar a alteração de plataforma faça uma análise de impacto para que você não tenha problemas ao alterar um arquitetura x86 para x64, por exemplo!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Dentro do Microsoft Visual Studio 2010, logo abaixo do menu na barra de ícones, localize as listas que informam a configuração do projeto (Ex.: Debug, Release) e as plataformas (Any CPU, x86, x64, Itanium), conforme exemplo da imagem abaixo:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/Solution_Plataform.png&quot; alt=&quot;&amp;quot;Exemplo de onde está a opção de configuração de plataforma no Visual Studio&amp;quot;&quot; title=&quot;Exemplo de onde está a opção de configuração de plataforma no Visual Studio&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Clique na listagem de plataformas e selecione a plataforma que quiser e compile a aplicação.&lt;/p&gt;
-
-&lt;p&gt;Caso as outras opções de plataformas não apareçam na listagem ou você queira saber quais configurações de plataformas estão para cada projeto da solution, clique no item “Configuration Manager…”.&lt;/p&gt;
-
-&lt;p&gt;Ao abrir o Configuration Manager, serão exibidos todos os projetos contidos na solution.&lt;/p&gt;
-
-&lt;p&gt;Clique sobre a célula da coluna “Platform” e o projeto que deseja alterar e, selecione “New…”.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/Configuration_Manager_New_Plataform.png&quot; alt=&quot;Tela exibindo onde está a opção New&quot; title=&quot;Tela exibindo onde está a opção New&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Irá abrir uma janela para que você adicione a nova plataforma a partir de outra existente.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/Configuration_Manager_New_Plataform_Window.png&quot; alt=&quot;Tela para adicionar uma nova plataforma&quot; title=&quot;Tela para adicionar uma nova plataforma&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Clique em “OK”. Agora verifique se o projeto foi alterado para a configuração que foi criada anteriormente.&lt;/p&gt;
-
-&lt;p&gt;Se estiver tudo ok, o próximo passo é efetuar um build do projeto que foi alterado com a nova configuração de plataforma.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 18 Mar 2014 15:20:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2014/03/18/anycpu-x86-x64-itanium-mixed-platform.html</guid>
-        
-        <category>.NET</category>
-        
-        <category>Visual Studio 2010</category>
         
         
       </item>
