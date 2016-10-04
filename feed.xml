@@ -3,10 +3,10 @@
   <channel>
     <title>José Otávio Quaglio</title>
     <description></description>
-    <link>http://127.0.0.1:4000/</link>
-    <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 03 Oct 2016 19:53:36 -0300</pubDate>
-    <lastBuildDate>Mon, 03 Oct 2016 19:53:36 -0300</lastBuildDate>
+    <link>http://www.joseotavio.com/</link>
+    <atom:link href="http://www.joseotavio.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 04 Oct 2016 08:19:25 -0300</pubDate>
+    <lastBuildDate>Tue, 04 Oct 2016 08:19:25 -0300</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -87,8 +87,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Mon, 03 Oct 2016 19:50:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2016/10/03/customizando-validacao-xamarin-atraves-behavior.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/10/03/customizando-validacao-xamarin-atraves-behavior.html</guid>
+        <link>http://www.joseotavio.com/2016/10/03/customizando-validacao-xamarin-atraves-behavior.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2016/10/03/customizando-validacao-xamarin-atraves-behavior.html</guid>
         
         <category>Xamarin</category>
         
@@ -104,8 +104,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/cpslOJeW-ho&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Thu, 26 Nov 2015 00:36:00 -0200</pubDate>
-        <link>http://127.0.0.1:4000/2015/11/26/hangout-mobile-hibrido-x-nativo.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/26/hangout-mobile-hibrido-x-nativo.html</guid>
+        <link>http://www.joseotavio.com/2015/11/26/hangout-mobile-hibrido-x-nativo.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2015/11/26/hangout-mobile-hibrido-x-nativo.html</guid>
         
         <category>JavaScript</category>
         
@@ -127,8 +127,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Z_Z-0lD5SWI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Thu, 12 Nov 2015 10:57:00 -0200</pubDate>
-        <link>http://127.0.0.1:4000/2015/11/12/hangout-bate-papo-sobre-nodejs.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/11/12/hangout-bate-papo-sobre-nodejs.html</guid>
+        <link>http://www.joseotavio.com/2015/11/12/hangout-bate-papo-sobre-nodejs.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2015/11/12/hangout-bate-papo-sobre-nodejs.html</guid>
         
         <category>JavaScript</category>
         
@@ -154,8 +154,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 
 </description>
         <pubDate>Thu, 29 Oct 2015 15:16:00 -0200</pubDate>
-        <link>http://127.0.0.1:4000/2015/10/29/erro-could-not-establish-trust.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/10/29/erro-could-not-establish-trust.html</guid>
+        <link>http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html</guid>
         
         <category>.NET</category>
         
@@ -202,8 +202,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 &lt;a href=&quot;https://www.facebook.com/vocalapp&quot;&gt;https://www.facebook.com/vocalapp&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 25 Jun 2014 13:20:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2014/06/25/vocalapp-rede-social-de-sons.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2014/06/25/vocalapp-rede-social-de-sons.html</guid>
+        <link>http://www.joseotavio.com/2014/06/25/vocalapp-rede-social-de-sons.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2014/06/25/vocalapp-rede-social-de-sons.html</guid>
         
         <category>JavaScript</category>
         
@@ -231,8 +231,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 &lt;p&gt;Ambiente que o problema ocorreu: Windows 7 com IIS 7.5.&lt;/p&gt;
 </description>
         <pubDate>Mon, 12 May 2014 10:07:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2014/05/12/erro-unable-to-start-debugging-on-web.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2014/05/12/erro-unable-to-start-debugging-on-web.html</guid>
+        <link>http://www.joseotavio.com/2014/05/12/erro-unable-to-start-debugging-on-web.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2014/05/12/erro-unable-to-start-debugging-on-web.html</guid>
         
         <category>Visual Studio 2010</category>
         
@@ -276,8 +276,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 &lt;/blockquote&gt;
 </description>
         <pubDate>Tue, 06 May 2014 11:21:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2014/05/06/resolvendo-erro-chave-invalida-para-uso.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2014/05/06/resolvendo-erro-chave-invalida-para-uso.html</guid>
+        <link>http://www.joseotavio.com/2014/05/06/resolvendo-erro-chave-invalida-para-uso.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2014/05/06/resolvendo-erro-chave-invalida-para-uso.html</guid>
         
         <category>.NET</category>
         
@@ -303,8 +303,8 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 &lt;p&gt;3) Execute o seu projeto novamente no iOS Simulator&lt;/p&gt;
 </description>
         <pubDate>Thu, 17 Apr 2014 09:47:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</guid>
+        <link>http://www.joseotavio.com/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</guid>
         
         <category>Objective-C</category>
         
@@ -386,8 +386,8 @@ Schema de Notas:
 &lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide?language=iOS#started&quot;&gt;https://www.parse.com/docs/cloud_code_guide?language=iOS#started&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 15 Apr 2014 11:16:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</guid>
+        <link>http://www.joseotavio.com/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</guid>
         
         <category>JavaScript</category>
         
@@ -571,8 +571,8 @@ Schema de Notas:
 &lt;p&gt;&lt;img src=&quot;/images/posts/AgrupamentoLinq.png&quot; alt=&quot;Resultado do agrupamento&quot; title=&quot;Resultado do agrupamento&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 09 Apr 2014 16:59:00 -0300</pubDate>
-        <link>http://127.0.0.1:4000/2014/04/09/linq-agrupar-por-objeto.html</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2014/04/09/linq-agrupar-por-objeto.html</guid>
+        <link>http://www.joseotavio.com/2014/04/09/linq-agrupar-por-objeto.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2014/04/09/linq-agrupar-por-objeto.html</guid>
         
         <category>.NET</category>
         
