@@ -87,21 +87,21 @@ Como nossa validação será em cima do campo de tipo <code class="highlighter-r
 			<span class="k">private</span> <span class="k">set</span> <span class="p">{</span> <span class="k">base</span><span class="p">.</span><span class="nf">SetValue</span><span class="p">(</span><span class="n">IsValidPropertyKey</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
 		<span class="p">}</span>
 
-        <span class="c1">//Método responsável por vincular o evento de "TextChanged" ao Entry
+		<span class="c1">//Método responsável por vincular o evento de "TextChanged" ao Entry
 </span>		<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnAttachedTo</span><span class="p">(</span><span class="n">Entry</span> <span class="n">bindable</span><span class="p">)</span>
 		<span class="p">{</span>
 			<span class="n">bindable</span><span class="p">.</span><span class="n">TextChanged</span> <span class="p">+=</span> <span class="n">Entry_TextChanged</span><span class="p">;</span>
 			<span class="k">base</span><span class="p">.</span><span class="nf">OnAttachedTo</span><span class="p">(</span><span class="n">bindable</span><span class="p">);</span>
 		<span class="p">}</span>
 
-        <span class="c1">//Método responsável por desvincular o evento de "TextChanged" ao Entry
+		<span class="c1">//Método responsável por desvincular o evento de "TextChanged" ao Entry
 </span>		<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnDetachingFrom</span><span class="p">(</span><span class="n">Entry</span> <span class="n">bindable</span><span class="p">)</span>
 		<span class="p">{</span>
 			<span class="n">bindable</span><span class="p">.</span><span class="n">TextChanged</span> <span class="p">-=</span> <span class="n">Entry_TextChanged</span><span class="p">;</span>
 			<span class="k">base</span><span class="p">.</span><span class="nf">OnDetachingFrom</span><span class="p">(</span><span class="n">bindable</span><span class="p">);</span>
 		<span class="p">}</span>
 
-        <span class="c1">//Método responsável por executar a validação do campo
+		<span class="c1">//Método responsável por executar a validação do campo
 </span>		<span class="k">void</span> <span class="nf">Entry_TextChanged</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">TextChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
 		<span class="p">{</span>
 			<span class="n">IsValid</span> <span class="p">=</span> <span class="n">Regex</span><span class="p">.</span><span class="nf">IsMatch</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">NewTextValue</span><span class="p">,</span> <span class="n">emailRegex</span><span class="p">,</span> <span class="n">RegexOptions</span><span class="p">.</span><span class="n">IgnoreCase</span><span class="p">);</span>
@@ -172,12 +172,12 @@ var disqus_config = function () {
         <div class="footer-col footer-col-3">
           <div class="article-tag">
             <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
-<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">22</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">23</div></div>
 <div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
 <div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
-<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
 <div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
 <div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>

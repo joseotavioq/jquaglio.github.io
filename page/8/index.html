@@ -44,6 +44,66 @@
 <ul class="post-list">
   
     <li>
+      <span class="post-meta">Oct 27, 2008</span>
+      <h2>
+        <a class="post-link" href="/2008/10/27/to-upperlower-case.html">To Upper/Lower Case</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><a class="post-tag" href="/tags/#JavaScript">JavaScript</a></li>
+        
+          <li><a class="post-tag" href="/tags/#CSS">CSS</a></li>
+        
+        </ul>
+      </div>
+      <p><p>Outro dia necessitava fazer que um <code class="highlighter-rouge">input text</code> ficasse com as letras maíusculas no momento em que eu fosse inserindo cada caracter.</p>
+
+<p>Fiz o código abaixo utilizando o evento <code class="highlighter-rouge">OnKeyUp</code>, no qual ele altera os caracteres para maíusculo:</p>
+
+<p><strong>HTML</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">OnKeyUp=</span><span class="s">"ToUpper(this)"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p><strong>JavaScript</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ToUpper</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="nx">el</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span> <span class="c1">//.toLowerCase()
+</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Não gostei muito do efeito, pois quando eu adicionava um caracter novo, o mesmo entrava em minúsculo e depois ele era alterado para maiúsculo.</p>
+
+<p>Em uma busca na internet, encontrei um CSS que altera a aparência do valor do TextBox. É, eu disse que altera a aparência porque este CSS não mantém o valor em maíusculo, ou seja, se você digitar sem utilizar um caps lock ou um shift (para que o caracter fique maiúsculo), os caracteres continuarão minúsculos, e somente a aparência será de maíusculo.</p>
+
+<p><strong>CSS</strong></p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">input</span><span class="nc">.maiusculo</span>
+<span class="p">{</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span> <span class="c">/* (ou lowercase) */</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Conclusão, juntei o JavaScript com o CSS!</p>
+
+<p><strong>HTML Alterado</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">OnKeyUp=</span><span class="s">"ToUpper(this)"</span> <span class="na">class=</span><span class="s">"maiusculo"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>Acredito que existem outras formas de transformar um caracter em maísculo/minúsculo utilizando JavaScript. Se alguem quiser contribuir, fique à vontade!</p>
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2008/10/27/to-upperlower-case.html&t=To Upper/Lower Case" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2008/10/27/to-upperlower-case.html&text=To Upper/Lower Case: http://www.joseotavio.com/2008/10/27/to-upperlower-case.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2008/10/27/to-upperlower-case.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2008/10/27/to-upperlower-case.html&description=To Upper/Lower Case" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2008/10/27/to-upperlower-case.html&title=To Upper/Lower Case&summary=&source=http://www.joseotavio.com/2008/10/27/to-upperlower-case.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
       <span class="post-meta">Mar 30, 2008</span>
       <h2>
         <a class="post-link" href="/2008/03/30/o-elemento-undefined.html">O elemento é undefined?</a>
@@ -311,78 +371,6 @@ Tentava utilizar o style <code class="highlighter-rouge">z-index</code>, mas mes
       </div>
     </li>
   
-    <li>
-      <span class="post-meta">Nov 6, 2007</span>
-      <h2>
-        <a class="post-link" href="/2007/11/06/visible-hidden-de-um-elemento.html">Visible/Hidden de um elemento</a>
-      </h2>
-      <div>
-        <ul class="post-tags">
-        
-          <li><a class="post-tag" href="/tags/#JavaScript">JavaScript</a></li>
-        
-          <li><a class="post-tag" href="/tags/#CSS">CSS</a></li>
-        
-          <li><a class="post-tag" href="/tags/#jQuery">jQuery</a></li>
-        
-        </ul>
-      </div>
-      <p><p>Para controlar a visibilidade (visible/hidden) de um elemento em JavaScript, basta <em>setar</em> as propriedades <code class="highlighter-rouge">style.visibility</code> e <code class="highlighter-rouge">style.display</code>.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">SetVisible</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">elemento</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">visibility</span> <span class="o">=</span> <span class="s1">'visible'</span><span class="p">;</span>
-    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">'inline'</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="c1">//Ex: SetVisible('idElemento');
-</span>
-
-<span class="kd">function</span> <span class="nx">SetHidden</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">elemento</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">visibility</span> <span class="o">=</span> <span class="s1">'hidden'</span><span class="p">;</span>
-    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="c1">//Ex: SetHidden('idElemento');</span></code></pre></figure>
-
-<p><strong>jQuery:</strong></p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Exibir
-</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'#idElemento'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
-
-<span class="c1">//Esconder
-</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'#idElemento'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-
-<span class="c1">//Esta função altera a visibilidade do elemento de hidden para visible
-</span>
-<span class="c1">// (e vice-versa) automaticamente, sem a necessidade de verificar
-</span>
-<span class="c1">// qual o estado atual do elemento.
-</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'#idElemento'</span><span class="p">).</span><span class="nx">toggle</span><span class="p">();</span></code></pre></figure>
-
-<p>Obs.: Algumas funções em jQuery possuem parâmetros, vide os links abaixo para maiores informações.</p>
-
-<p><strong>show:</strong> <a href="http://api.jquery.com/show/">http://api.jquery.com/show/</a></p>
-
-<p><strong>hide</strong>: <a href="http://api.jquery.com/hide/">http://api.jquery.com/hide/</a></p>
-
-<p><strong>toggle</strong>: <a href="http://api.jquery.com/toggle/">http://api.jquery.com/toggle/</a></p>
-</p>
-      <div>
-        <ul class="share-buttons">
-          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&t=Visible/Hidden de um elemento" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
-          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&text=Visible/Hidden de um elemento: http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
-          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
-          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&description=Visible/Hidden de um elemento" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
-          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&title=Visible/Hidden de um elemento&summary=&source=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
-        </ul>
-      </div>
-    </li>
-  
 </ul>
 
 
@@ -429,6 +417,10 @@ Tentava utilizar o style <code class="highlighter-rouge">z-index</code>, mas mes
       <a href="/page/9/">9</a>
     
   
+    
+      <a href="/page/10/">10</a>
+    
+  
 
   
     <a href="/page/9/">Próximo &raquo;</a>
@@ -449,12 +441,12 @@ Tentava utilizar o style <code class="highlighter-rouge">z-index</code>, mas mes
         <div class="footer-col footer-col-3">
           <div class="article-tag">
             <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
-<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">22</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">23</div></div>
 <div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
 <div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
-<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
 <div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
 <div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>

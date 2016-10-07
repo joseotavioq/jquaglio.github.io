@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.joseotavio.com/2016/10/07/melhor-forma-de-liberar-um-recurso-client-wcf.html</loc>
+<lastmod>2016-10-07T19:35:00-03:00</lastmod>
+</url>
+<url>
 <loc>http://www.joseotavio.com/2016/10/03/customizando-validacao-xamarin-atraves-behavior.html</loc>
 <lastmod>2016-10-03T19:50:00-03:00</lastmod>
 </url>
@@ -251,5 +255,8 @@
 </url>
 <url>
 <loc>http://www.joseotavio.com/page/9/</loc>
+</url>
+<url>
+<loc>http://www.joseotavio.com/page/10/</loc>
 </url>
 </urlset>

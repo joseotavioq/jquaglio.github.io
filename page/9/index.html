@@ -46,6 +46,78 @@
     <li>
       <span class="post-meta">Nov 6, 2007</span>
       <h2>
+        <a class="post-link" href="/2007/11/06/visible-hidden-de-um-elemento.html">Visible/Hidden de um elemento</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><a class="post-tag" href="/tags/#JavaScript">JavaScript</a></li>
+        
+          <li><a class="post-tag" href="/tags/#CSS">CSS</a></li>
+        
+          <li><a class="post-tag" href="/tags/#jQuery">jQuery</a></li>
+        
+        </ul>
+      </div>
+      <p><p>Para controlar a visibilidade (visible/hidden) de um elemento em JavaScript, basta <em>setar</em> as propriedades <code class="highlighter-rouge">style.visibility</code> e <code class="highlighter-rouge">style.display</code>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">SetVisible</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">elemento</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">visibility</span> <span class="o">=</span> <span class="s1">'visible'</span><span class="p">;</span>
+    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">'inline'</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//Ex: SetVisible('idElemento');
+</span>
+
+<span class="kd">function</span> <span class="nx">SetHidden</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">elemento</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">visibility</span> <span class="o">=</span> <span class="s1">'hidden'</span><span class="p">;</span>
+    <span class="nx">elemento</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//Ex: SetHidden('idElemento');</span></code></pre></figure>
+
+<p><strong>jQuery:</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Exibir
+</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#idElemento'</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+
+<span class="c1">//Esconder
+</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#idElemento'</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+
+<span class="c1">//Esta função altera a visibilidade do elemento de hidden para visible
+</span>
+<span class="c1">// (e vice-versa) automaticamente, sem a necessidade de verificar
+</span>
+<span class="c1">// qual o estado atual do elemento.
+</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#idElemento'</span><span class="p">).</span><span class="nx">toggle</span><span class="p">();</span></code></pre></figure>
+
+<p>Obs.: Algumas funções em jQuery possuem parâmetros, vide os links abaixo para maiores informações.</p>
+
+<p><strong>show:</strong> <a href="http://api.jquery.com/show/">http://api.jquery.com/show/</a></p>
+
+<p><strong>hide</strong>: <a href="http://api.jquery.com/hide/">http://api.jquery.com/hide/</a></p>
+
+<p><strong>toggle</strong>: <a href="http://api.jquery.com/toggle/">http://api.jquery.com/toggle/</a></p>
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&t=Visible/Hidden de um elemento" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&text=Visible/Hidden de um elemento: http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&description=Visible/Hidden de um elemento" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html&title=Visible/Hidden de um elemento&summary=&source=http://www.joseotavio.com/2007/11/06/visible-hidden-de-um-elemento.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
+      <span class="post-meta">Nov 6, 2007</span>
+      <h2>
         <a class="post-link" href="/2007/11/06/posicao-x-e-y-do-mouse.html">Posição X e Y do Mouse</a>
       </h2>
       <div>
@@ -273,70 +345,6 @@ Exemplo de URL: http://localhost/pagina.html?ID=123</p>
       </div>
     </li>
   
-    <li>
-      <span class="post-meta">Nov 2, 2007</span>
-      <h2>
-        <a class="post-link" href="/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html">Posição X e Y dos elementos da página</a>
-      </h2>
-      <div>
-        <ul class="post-tags">
-        
-          <li><a class="post-tag" href="/tags/#JavaScript">JavaScript</a></li>
-        
-          <li><a class="post-tag" href="/tags/#jQuery">jQuery</a></li>
-        
-        </ul>
-      </div>
-      <p><p>Como minha primeira postagem neste blog, irei incluir um código que demorei muito para encontrar, e um código muito útil no JavaScript.</p>
-
-<p>No início do meu aprendizado em JavaScript, eu sempre quis saber como faço para descobrir a posição (x,y) de um elemento na página.</p>
-
-<p>Fiz várias buscas na internet, até que um dia eu encontrei as funções abaixo.</p>
-
-<p>Estas funções pegam o elemento que foi passado no parâmetro e fazem um loop dos elementos “pais”.
-Dentro do loop o valor <code class="highlighter-rouge">offsetTop</code>/<code class="highlighter-rouge">offsetLeft</code> é somado, até que chegue no último “pai”.</p>
-
-<p><strong>Função X:</strong></p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">offsetLeft</span><span class="p">(</span><span class="nx">elemento</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">elemento</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
-  <span class="k">for</span><span class="p">(</span><span class="nx">e</span> <span class="o">=</span> <span class="nx">elemento</span><span class="p">.</span><span class="nx">offsetParent</span><span class="p">;</span> <span class="nx">e</span><span class="p">;</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetParent</span><span class="p">)</span>
-    <span class="nx">x</span> <span class="o">+=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
- <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<p><strong>Função Y:</strong></p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">offsetTop</span><span class="p">(</span><span class="nx">elemento</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">elemento</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
-  <span class="k">for</span><span class="p">(</span><span class="nx">e</span> <span class="o">=</span> <span class="nx">elemento</span><span class="p">.</span><span class="nx">offsetParent</span><span class="p">;</span> <span class="nx">e</span><span class="p">;</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetParent</span><span class="p">)</span>
-    <span class="nx">y</span> <span class="o">+=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetTop</span><span class="p">;</span>
- <span class="k">return</span> <span class="nx">y</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<p><strong>jQuery:</strong></p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//X
-</span>
-<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#elemento'</span><span class="p">).</span><span class="nx">position</span><span class="p">().</span><span class="nx">left</span><span class="p">;</span>
-
-<span class="c1">//Y
-</span>
-<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#elemento'</span><span class="p">).</span><span class="nx">position</span><span class="p">().</span><span class="nx">top</span><span class="p">;</span></code></pre></figure>
-</p>
-      <div>
-        <ul class="share-buttons">
-          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html&t=Posição X e Y dos elementos da página" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
-          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html&text=Posição X e Y dos elementos da página: http://www.joseotavio.com/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
-          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
-          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html&description=Posição X e Y dos elementos da página" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
-          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html&title=Posição X e Y dos elementos da página&summary=&source=http://www.joseotavio.com/2007/11/02/posicao-x-e-y-dos-elementos-da-pagina.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
-        </ul>
-      </div>
-    </li>
-  
 </ul>
 
 
@@ -383,9 +391,13 @@ Dentro do loop o valor <code class="highlighter-rouge">offsetTop</code>/<code cl
       <em>9</em>
     
   
+    
+      <a href="/page/10/">10</a>
+    
+  
 
   
-    <span>Próximo &raquo;</span>
+    <a href="/page/10/">Próximo &raquo;</a>
   
 </div>
 
@@ -403,12 +415,12 @@ Dentro do loop o valor <code class="highlighter-rouge">offsetTop</code>/<code cl
         <div class="footer-col footer-col-3">
           <div class="article-tag">
             <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
-<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">22</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">23</div></div>
 <div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
 <div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
-<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">8</div></div>
+<div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
 <div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
 <div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
