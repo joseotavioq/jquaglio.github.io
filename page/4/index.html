@@ -44,6 +44,40 @@
 <ul class="post-list">
   
     <li>
+      <span class="post-meta">Aug 21, 2012</span>
+      <h2>
+        <a class="post-link" href="/2012/08/21/custom-membershipprovider.html">Custom MembershipProvider</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><a class="post-tag" href="/tags/#MVC">MVC</a></li>
+        
+          <li><a class="post-tag" href="/tags/#.NET">.NET</a></li>
+        
+          <li><a class="post-tag" href="/tags/#ASP.NET">ASP.NET</a></li>
+        
+          <li><a class="post-tag" href="/tags/#C#">C#</a></li>
+        
+        </ul>
+      </div>
+      <p><p>Para criarmos um controle de acesso a uma aplicação e reaproveitar todas as funcionalidades do <em>Membership</em> disponíveis no <strong>ASP.NET MVC</strong> ou <strong>ASP.NET Web Forms</strong>, devemos utilizar a classe <code class="highlighter-rouge">MembershipProvider</code>, disponível no namespace: <code class="highlighter-rouge">System.Web.Security</code>.</p>
+
+<p>Crie uma nova classe e herde a classe <code class="highlighter-rouge">MembershipProvider</code>. Quando esta ação for realizada, obrigatoriamente precisaremos efetuar o <em>override</em> de alguns métodos. Não há necessidade de escrever um código para todos os métodos (isto dependerá do que for utilizado).</p>
+
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2012/08/21/custom-membershipprovider.html&t=Custom MembershipProvider" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2012/08/21/custom-membershipprovider.html&text=Custom MembershipProvider: http://www.joseotavio.com/2012/08/21/custom-membershipprovider.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2012/08/21/custom-membershipprovider.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2012/08/21/custom-membershipprovider.html&description=Custom MembershipProvider" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2012/08/21/custom-membershipprovider.html&title=Custom MembershipProvider&summary=&source=http://www.joseotavio.com/2012/08/21/custom-membershipprovider.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
       <span class="post-meta">Jun 27, 2012</span>
       <h2>
         <a class="post-link" href="/2012/06/27/analisando-problemas-de-performance-em-aplicacoes-net.html">Analisando Problemas de Performance em Aplicações .NET</a>
@@ -236,48 +270,6 @@
       </div>
     </li>
   
-    <li>
-      <span class="post-meta">Jan 5, 2012</span>
-      <h2>
-        <a class="post-link" href="/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html">Compactando Arquivos Estáticos no ASP.NET</a>
-      </h2>
-      <div>
-        <ul class="post-tags">
-        
-          <li><a class="post-tag" href="/tags/#CSS">CSS</a></li>
-        
-          <li><a class="post-tag" href="/tags/#.NET">.NET</a></li>
-        
-          <li><a class="post-tag" href="/tags/#ASP.NET">ASP.NET</a></li>
-        
-          <li><a class="post-tag" href="/tags/#Web Forms">Web Forms</a></li>
-        
-          <li><a class="post-tag" href="/tags/#HTML">HTML</a></li>
-        
-          <li><a class="post-tag" href="/tags/#C#">C#</a></li>
-        
-        </ul>
-      </div>
-      <p><p>Você já se deparou com um cenário no qual utilize vários arquivos CSS e JS e eles possuem tamanhos grandes e que possa causar uma lentidão no carregamento das páginas no cliente?</p>
-
-<p>Eu tive este cenário alguns dias atrás e necessitava urgentemente compactar os arquivos estáticos do <em>jQuery UI</em> para garantir performance no carregamento das páginas.</p>
-
-<p>A minha solução foi bastante simples. Pensei em obter os arquivos estáticos e compactá-los em runtime utilizando o algoritmo do GZip (classe <code class="highlighter-rouge">GZipStream</code>) e passar para o browser este conteúdo compactado identificando que este era um conteúdo com o <em>encoding</em> do tipo GZip.</p>
-
-<p>Para implementar esta solução, primeiro criei um arquivo do tipo <code class="highlighter-rouge">Generic Handler</code> (ziparArquivo.ashx), e em seguida alterei o método <code class="highlighter-rouge">ProcessRequest</code> para que realizasse o que eu estava imaginando, conforme código comentado:</p>
-
-</p>
-      <div>
-        <ul class="share-buttons">
-          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&t=Compactando Arquivos Estáticos no ASP.NET" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
-          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&text=Compactando Arquivos Estáticos no ASP.NET: http://www.joseotavio.com/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
-          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
-          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&description=Compactando Arquivos Estáticos no ASP.NET" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
-          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html&title=Compactando Arquivos Estáticos no ASP.NET&summary=&source=http://www.joseotavio.com/2012/01/05/compactando-arquivos-estaticos-no-asp-net.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
-        </ul>
-      </div>
-    </li>
-  
 </ul>
 
 
@@ -348,34 +340,35 @@
         <div class="footer-col footer-col-3">
           <div class="article-tag">
             <div class="tag-item"><div class="tag-item-name">.NET</div><div class="tag-item-count">28</div></div>
-<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">23</div></div>
-<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">20</div></div>
-<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">9</div></div>
-<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">C#</div><div class="tag-item-count">24</div></div>
+<div class="tag-item"><div class="tag-item-name">JavaScript</div><div class="tag-item-count">21</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery</div><div class="tag-item-count">10</div></div>
 <div class="tag-item"><div class="tag-item-name">CSS</div><div class="tag-item-count">9</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
 <div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
-<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
 <div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
 <div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
 <div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
 <div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
-<div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
-<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
-<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Xamarin</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
 <div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
 <div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
-<div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
-<div class="tag-item"><div class="tag-item-name">Xamarin</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
 <div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">Windows Form</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">Injeção de Dependência</div><div class="tag-item-count">1</div></div>
-<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">Node.js</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">Cordova</div><div class="tag-item-count">1</div></div>
-<div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET MVC</div><div class="tag-item-count">1</div></div>
 
           </div>
         </div>

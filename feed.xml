@@ -5,9 +5,102 @@
     <description></description>
     <link>http://www.joseotavio.com/</link>
     <atom:link href="http://www.joseotavio.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Oct 2016 19:43:54 -0300</pubDate>
-    <lastBuildDate>Fri, 07 Oct 2016 19:43:54 -0300</lastBuildDate>
+    <pubDate>Fri, 07 Oct 2016 21:27:20 -0300</pubDate>
+    <lastBuildDate>Fri, 07 Oct 2016 21:27:20 -0300</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Incluindo tratamento de Unauthorized para requisições Ajax no ASP.NET MVC</title>
+        <description>&lt;p&gt;Imagine um cenário onde temos uma aplicação &lt;code class=&quot;highlighter-rouge&quot;&gt;ASP.NET MVC&lt;/code&gt; com páginas que necessitem de autorização para serem visualizadas. Dentro destas páginas são utilizadas requisições Ajax, para que a página não recarregue totalmente a cada solicitação do usuário.&lt;/p&gt;
+
+&lt;p&gt;Se o usuário efetuar o login e permanecer parado em uma página que necessite de autorização por um tempo maior que o estipulado para a expiração da autenticação corrente, e após este tempo for realizada alguma ação Ajax, a requisição será redirecionada para a tela de login.&lt;/p&gt;
+
+&lt;p&gt;Parece um comportamento normal, mas não no âmbito do Ajax, pois a requisição é feita assíncrona e não será visível para o usuário. Neste caso a resposta da requisição deveria ser um erro 401 (Unauthorized) e não um 302 (Found), certo?&lt;/p&gt;
+
+&lt;p&gt;Para resolver este ponto e fazer com que o erro 401 seja reportado para a requisição Ajax, realize os passos descritos a seguir.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;crie-uma-classe-que-herde-de-authorizeattribute&quot;&gt;Crie uma classe que herde de &lt;code class=&quot;highlighter-rouge&quot;&gt;AuthorizeAttribute&lt;/code&gt;.&lt;/h2&gt;
+
+&lt;p&gt;Nesta classe, sobrescreva o método &lt;code class=&quot;highlighter-rouge&quot;&gt;HandleUnauthorizedRequest&lt;/code&gt;, incluindo uma verificação para identificar se a requisição atual veio via &lt;code class=&quot;highlighter-rouge&quot;&gt;Ajax&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Caso venha, altere o &lt;code class=&quot;highlighter-rouge&quot;&gt;StatusCode&lt;/code&gt; para &lt;code class=&quot;highlighter-rouge&quot;&gt;Unauthorized&lt;/code&gt; (401) e finalize a requisição, conforme demonstrado no exemplo a seguir.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cs&quot; data-lang=&quot;cs&quot;&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Web.Mvc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;jQuaglio&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CustomAuthorize&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AuthorizeAttribute&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HandleUnauthorizedRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AuthorizationContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filterContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filterContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsAjaxRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;filterContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StatusCode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpStatusCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unauthorized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;filterContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;End&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;HandleUnauthorizedRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filterContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;A classe acima deve ser utilizada como atributo da &lt;code class=&quot;highlighter-rouge&quot;&gt;Controller&lt;/code&gt; ou nos métodos pertencentes à ela, como no exemplo a seguir.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cs&quot; data-lang=&quot;cs&quot;&gt;&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;jQuaglio&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CustomAuthorize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PaginaRestritaController&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Controller&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JsonResult&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Carregar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//Implementação
+&lt;/span&gt;            &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resultado&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;123&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;456&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resultado&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JsonRequestBehavior&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AllowGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;para-as-chamadas-ajax-implemente-o-mtodo-error&quot;&gt;Para as chamadas Ajax, implemente o método &lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Em todas as chamadas Ajax que necessitem verificar se a autenticação atual expirou, adicione um redirecionamento quando o status do erro for 401, conforme o próximo exemplo.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ajaxOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;thrownError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//Se o usuário não estiver autorizado, redirecione-o para a tela de login.
+&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;401&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/Login'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Se preferir, você pode utilizar a função &lt;code class=&quot;highlighter-rouge&quot;&gt;ajaxSetup&lt;/code&gt; para adicionar o comportamento informado anteriormente para todas as requisições Ajax:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajaxSetup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jqXHR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;textStatus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errorThrown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jqXHR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;401&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/Login'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Fri, 07 Oct 2016 21:00:00 -0300</pubDate>
+        <link>http://www.joseotavio.com/2016/10/07/incluindo-tratamento-unauthorized-requisicoes-ajax.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2016/10/07/incluindo-tratamento-unauthorized-requisicoes-ajax.html</guid>
+        
+        <category>ASP.NET MVC</category>
+        
+        <category>C#</category>
+        
+        <category>JavaScript</category>
+        
+        <category>jQuery</category>
+        
+        
+      </item>
     
       <item>
         <title>Melhor forma de liberar um recurso client WCF</title>
@@ -22,7 +115,7 @@
     &lt;span class=&quot;c1&quot;&gt;//Implementação
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Ao utilizar esta instrução, no final será chamado o método &lt;code class=&quot;highlighter-rouge&quot;&gt;Dispose()&lt;/code&gt; para que os recursos utilizados sejam marcados como liberados, para quando o &lt;em&gt;Garbage Collector&lt;/em&gt; passar, libere-os da memória.&lt;/p&gt;
+&lt;p&gt;Ao utilizar esta instrução, no final será chamado o método &lt;code class=&quot;highlighter-rouge&quot;&gt;Dispose()&lt;/code&gt; para que os recursos utilizados sejam marcados como disponíveis para liberação, assim, quando o &lt;em&gt;Garbage Collector&lt;/em&gt; passar, os recursos serão liberados da memória.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -43,7 +136,7 @@
 
 &lt;p&gt;Quando ocorrer um erro de comunicação, o método &lt;code class=&quot;highlighter-rouge&quot;&gt;Close()&lt;/code&gt; não poderá ser chamado, e no lugar dele, deveremos chamar o método &lt;code class=&quot;highlighter-rouge&quot;&gt;Abort()&lt;/code&gt;, para garantir que a conexão do socket seja finalizada.&lt;/p&gt;
 
-&lt;p&gt;Com base neste cenário, na minha opinião a melhor forma de liberar um recurso do proxy (client) do WCF é utilizando o seguinte padrão:&lt;/p&gt;
+&lt;p&gt;Com base neste cenário, no meu ponto de vista, a melhor forma de liberar um recurso do proxy (client) do WCF é utilizando o seguinte padrão:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cs&quot; data-lang=&quot;cs&quot;&gt;&lt;span class=&quot;n&quot;&gt;ServicoWCFClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
@@ -377,93 +470,6 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
         <category>Objective-C</category>
         
         <category>Xcode</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Método de cálculo de média no Cloud Code do Parse Framework</title>
-        <description>&lt;p&gt;Para quem não conhece, o &lt;a href=&quot;http://www.parse.com&quot;&gt;Parse&lt;/a&gt; (comprado pelo Facebook) é uma plataforma de desenvolvimento que nos oferece push notifications, data storage (NoSQL) e uma ferramenta chamada Cloud Code que permite a inclusão de código JavaScript no server para facilitar e diminuir as chamadas feitas por dispositivos mobile.&lt;/p&gt;
-
-&lt;p&gt;O desenvolvimento utilizando o SDK do Parse é muito fácil e rápido. O Parse disponibiliza um SDK para várias linguagens: Objective-C, .NET, Java (Android) e JavaScript.&lt;/p&gt;
-
-&lt;p&gt;Esses dias estive estudando o Parse.Framework e precisei fazer um cálculo de média para as notas atribuídas por usuários a cada Post. Como a API não contém métodos para média, optei por utilizar o Cloud Code e criar um método para calcular a média das notas.&lt;/p&gt;
-
-&lt;p&gt;Entretanto, como minha estrutura de classes estava com o formato abaixo, a consulta de notas por &lt;em&gt;Post&lt;/em&gt; tem que ser feita de uma forma diferente, pois a coluna &lt;em&gt;Post&lt;/em&gt; é um &lt;em&gt;Pointer&lt;/em&gt; da classe &lt;em&gt;Posts&lt;/em&gt; (vide no método &lt;code class=&quot;highlighter-rouge&quot;&gt;MediaNotas&lt;/code&gt; o valor do parâmetro do método &lt;code class=&quot;highlighter-rouge&quot;&gt;equalTo&lt;/code&gt;).&lt;/p&gt;
-
-&lt;!--more--&gt;
-&lt;p&gt;&lt;strong&gt;Notas:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*
-Schema de Notas:
-[{ Usuario: Pointer&amp;lt;User&amp;gt;, Post: Pointer&amp;lt;Posts&amp;gt;, Nota: Number }]
-*/&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cloud&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;MediaNotas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Notas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Post&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//Este método trás as informações do Pointer
-&lt;/span&gt;
-
-   &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equalTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Post&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;__type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Pointer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Posts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;objectId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postid&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-   &lt;span class=&quot;nx&quot;&gt;queryNotas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-     &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-       &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-       &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;somatoria&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-         &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-           &lt;span class=&quot;nx&quot;&gt;somatoria&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Nota&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;somatoria&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-     &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;erro na função: MediaNotas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Após desenvolver a função e realizar o deploy para o Cloud Code, podemos realizar a chamada ao método.&lt;/p&gt;
-
-&lt;p&gt;Como estou desenvolvendo para iOS, em Objective-C a chamada ao método ficaria da seguinte forma:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-objective-c&quot; data-lang=&quot;objective-c&quot;&gt;NSString *postId = @&quot;dRAw7I0Dbd&quot;;
-
-[PFCloud callFunctionInBackground:@&quot;MediaNotas&quot;
-                   withParameters:@{ @&quot;postid&quot;: postId }
-                            block:^(NSNumber *result, NSError *error) {
-   if (!error)
-   {
-     self.lblNota.text = [result stringValue];
-   }
-   else
-   {
-     self.lblNota.text = @&quot;0&quot;;
-   }
-}];&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;strong&gt;Referência Cloud Code:&lt;/strong&gt;
-&lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide?language=iOS#started&quot;&gt;https://www.parse.com/docs/cloud_code_guide?language=iOS#started&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 15 Apr 2014 11:16:00 -0300</pubDate>
-        <link>http://www.joseotavio.com/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</link>
-        <guid isPermaLink="true">http://www.joseotavio.com/2014/04/15/metodo-de-calculo-de-media-no-cloud.html</guid>
-        
-        <category>JavaScript</category>
-        
-        <category>Objective-C</category>
-        
-        <category>Cloud Code</category>
-        
-        <category>Parse.Framework</category>
         
         
       </item>
