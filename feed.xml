@@ -5,8 +5,8 @@
     <description></description>
     <link>http://www.joseotavio.com/</link>
     <atom:link href="http://www.joseotavio.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Oct 2016 21:27:20 -0300</pubDate>
-    <lastBuildDate>Fri, 07 Oct 2016 21:27:20 -0300</lastBuildDate>
+    <pubDate>Fri, 21 Oct 2016 20:30:33 -0200</pubDate>
+    <lastBuildDate>Fri, 21 Oct 2016 20:30:33 -0200</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -21,7 +21,7 @@
 
 &lt;!--more--&gt;
 
-&lt;h2 id=&quot;crie-uma-classe-que-herde-de-authorizeattribute&quot;&gt;Crie uma classe que herde de &lt;code class=&quot;highlighter-rouge&quot;&gt;AuthorizeAttribute&lt;/code&gt;.&lt;/h2&gt;
+&lt;h2 id=&quot;crie-uma-classe-que-herde-de-authorizeattribute&quot;&gt;Crie uma classe que herde de AuthorizeAttribute.&lt;/h2&gt;
 
 &lt;p&gt;Nesta classe, sobrescreva o método &lt;code class=&quot;highlighter-rouge&quot;&gt;HandleUnauthorizedRequest&lt;/code&gt;, incluindo uma verificação para identificar se a requisição atual veio via &lt;code class=&quot;highlighter-rouge&quot;&gt;Ajax&lt;/code&gt;.&lt;/p&gt;
 
@@ -62,14 +62,16 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;para-as-chamadas-ajax-implemente-o-mtodo-error&quot;&gt;Para as chamadas Ajax, implemente o método &lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;para-as-chamadas-ajax-implemente-o-mtodo-error&quot;&gt;Para as chamadas Ajax, implemente o método error&lt;/h2&gt;
 
 &lt;p&gt;Em todas as chamadas Ajax que necessitem verificar se a autenticação atual expirou, adicione um redirecionamento quando o status do erro for 401, conforme o próximo exemplo.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ajaxOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;thrownError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//Se o usuário não estiver autorizado, redirecione-o para a tela de login.
+        &lt;span class=&quot;c1&quot;&gt;//Se o usuário não estiver autorizado,
+&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//redirecione-o para a tela de login.
 &lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;401&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
             &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/Login'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;

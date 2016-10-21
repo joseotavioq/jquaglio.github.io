@@ -2,10 +2,13 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="José Otávio Quaglio">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="José Otávio Quaglio" />
+  
+  <meta name="keywords" content="ASP.NET MVC, C#, JavaScript, jQuery, " />
+  
 
   <title>Incluindo tratamento de Unauthorized para requisições Ajax no ASP.NET MVC</title>
 
@@ -28,7 +31,7 @@
           </svg>
         </a>
         <div class="trigger">
-          <a class="page-link" href="/">Início</a>
+          <a class="page-link" href="/">In�cio</a>
           <a class="page-link" href="/html5game/">HTML5 Game</a>
           <a class="page-link" href="/sobre/">Sobre</a>
         </div>
@@ -70,7 +73,7 @@
 
 <!--more-->
 
-<h2 id="crie-uma-classe-que-herde-de-authorizeattribute">Crie uma classe que herde de <code class="highlighter-rouge">AuthorizeAttribute</code>.</h2>
+<h2 id="crie-uma-classe-que-herde-de-authorizeattribute">Crie uma classe que herde de AuthorizeAttribute.</h2>
 
 <p>Nesta classe, sobrescreva o método <code class="highlighter-rouge">HandleUnauthorizedRequest</code>, incluindo uma verificação para identificar se a requisição atual veio via <code class="highlighter-rouge">Ajax</code>.</p>
 
@@ -111,14 +114,16 @@
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="para-as-chamadas-ajax-implemente-o-mtodo-error">Para as chamadas Ajax, implemente o método <code class="highlighter-rouge">error</code></h2>
+<h2 id="para-as-chamadas-ajax-implemente-o-mtodo-error">Para as chamadas Ajax, implemente o método error</h2>
 
 <p>Em todas as chamadas Ajax que necessitem verificar se a autenticação atual expirou, adicione um redirecionamento quando o status do erro for 401, conforme o próximo exemplo.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="p">...</span>
     <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">ajaxOptions</span><span class="p">,</span> <span class="nx">thrownError</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//Se o usuário não estiver autorizado, redirecione-o para a tela de login.
+        <span class="c1">//Se o usuário não estiver autorizado,
+</span>
+        <span class="c1">//redirecione-o para a tela de login.
 </span>
         <span class="k">if</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">401</span><span class="p">){</span>
             <span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'/Login'</span><span class="p">;</span>
