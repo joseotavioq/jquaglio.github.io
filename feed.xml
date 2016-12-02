@@ -5,24 +5,26 @@
     <description></description>
     <link>http://www.joseotavio.com/</link>
     <atom:link href="http://www.joseotavio.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Dec 2016 23:55:02 -0200</pubDate>
-    <lastBuildDate>Thu, 01 Dec 2016 23:55:02 -0200</lastBuildDate>
+    <pubDate>Fri, 02 Dec 2016 20:14:38 -0200</pubDate>
+    <lastBuildDate>Fri, 02 Dec 2016 20:14:38 -0200</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux</title>
-        <description>&lt;p&gt;Nesta semana participei do Workshop de Desenvolvimento de API com ASP.NET Core 1.1, utilizando banco de dados SQL Server Linux (Docker), com testes de Integração utilizando Xunit e ASP.NET Core TestHost, com deployment contínuo para o Azure via CircleCI + GitHub.&lt;/p&gt;
+        <description>&lt;p&gt;Nesta semana participei do Workshop de Desenvolvimento de API com ASP.NET Core 1.1, utilizando banco de dados SQL Server Linux (Docker), testes de Integração utilizando Xunit e ASP.NET Core TestHost, com deployment contínuo para o Azure via CircleCI + GitHub.&lt;/p&gt;
 
-&lt;p&gt;Este workshop foi ministrado pelo &lt;a href=&quot;http://www.twitter.com/rodrigokono&quot;&gt;Rodrigo Kono&lt;/a&gt; e pelo &lt;a href=&quot;http://www.twitter.com/rsantosdev&quot;&gt;Rafael dos Santos&lt;/a&gt; &lt;em&gt;gratuitamente&lt;/em&gt; através do YouTube.&lt;/p&gt;
+&lt;p&gt;Este workshop foi ministrado por &lt;a href=&quot;http://www.twitter.com/rodrigokono&quot;&gt;Rodrigo Kono&lt;/a&gt; e &lt;a href=&quot;http://www.twitter.com/rsantosdev&quot;&gt;Rafael dos Santos&lt;/a&gt; &lt;em&gt;gratuitamente&lt;/em&gt; através do YouTube.&lt;/p&gt;
 
-&lt;p&gt;Gostei bastante deste workshop e pude aprender muitas coisas interessantes! Gostaria de agradecer aos dois pela iniciativa excelente!!&lt;/p&gt;
+&lt;p&gt;Gostei bastante deste workshop e pude aprender muitas coisas interessantes! Parabenizo aos dois pela excelente iniciativa!!&lt;/p&gt;
 
-&lt;p&gt;As etapas do desenvolvimento do projeto deste workshop foram divididas seguindo a grade abaixo:&lt;/p&gt;
+&lt;p&gt;A seguir descrevo as etapas do desenvolvimento do projeto deste workshop.&lt;/p&gt;
+
+&lt;!--more--&gt;
 
 &lt;h2 id=&quot;dia-01&quot;&gt;Dia 01&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Criação da API&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Neste dia foi apresentado o Yoeman que nos auxilia na criação de templates. Instalamos o gerador &lt;code class=&quot;highlighter-rouge&quot;&gt;aspnet&lt;/code&gt; para poder criar os projetos baseados em .NET Core.&lt;/p&gt;
+&lt;p&gt;Neste dia foi apresentado o Yoeman que nos auxilia na criação de templates. Instalamos o gerador &lt;code class=&quot;highlighter-rouge&quot;&gt;generator-aspnet&lt;/code&gt; para poder criar os projetos baseados em .NET Core.&lt;/p&gt;
 
 &lt;p&gt;Com o auxílio deste gerador, criamos uma Web API Application e um projeto de testes com base em Xunit.&lt;/p&gt;
 
@@ -31,39 +33,41 @@
 &lt;h2 id=&quot;dia-02&quot;&gt;Dia 02&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Testes de Integração&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Neste dia foram apresentados o funcionamento básico do Docker e subimos um container pronto de SqlServer no Linux, para que nossa API conseguisse armazenar/consultar as informações.&lt;/p&gt;
+&lt;p&gt;Neste dia foi apresentado o funcionamento básico do Docker. Subimos um container pronto de SqlServer no Linux, para que nossa API conseguisse armazenar/consultar as informações.&lt;/p&gt;
 
-&lt;p&gt;Com o container do SqlServer rodando, criamos alguns testes de integração com o auxílio do framework Xunit.&lt;/p&gt;
+&lt;p&gt;Com este container rodando, criamos alguns testes de integração com o auxílio do framework Xunit.&lt;/p&gt;
 
 &lt;h2 id=&quot;dia-03&quot;&gt;Dia 03&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Servidor de Build e Integração Contínua&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Neste dia aprendemos a utilizar o serviço &lt;a href=&quot;http://circleci.com&quot;&gt;CircleCI&lt;/a&gt;, responsável por realizar o processo de integração contínua.&lt;/p&gt;
+&lt;p&gt;Aprendemos a utilizar o serviço &lt;a href=&quot;http://circleci.com&quot;&gt;CircleCI&lt;/a&gt;, responsável por realizar o processo de build e release.&lt;/p&gt;
 
-&lt;p&gt;Este processo consiste em resgatar o fonte do projeto do GitHub, realizar o build, subir o container do SqlServer, executar os testes de integração e ao final de tudo realizar a publicação dos binários em uma pasta de artefatos do próprio CircleCI.&lt;/p&gt;
+&lt;p&gt;Criamos o arquivo &lt;a href=&quot;https://github.com/jquaglio/aspnetcore/blob/master/circle.yml&quot;&gt;circle.yml&lt;/a&gt; na raiz do projeto para habilitar a integração contínua.
+Neste arquivo descrevemos o passo a passo que consiste em resgatar o fonte do projeto do GitHub, realizar o build, subir o container do SqlServer, executar os testes de integração e ao final de tudo realizar a publicação dos binários em uma pasta de artefatos do próprio CircleCI.&lt;/p&gt;
 
 &lt;h2 id=&quot;dia-04&quot;&gt;Dia 04&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Deployment pro Azure&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Hoje aprendemos a realizar a entrega contínua dos binários gerados no dia anterior ao Azure através do CircleCI.&lt;/p&gt;
+&lt;p&gt;Aprendemos a realizar a entrega contínua dos binários gerados no dia anterior ao Azure através do CircleCI.&lt;/p&gt;
 
-&lt;p&gt;Para isolar a aplicação, criamos uma imagem do Docker com base na imagem &lt;code class=&quot;highlighter-rouge&quot;&gt;microsoft/aspnetcore&lt;/code&gt; e adicionamos nossa API nesta imagem.&lt;/p&gt;
+&lt;p&gt;Para isolar a aplicação, criamos uma imagem do Docker com base na &lt;code class=&quot;highlighter-rouge&quot;&gt;microsoft/aspnetcore&lt;/code&gt; e adicionamos o binário da nossa API. (Vide arquivo &lt;a href=&quot;https://github.com/jquaglio/aspnetcore/blob/master/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt;)&lt;/p&gt;
 
-&lt;p&gt;Com a imagem criada. Publicamos a mesma no Docker Hub (Nome da Imagem no hub: &lt;code class=&quot;highlighter-rouge&quot;&gt;joseotavio/workshop-aspnetcore-circleci-azure&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Com a imagem criada. Publicamos a mesma no Docker Hub (Nome da Imagem no Hub: &lt;code class=&quot;highlighter-rouge&quot;&gt;joseotavio/workshop-aspnetcore-circleci-azure&lt;/code&gt;).&lt;/p&gt;
 
-&lt;p&gt;Dentro do Azure utilizamos da funcionalidade &lt;em&gt;Web App On Linux (preview)&lt;/em&gt;, conforme destacado na figura a seguir, para publicar o container a partir da imagem criada anteriormente no Docker Hub.&lt;/p&gt;
+&lt;p&gt;Dentro do Azure utilizamos a funcionalidade &lt;em&gt;Web App On Linux (preview)&lt;/em&gt;, conforme destacado na figura a seguir, para publicar o container a partir da imagem criada anteriormente no Docker Hub.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/webapponlinux.png&quot; alt=&quot;Web App On Linux no Azure&quot; title=&quot;Web App On Linux no Azure&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Agora o projeto está todo automatizado!!!
-Cada commit que realizamos no repositório do GitHub automaticamente é disparada a integração contínua no CircleCI e, posteriormente o deploy contínuo da imagem no Docker Hub!&lt;/p&gt;
+&lt;p&gt;Agora o projeto está todo automatizado!&lt;/p&gt;
 
-&lt;p&gt;Após a imagem estar disponível no Docker Hub, o Azure automaticamente recupera esta imagem e atualiza nossa aplicação!&lt;/p&gt;
+&lt;p&gt;A cada commit realizado no repositório do GitHub, automaticamente é disparada a integração contínua no CircleCI e, posteriormente o deploy contínuo da imagem no repositório do Docker Hub!&lt;/p&gt;
+
+&lt;p&gt;Após a imagem estar disponível no Docker Hub, o Azure automaticamente recupera esta imagem e faz a atualização.&lt;/p&gt;
 
 &lt;h2 id=&quot;dia-05&quot;&gt;Dia 05&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Round Tables&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Amanhã terá um round tables com a presença do Ricardo Serradas e do Lucas Romão.&lt;/p&gt;
+&lt;p&gt;Amanhã terá um round tables com a presença do &lt;a href=&quot;http://www.twitter.com/ricardoserradas&quot;&gt;Ricardo Serradas&lt;/a&gt; e do &lt;a href=&quot;http://www.twitter.com/lucasromao&quot;&gt;Lucas Romão&lt;/a&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Fiz o desenvolvimento do projeto no meu repositório do GitHub. No README do projeto você pode obter mais detalhes! Para acessá-lo clique no link a seguir: &lt;a href=&quot;https://github.com/jquaglio/aspnetcore&quot;&gt;https://github.com/jquaglio/aspnetcore&lt;/a&gt;&lt;/p&gt;
@@ -416,8 +420,11 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
 
 &lt;p&gt;Assim como em outras redes social, os usuários podem comentar e qualificar os posts (sons), mas no caso do VocalApp a qualificação é feita através de estrelas. Os usuários podem dar uma nota de 0 à 10 para cada post.&lt;/p&gt;
 
-&lt;p&gt;Para destacar os melhores sons de todos os usuários, foi criado um ranking (Top 10) que exibe os 10 melhores sons da semana.
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Para destacar os melhores sons de todos os usuários, foi criado um ranking (Top 10) que exibe os 10 melhores sons da semana.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/vocalapp.png&quot; alt=&quot;Exemplo de visualização do App no iOS&quot; title=&quot;Exemplo de visualização do App no iOS&quot; /&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
 
 &lt;h2 id=&quot;arquitetura-da-soluo&quot;&gt;Arquitetura da Solução&lt;/h2&gt;
 

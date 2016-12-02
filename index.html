@@ -64,63 +64,14 @@
         
         </ul>
       </div>
-      <p><p>Nesta semana participei do Workshop de Desenvolvimento de API com ASP.NET Core 1.1, utilizando banco de dados SQL Server Linux (Docker), com testes de Integração utilizando Xunit e ASP.NET Core TestHost, com deployment contínuo para o Azure via CircleCI + GitHub.</p>
+      <p><p>Nesta semana participei do Workshop de Desenvolvimento de API com ASP.NET Core 1.1, utilizando banco de dados SQL Server Linux (Docker), testes de Integração utilizando Xunit e ASP.NET Core TestHost, com deployment contínuo para o Azure via CircleCI + GitHub.</p>
 
-<p>Este workshop foi ministrado pelo <a href="http://www.twitter.com/rodrigokono">Rodrigo Kono</a> e pelo <a href="http://www.twitter.com/rsantosdev">Rafael dos Santos</a> <em>gratuitamente</em> através do YouTube.</p>
+<p>Este workshop foi ministrado por <a href="http://www.twitter.com/rodrigokono">Rodrigo Kono</a> e <a href="http://www.twitter.com/rsantosdev">Rafael dos Santos</a> <em>gratuitamente</em> através do YouTube.</p>
 
-<p>Gostei bastante deste workshop e pude aprender muitas coisas interessantes! Gostaria de agradecer aos dois pela iniciativa excelente!!</p>
+<p>Gostei bastante deste workshop e pude aprender muitas coisas interessantes! Parabenizo aos dois pela excelente iniciativa!!</p>
 
-<p>As etapas do desenvolvimento do projeto deste workshop foram divididas seguindo a grade abaixo:</p>
+<p>A seguir descrevo as etapas do desenvolvimento do projeto deste workshop.</p>
 
-<h2 id="dia-01">Dia 01</h2>
-<p><strong>Criação da API</strong></p>
-
-<p>Neste dia foi apresentado o Yoeman que nos auxilia na criação de templates. Instalamos o gerador <code class="highlighter-rouge">aspnet</code> para poder criar os projetos baseados em .NET Core.</p>
-
-<p>Com o auxílio deste gerador, criamos uma Web API Application e um projeto de testes com base em Xunit.</p>
-
-<p>Fizemos o desenvolvimento de uma Controller contendo dois verbos HTTP, o <code class="highlighter-rouge">GET</code> e o <code class="highlighter-rouge">POST</code>. Cada um destes métodos acessa o banco de dados através do Entity Framework Core.</p>
-
-<h2 id="dia-02">Dia 02</h2>
-<p><strong>Testes de Integração</strong></p>
-
-<p>Neste dia foram apresentados o funcionamento básico do Docker e subimos um container pronto de SqlServer no Linux, para que nossa API conseguisse armazenar/consultar as informações.</p>
-
-<p>Com o container do SqlServer rodando, criamos alguns testes de integração com o auxílio do framework Xunit.</p>
-
-<h2 id="dia-03">Dia 03</h2>
-<p><strong>Servidor de Build e Integração Contínua</strong></p>
-
-<p>Neste dia aprendemos a utilizar o serviço <a href="http://circleci.com">CircleCI</a>, responsável por realizar o processo de integração contínua.</p>
-
-<p>Este processo consiste em resgatar o fonte do projeto do GitHub, realizar o build, subir o container do SqlServer, executar os testes de integração e ao final de tudo realizar a publicação dos binários em uma pasta de artefatos do próprio CircleCI.</p>
-
-<h2 id="dia-04">Dia 04</h2>
-<p><strong>Deployment pro Azure</strong></p>
-
-<p>Hoje aprendemos a realizar a entrega contínua dos binários gerados no dia anterior ao Azure através do CircleCI.</p>
-
-<p>Para isolar a aplicação, criamos uma imagem do Docker com base na imagem <code class="highlighter-rouge">microsoft/aspnetcore</code> e adicionamos nossa API nesta imagem.</p>
-
-<p>Com a imagem criada. Publicamos a mesma no Docker Hub (Nome da Imagem no hub: <code class="highlighter-rouge">joseotavio/workshop-aspnetcore-circleci-azure</code>).</p>
-
-<p>Dentro do Azure utilizamos da funcionalidade <em>Web App On Linux (preview)</em>, conforme destacado na figura a seguir, para publicar o container a partir da imagem criada anteriormente no Docker Hub.</p>
-
-<p><img src="/images/posts/webapponlinux.png" alt="Web App On Linux no Azure" title="Web App On Linux no Azure" /></p>
-
-<p>Agora o projeto está todo automatizado!!!
-Cada commit que realizamos no repositório do GitHub automaticamente é disparada a integração contínua no CircleCI e, posteriormente o deploy contínuo da imagem no Docker Hub!</p>
-
-<p>Após a imagem estar disponível no Docker Hub, o Azure automaticamente recupera esta imagem e atualiza nossa aplicação!</p>
-
-<h2 id="dia-05">Dia 05</h2>
-<p><strong>Round Tables</strong></p>
-
-<p>Amanhã terá um round tables com a presença do Ricardo Serradas e do Lucas Romão.</p>
-
-<blockquote>
-  <p>Fiz o desenvolvimento do projeto no meu repositório do GitHub. No README do projeto você pode obter mais detalhes! Para acessá-lo clique no link a seguir: <a href="https://github.com/jquaglio/aspnetcore">https://github.com/jquaglio/aspnetcore</a></p>
-</blockquote>
 </p>
       <div>
         <ul class="share-buttons">
