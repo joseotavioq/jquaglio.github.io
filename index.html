@@ -45,6 +45,95 @@
 <ul class="post-list">
   
     <li>
+      <span class="post-meta">Dec 1, 2016</span>
+      <h2>
+        <a class="post-link" href="/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html">Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux</a>
+      </h2>
+      <div>
+        <ul class="post-tags">
+        
+          <li><a class="post-tag" href="/tags/#ASP.NET Core">ASP.NET Core</a></li>
+        
+          <li><a class="post-tag" href="/tags/#EFCore">EFCore</a></li>
+        
+          <li><a class="post-tag" href="/tags/#Azure">Azure</a></li>
+        
+          <li><a class="post-tag" href="/tags/#Docker">Docker</a></li>
+        
+          <li><a class="post-tag" href="/tags/#Xunit">Xunit</a></li>
+        
+        </ul>
+      </div>
+      <p><p>Nesta semana participei do Workshop de Desenvolvimento de API com ASP.NET Core 1.1, utilizando banco de dados SQL Server Linux (Docker), com testes de Integração utilizando Xunit e ASP.NET Core TestHost, com deployment contínuo para o Azure via CircleCI + GitHub.</p>
+
+<p>Este workshop foi ministrado pelo <a href="http://www.twitter.com/rodrigokono">Rodrigo Kono</a> e pelo <a href="http://www.twitter.com/rsantosdev">Rafael dos Santos</a> <em>gratuitamente</em> através do YouTube.</p>
+
+<p>Gostei bastante deste workshop e pude aprender muitas coisas interessantes! Gostaria de agradecer aos dois pela iniciativa excelente!!</p>
+
+<p>As etapas do desenvolvimento do projeto deste workshop foram divididas seguindo a grade abaixo:</p>
+
+<h2 id="dia-01">Dia 01</h2>
+<p><strong>Criação da API</strong></p>
+
+<p>Neste dia foi apresentado o Yoeman que nos auxilia na criação de templates. Instalamos o gerador <code class="highlighter-rouge">aspnet</code> para poder criar os projetos baseados em .NET Core.</p>
+
+<p>Com o auxílio deste gerador, criamos uma Web API Application e um projeto de testes com base em Xunit.</p>
+
+<p>Fizemos o desenvolvimento de uma Controller contendo dois verbos HTTP, o <code class="highlighter-rouge">GET</code> e o <code class="highlighter-rouge">POST</code>. Cada um destes métodos acessa o banco de dados através do Entity Framework Core.</p>
+
+<h2 id="dia-02">Dia 02</h2>
+<p><strong>Testes de Integração</strong></p>
+
+<p>Neste dia foram apresentados o funcionamento básico do Docker e subimos um container pronto de SqlServer no Linux, para que nossa API conseguisse armazenar/consultar as informações.</p>
+
+<p>Com o container do SqlServer rodando, criamos alguns testes de integração com o auxílio do framework Xunit.</p>
+
+<h2 id="dia-03">Dia 03</h2>
+<p><strong>Servidor de Build e Integração Contínua</strong></p>
+
+<p>Neste dia aprendemos a utilizar o serviço <a href="http://circleci.com">CircleCI</a>, responsável por realizar o processo de integração contínua.</p>
+
+<p>Este processo consiste em resgatar o fonte do projeto do GitHub, realizar o build, subir o container do SqlServer, executar os testes de integração e ao final de tudo realizar a publicação dos binários em uma pasta de artefatos do próprio CircleCI.</p>
+
+<h2 id="dia-04">Dia 04</h2>
+<p><strong>Deployment pro Azure</strong></p>
+
+<p>Hoje aprendemos a realizar a entrega contínua dos binários gerados no dia anterior ao Azure através do CircleCI.</p>
+
+<p>Para isolar a aplicação, criamos uma imagem do Docker com base na imagem <code class="highlighter-rouge">microsoft/aspnetcore</code> e adicionamos nossa API nesta imagem.</p>
+
+<p>Com a imagem criada. Publicamos a mesma no Docker Hub (Nome da Imagem no hub: <code class="highlighter-rouge">joseotavio/workshop-aspnetcore-circleci-azure</code>).</p>
+
+<p>Dentro do Azure utilizamos da funcionalidade <em>Web App On Linux (preview)</em>, conforme destacado na figura a seguir, para publicar o container a partir da imagem criada anteriormente no Docker Hub.</p>
+
+<p><img src="/images/posts/webapponlinux.png" alt="Web App On Linux no Azure" title="Web App On Linux no Azure" /></p>
+
+<p>Agora o projeto está todo automatizado!!!
+Cada commit que realizamos no repositório do GitHub automaticamente é disparada a integração contínua no CircleCI e, posteriormente o deploy contínuo da imagem no Docker Hub!</p>
+
+<p>Após a imagem estar disponível no Docker Hub, o Azure automaticamente recupera esta imagem e atualiza nossa aplicação!</p>
+
+<h2 id="dia-05">Dia 05</h2>
+<p><strong>Round Tables</strong></p>
+
+<p>Amanhã terá um round tables com a presença do Ricardo Serradas e do Lucas Romão.</p>
+
+<blockquote>
+  <p>Fiz o desenvolvimento do projeto no meu repositório do GitHub. No README do projeto você pode obter mais detalhes! Para acessá-lo clique no link a seguir: <a href="https://github.com/jquaglio/aspnetcore">https://github.com/jquaglio/aspnetcore</a></p>
+</blockquote>
+</p>
+      <div>
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&t=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&text=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux: http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&description=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&title=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux&summary=&source=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+        </ul>
+      </div>
+    </li>
+  
+    <li>
       <span class="post-meta">Oct 7, 2016</span>
       <h2>
         <a class="post-link" href="/2016/10/07/incluindo-tratamento-unauthorized-requisicoes-ajax.html">Incluindo tratamento de Unauthorized para requisições Ajax no ASP.NET MVC</a>
@@ -223,45 +312,6 @@
       </div>
     </li>
   
-    <li>
-      <span class="post-meta">Oct 29, 2015</span>
-      <h2>
-        <a class="post-link" href="/2015/10/29/erro-could-not-establish-trust.html">Erro: Could not establish trust relationship for the SSL/TLS secure channel with authority.</a>
-      </h2>
-      <div>
-        <ul class="post-tags">
-        
-          <li><a class="post-tag" href="/tags/#.NET">.NET</a></li>
-        
-          <li><a class="post-tag" href="/tags/#WCF">WCF</a></li>
-        
-        </ul>
-      </div>
-      <p><p>Ao tentar acessar um serviço (webservice) HTTPS, você se depara com o seguinte erro:</p>
-
-<blockquote>
-  <p>Could not establish trust relationship for the SSL/TLS secure channel with authority.</p>
-</blockquote>
-
-<p>Este erro significa que a URL que você está tentando acessar não é segura, ou seja, o certificado atribuído ao protocolo HTTPS não é um certificado válido.</p>
-
-<p>Caso queira ignorar a validação do certificado, adicione o código abaixo antes de realizar a chamada ao serviço:</p>
-
-<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">ServicePointManager</span><span class="p">.</span><span class="n">ServerCertificateValidationCallback</span> <span class="p">+=</span>
-<span class="p">(</span><span class="n">se</span><span class="p">,</span> <span class="n">cert</span><span class="p">,</span> <span class="n">chain</span><span class="p">,</span> <span class="n">sslerror</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="p">};</span></code></pre></figure>
-
-</p>
-      <div>
-        <ul class="share-buttons">
-          <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html&t=Erro: Could not establish trust relationship for the SSL/TLS secure channel with authority." title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
-          <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html&text=Erro: Could not establish trust relationship for the SSL/TLS secure channel with authority.: http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
-          <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
-          <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html&description=Erro: Could not establish trust relationship for the SSL/TLS secure channel with authority." target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
-          <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html&title=Erro: Could not establish trust relationship for the SSL/TLS secure channel with authority.&summary=&source=http://www.joseotavio.com/2015/10/29/erro-could-not-establish-trust.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
-        </ul>
-      </div>
-    </li>
-  
 </ul>
 
 
@@ -340,18 +390,18 @@
 <div class="tag-item"><div class="tag-item-name">WCF</div><div class="tag-item-count">9</div></div>
 <div class="tag-item"><div class="tag-item-name">Teste de Unidade</div><div class="tag-item-count">6</div></div>
 <div class="tag-item"><div class="tag-item-name">HTML</div><div class="tag-item-count">5</div></div>
-<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
 <div class="tag-item"><div class="tag-item-name">Objective-C</div><div class="tag-item-count">4</div></div>
+<div class="tag-item"><div class="tag-item-name">Web Forms</div><div class="tag-item-count">4</div></div>
 <div class="tag-item"><div class="tag-item-name">Visual Studio 2010</div><div class="tag-item-count">4</div></div>
 <div class="tag-item"><div class="tag-item-name">Moles</div><div class="tag-item-count">3</div></div>
 <div class="tag-item"><div class="tag-item-name">Parse.Framework</div><div class="tag-item-count">3</div></div>
 <div class="tag-item"><div class="tag-item-name">Xcode</div><div class="tag-item-count">3</div></div>
-<div class="tag-item"><div class="tag-item-name">Xamarin</div><div class="tag-item-count">2</div></div>
 <div class="tag-item"><div class="tag-item-name">Mock</div><div class="tag-item-count">2</div></div>
-<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">Xamarin</div><div class="tag-item-count">2</div></div>
 <div class="tag-item"><div class="tag-item-name">Cloud Code</div><div class="tag-item-count">2</div></div>
 <div class="tag-item"><div class="tag-item-name">MVC</div><div class="tag-item-count">2</div></div>
-<div class="tag-item"><div class="tag-item-name">jQuery UI</div><div class="tag-item-count">2</div></div>
+<div class="tag-item"><div class="tag-item-name">WIF</div><div class="tag-item-count">2</div></div>
 <div class="tag-item"><div class="tag-item-name">LINQ</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">Report Viewer</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">JSON</div><div class="tag-item-count">1</div></div>
@@ -361,6 +411,11 @@
 <div class="tag-item"><div class="tag-item-name">Cordova</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">Inversão de Controle</div><div class="tag-item-count">1</div></div>
 <div class="tag-item"><div class="tag-item-name">ASP.NET MVC</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">ASP.NET Core</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">EFCore</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Azure</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Docker</div><div class="tag-item-count">1</div></div>
+<div class="tag-item"><div class="tag-item-name">Xunit</div><div class="tag-item-count">1</div></div>
 
           </div>
         </div>

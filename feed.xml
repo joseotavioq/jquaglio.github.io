@@ -5,9 +5,86 @@
     <description></description>
     <link>http://www.joseotavio.com/</link>
     <atom:link href="http://www.joseotavio.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 21 Oct 2016 20:32:35 -0200</pubDate>
-    <lastBuildDate>Fri, 21 Oct 2016 20:32:35 -0200</lastBuildDate>
+    <pubDate>Thu, 01 Dec 2016 23:55:02 -0200</pubDate>
+    <lastBuildDate>Thu, 01 Dec 2016 23:55:02 -0200</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux</title>
+        <description>&lt;p&gt;Nesta semana participei do Workshop de Desenvolvimento de API com ASP.NET Core 1.1, utilizando banco de dados SQL Server Linux (Docker), com testes de Integração utilizando Xunit e ASP.NET Core TestHost, com deployment contínuo para o Azure via CircleCI + GitHub.&lt;/p&gt;
+
+&lt;p&gt;Este workshop foi ministrado pelo &lt;a href=&quot;http://www.twitter.com/rodrigokono&quot;&gt;Rodrigo Kono&lt;/a&gt; e pelo &lt;a href=&quot;http://www.twitter.com/rsantosdev&quot;&gt;Rafael dos Santos&lt;/a&gt; &lt;em&gt;gratuitamente&lt;/em&gt; através do YouTube.&lt;/p&gt;
+
+&lt;p&gt;Gostei bastante deste workshop e pude aprender muitas coisas interessantes! Gostaria de agradecer aos dois pela iniciativa excelente!!&lt;/p&gt;
+
+&lt;p&gt;As etapas do desenvolvimento do projeto deste workshop foram divididas seguindo a grade abaixo:&lt;/p&gt;
+
+&lt;h2 id=&quot;dia-01&quot;&gt;Dia 01&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Criação da API&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Neste dia foi apresentado o Yoeman que nos auxilia na criação de templates. Instalamos o gerador &lt;code class=&quot;highlighter-rouge&quot;&gt;aspnet&lt;/code&gt; para poder criar os projetos baseados em .NET Core.&lt;/p&gt;
+
+&lt;p&gt;Com o auxílio deste gerador, criamos uma Web API Application e um projeto de testes com base em Xunit.&lt;/p&gt;
+
+&lt;p&gt;Fizemos o desenvolvimento de uma Controller contendo dois verbos HTTP, o &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; e o &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt;. Cada um destes métodos acessa o banco de dados através do Entity Framework Core.&lt;/p&gt;
+
+&lt;h2 id=&quot;dia-02&quot;&gt;Dia 02&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Testes de Integração&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Neste dia foram apresentados o funcionamento básico do Docker e subimos um container pronto de SqlServer no Linux, para que nossa API conseguisse armazenar/consultar as informações.&lt;/p&gt;
+
+&lt;p&gt;Com o container do SqlServer rodando, criamos alguns testes de integração com o auxílio do framework Xunit.&lt;/p&gt;
+
+&lt;h2 id=&quot;dia-03&quot;&gt;Dia 03&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Servidor de Build e Integração Contínua&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Neste dia aprendemos a utilizar o serviço &lt;a href=&quot;http://circleci.com&quot;&gt;CircleCI&lt;/a&gt;, responsável por realizar o processo de integração contínua.&lt;/p&gt;
+
+&lt;p&gt;Este processo consiste em resgatar o fonte do projeto do GitHub, realizar o build, subir o container do SqlServer, executar os testes de integração e ao final de tudo realizar a publicação dos binários em uma pasta de artefatos do próprio CircleCI.&lt;/p&gt;
+
+&lt;h2 id=&quot;dia-04&quot;&gt;Dia 04&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Deployment pro Azure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Hoje aprendemos a realizar a entrega contínua dos binários gerados no dia anterior ao Azure através do CircleCI.&lt;/p&gt;
+
+&lt;p&gt;Para isolar a aplicação, criamos uma imagem do Docker com base na imagem &lt;code class=&quot;highlighter-rouge&quot;&gt;microsoft/aspnetcore&lt;/code&gt; e adicionamos nossa API nesta imagem.&lt;/p&gt;
+
+&lt;p&gt;Com a imagem criada. Publicamos a mesma no Docker Hub (Nome da Imagem no hub: &lt;code class=&quot;highlighter-rouge&quot;&gt;joseotavio/workshop-aspnetcore-circleci-azure&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Dentro do Azure utilizamos da funcionalidade &lt;em&gt;Web App On Linux (preview)&lt;/em&gt;, conforme destacado na figura a seguir, para publicar o container a partir da imagem criada anteriormente no Docker Hub.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/webapponlinux.png&quot; alt=&quot;Web App On Linux no Azure&quot; title=&quot;Web App On Linux no Azure&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora o projeto está todo automatizado!!!
+Cada commit que realizamos no repositório do GitHub automaticamente é disparada a integração contínua no CircleCI e, posteriormente o deploy contínuo da imagem no Docker Hub!&lt;/p&gt;
+
+&lt;p&gt;Após a imagem estar disponível no Docker Hub, o Azure automaticamente recupera esta imagem e atualiza nossa aplicação!&lt;/p&gt;
+
+&lt;h2 id=&quot;dia-05&quot;&gt;Dia 05&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Round Tables&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Amanhã terá um round tables com a presença do Ricardo Serradas e do Lucas Romão.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Fiz o desenvolvimento do projeto no meu repositório do GitHub. No README do projeto você pode obter mais detalhes! Para acessá-lo clique no link a seguir: &lt;a href=&quot;https://github.com/jquaglio/aspnetcore&quot;&gt;https://github.com/jquaglio/aspnetcore&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Thu, 01 Dec 2016 23:30:00 -0200</pubDate>
+        <link>http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html</link>
+        <guid isPermaLink="true">http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html</guid>
+        
+        <category>ASP.NET Core</category>
+        
+        <category>EFCore</category>
+        
+        <category>Azure</category>
+        
+        <category>Docker</category>
+        
+        <category>Xunit</category>
+        
+        
+      </item>
     
       <item>
         <title>Incluindo tratamento de Unauthorized para requisições Ajax no ASP.NET MVC</title>
@@ -445,33 +522,6 @@ Como nossa validação será em cima do campo de tipo &lt;code class=&quot;highl
         <category>.NET</category>
         
         <category>ASP.NET</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>App não atualiza no iOS Simulator após alteração no código/storyboard</title>
-        <description>&lt;h2 id=&quot;problema&quot;&gt;Problema&lt;/h2&gt;
-
-&lt;p&gt;As alterações realizadas no Storyboard ou no código não refletem no iOS Simulator.&lt;/p&gt;
-
-&lt;h2 id=&quot;soluo&quot;&gt;Solução&lt;/h2&gt;
-
-&lt;p&gt;1) Realize um Clean do seu Projeto (Menu: Product / Clean)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/xcode_product_clean.png&quot; alt=&quot;Exibição de onde está localizado a opção Clean no Xcode&quot; title=&quot;Exibição de onde está localizado a opção Clean no Xcode&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2) Abra o iOS Simulator e exclua o seu aplicativo do simulador (Se existir vários ícones de seu aplicativo, exclua todos). &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/InteractingwiththeiOSSimulator/InteractingwiththeiOSSimulator.html#//apple_ref/doc/uid/TP40012848-CH3-SW8&quot;&gt;Caso não saiba como fazer, clique aqui&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;3) Execute o seu projeto novamente no iOS Simulator&lt;/p&gt;
-</description>
-        <pubDate>Thu, 17 Apr 2014 09:47:00 -0300</pubDate>
-        <link>http://www.joseotavio.com/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</link>
-        <guid isPermaLink="true">http://www.joseotavio.com/2014/04/17/app-nao-atualiza-no-ios-simulator-storyboard.html</guid>
-        
-        <category>Objective-C</category>
-        
-        <category>Xcode</category>
         
         
       </item>

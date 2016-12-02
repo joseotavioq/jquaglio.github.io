@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="José Otávio Quaglio" />
   
-  <meta name="keywords" content=".NET, C#, " />
+  <meta name="keywords" content="ASP.NET Core, EFCore, Azure, Docker, Xunit, " />
   
 
-  <title>Mito sobre declaração de variável com VAR</title>
+  <title>Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux</title>
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic%7COpen+Sans:300,400,600,700,800,300italic,400italic,600italic,700italic,800italic">
@@ -44,66 +44,94 @@
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Mito sobre declaração de variável com VAR</h1>
+    <h1 class="post-title" itemprop="name headline">Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux</h1>
     <p class="post-meta">
-      <time datetime="2011-09-06 07:30:00 -0300" itemprop="datePublished">Sep 6, 2011</time>
+      <time datetime="2016-12-01 23:30:00 -0200" itemprop="datePublished">Dec 1, 2016</time>
     </p>
 
     <ul class="post-tags">
     
-      <li><a class="post-tag" href="/tags/#.NET">.NET</a></li>
+      <li><a class="post-tag" href="/tags/#ASP.NET Core">ASP.NET Core</a></li>
     
-      <li><a class="post-tag" href="/tags/#C#">C#</a></li>
+      <li><a class="post-tag" href="/tags/#EFCore">EFCore</a></li>
+    
+      <li><a class="post-tag" href="/tags/#Azure">Azure</a></li>
+    
+      <li><a class="post-tag" href="/tags/#Docker">Docker</a></li>
+    
+      <li><a class="post-tag" href="/tags/#Xunit">Xunit</a></li>
     
     </ul>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Já ouvi de muitas pessoas que ao utilizar a declaração de variável <code class="highlighter-rouge">var</code> o código fica mais lento pois o CLR fica com a responsabilidade de identificar qual é o tipo definido na instrução.</p>
+    <p>Nesta semana participei do Workshop de Desenvolvimento de API com ASP.NET Core 1.1, utilizando banco de dados SQL Server Linux (Docker), com testes de Integração utilizando Xunit e ASP.NET Core TestHost, com deployment contínuo para o Azure via CircleCI + GitHub.</p>
 
-<p><strong>Isto é mentira!</strong></p>
+<p>Este workshop foi ministrado pelo <a href="http://www.twitter.com/rodrigokono">Rodrigo Kono</a> e pelo <a href="http://www.twitter.com/rsantosdev">Rafael dos Santos</a> <em>gratuitamente</em> através do YouTube.</p>
 
-<p>Vamos ao código abaixo que demonstra que isto não ocorre.</p>
+<p>Gostei bastante deste workshop e pude aprender muitas coisas interessantes! Gostaria de agradecer aos dois pela iniciativa excelente!!</p>
 
-<p>Ao compilar a aplicação <em>o compilador é responsável por transformar</em> a declaração <code class="highlighter-rouge">var</code> em uma variável conhecida.</p>
+<p>As etapas do desenvolvimento do projeto deste workshop foram divididas seguindo a grade abaixo:</p>
 
-<!--more-->
-<p><strong>Código:</strong></p>
+<h2 id="dia-01">Dia 01</h2>
+<p><strong>Criação da API</strong></p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">PessoaEntity</span> <span class="p">{</span> <span class="p">}</span>
+<p>Neste dia foi apresentado o Yoeman que nos auxilia na criação de templates. Instalamos o gerador <code class="highlighter-rouge">aspnet</code> para poder criar os projetos baseados em .NET Core.</p>
 
-<span class="k">class</span> <span class="nc">Program</span>
-<span class="p">{</span>
-    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="kt">int</span><span class="p">[]</span> <span class="n">inteiro</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">5</span><span class="p">];</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">i</span> <span class="k">in</span> <span class="n">inteiro</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<p>Com o auxílio deste gerador, criamos uma Web API Application e um projeto de testes com base em Xunit.</p>
 
-        <span class="kt">string</span><span class="p">[]</span> <span class="n">texto</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[</span><span class="m">5</span><span class="p">];</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">s</span> <span class="k">in</span> <span class="n">texto</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<p>Fizemos o desenvolvimento de uma Controller contendo dois verbos HTTP, o <code class="highlighter-rouge">GET</code> e o <code class="highlighter-rouge">POST</code>. Cada um destes métodos acessa o banco de dados através do Entity Framework Core.</p>
 
-        <span class="n">PessoaEntity</span><span class="p">[]</span> <span class="n">pessoa</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PessoaEntity</span><span class="p">[</span><span class="m">5</span><span class="p">];</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">pessoa</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
+<h2 id="dia-02">Dia 02</h2>
+<p><strong>Testes de Integração</strong></p>
 
-<p>O código acima, quando compilado é transformado no código abaixo:</p>
+<p>Neste dia foram apresentados o funcionamento básico do Docker e subimos um container pronto de SqlServer no Linux, para que nossa API conseguisse armazenar/consultar as informações.</p>
 
-<p><strong>Código compilado visualizado através do Reflector:</strong></p>
+<p>Com o container do SqlServer rodando, criamos alguns testes de integração com o auxílio do framework Xunit.</p>
 
-<p><img src="/images/posts/reflector.png" alt="Resultado do código após compilação" title="Resultado do código após compilação" /></p>
+<h2 id="dia-03">Dia 03</h2>
+<p><strong>Servidor de Build e Integração Contínua</strong></p>
 
-<p>Preciso dizer algo mais?</p>
+<p>Neste dia aprendemos a utilizar o serviço <a href="http://circleci.com">CircleCI</a>, responsável por realizar o processo de integração contínua.</p>
+
+<p>Este processo consiste em resgatar o fonte do projeto do GitHub, realizar o build, subir o container do SqlServer, executar os testes de integração e ao final de tudo realizar a publicação dos binários em uma pasta de artefatos do próprio CircleCI.</p>
+
+<h2 id="dia-04">Dia 04</h2>
+<p><strong>Deployment pro Azure</strong></p>
+
+<p>Hoje aprendemos a realizar a entrega contínua dos binários gerados no dia anterior ao Azure através do CircleCI.</p>
+
+<p>Para isolar a aplicação, criamos uma imagem do Docker com base na imagem <code class="highlighter-rouge">microsoft/aspnetcore</code> e adicionamos nossa API nesta imagem.</p>
+
+<p>Com a imagem criada. Publicamos a mesma no Docker Hub (Nome da Imagem no hub: <code class="highlighter-rouge">joseotavio/workshop-aspnetcore-circleci-azure</code>).</p>
+
+<p>Dentro do Azure utilizamos da funcionalidade <em>Web App On Linux (preview)</em>, conforme destacado na figura a seguir, para publicar o container a partir da imagem criada anteriormente no Docker Hub.</p>
+
+<p><img src="/images/posts/webapponlinux.png" alt="Web App On Linux no Azure" title="Web App On Linux no Azure" /></p>
+
+<p>Agora o projeto está todo automatizado!!!
+Cada commit que realizamos no repositório do GitHub automaticamente é disparada a integração contínua no CircleCI e, posteriormente o deploy contínuo da imagem no Docker Hub!</p>
+
+<p>Após a imagem estar disponível no Docker Hub, o Azure automaticamente recupera esta imagem e atualiza nossa aplicação!</p>
+
+<h2 id="dia-05">Dia 05</h2>
+<p><strong>Round Tables</strong></p>
+
+<p>Amanhã terá um round tables com a presença do Ricardo Serradas e do Lucas Romão.</p>
+
+<blockquote>
+  <p>Fiz o desenvolvimento do projeto no meu repositório do GitHub. No README do projeto você pode obter mais detalhes! Para acessá-lo clique no link a seguir: <a href="https://github.com/jquaglio/aspnetcore">https://github.com/jquaglio/aspnetcore</a></p>
+</blockquote>
 
   </div>
   
   <div>
     <ul class="share-buttons">
-      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html&t=Mito sobre declaração de variável com VAR" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
-      <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html&text=Mito sobre declaração de variável com VAR: http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
-      <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
-      <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html&description=Mito sobre declaração de variável com VAR" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
-      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html&title=Mito sobre declaração de variável com VAR&summary=&source=http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&t=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux" title="Share on Facebook" target="_blank"><img class="share-button" alt="Share on Facebook" src="/images/share/Facebook.png"></a></li>
+      <li><a href="https://twitter.com/intent/tweet?source=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&text=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux: http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html" target="_blank" title="Tweet"><img class="share-button" alt="Tweet" src="/images/share/Twitter.png"></a></li>
+      <li><a href="https://plus.google.com/share?url=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html" target="_blank" title="Share on Google+"><img class="share-button" alt="Share on Google+" src="/images/share/Google+.png"></a></li>
+      <li><a href="http://pinterest.com/pin/create/button/?url=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&description=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux" target="_blank" title="Pin it"><img class="share-button" alt="Pin it" src="/images/share/Pinterest.png"></a></li>
+      <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html&title=Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux&summary=&source=http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html" target="_blank" title="Share on LinkedIn"><img class="share-button" alt="Share on LinkedIn" src="/images/share/LinkedIn.png"></a></li>
     </ul>
   </div>
 </article>
@@ -111,9 +139,9 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_config = function () {
-    this.page.url = 'http://www.joseotavio.com/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html';
-    this.page.identifier = '/2011/09/06/mito-sobre-declaracao-de-variavel-com-var.html';
-    this.page.title = 'Mito sobre declaração de variável com VAR';
+    this.page.url = 'http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html';
+    this.page.identifier = '/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html';
+    this.page.title = 'Workshop de ASP.NET Core 1.1 (Web API) com EFCore acessando SqlServer rodando no Linux';
 };
 (function() {
     var d = document, s = d.createElement('script');
