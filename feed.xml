@@ -5,8 +5,8 @@
     <description></description>
     <link>http://www.joseotavio.com/</link>
     <atom:link href="http://www.joseotavio.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 02 Dec 2016 20:14:38 -0200</pubDate>
-    <lastBuildDate>Fri, 02 Dec 2016 20:14:38 -0200</lastBuildDate>
+    <pubDate>Mon, 05 Dec 2016 19:53:49 -0200</pubDate>
+    <lastBuildDate>Mon, 05 Dec 2016 19:53:49 -0200</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -69,9 +69,15 @@ Neste arquivo descrevemos o passo a passo que consiste em resgatar o fonte do pr
 
 &lt;p&gt;Amanhã terá um round tables com a presença do &lt;a href=&quot;http://www.twitter.com/ricardoserradas&quot;&gt;Ricardo Serradas&lt;/a&gt; e do &lt;a href=&quot;http://www.twitter.com/lucasromao&quot;&gt;Lucas Romão&lt;/a&gt;.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Fiz o desenvolvimento do projeto no meu repositório do GitHub. No README do projeto você pode obter mais detalhes! Para acessá-lo clique no link a seguir: &lt;a href=&quot;https://github.com/jquaglio/aspnetcore&quot;&gt;https://github.com/jquaglio/aspnetcore&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&quot;github&quot;&gt;Github&lt;/h2&gt;
+
+&lt;p&gt;Fiz o desenvolvimento do projeto no meu repositório do GitHub.&lt;/p&gt;
+
+&lt;p&gt;No README do projeto você pode obter mais detalhes! Para acessá-lo clique no link a seguir: &lt;a href=&quot;https://github.com/jquaglio/aspnetcore&quot;&gt;https://github.com/jquaglio/aspnetcore&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;slidesvideos&quot;&gt;Slides/Videos&lt;/h2&gt;
+
+&lt;p&gt;Os slides/videos deste workshop estão disponíveis neste endereço: &lt;a href=&quot;http://www.rodrigokono.net/aspnet/assista-a-gravacao-do-workshop-de-aspnet-core-1-1-sql-server-linux-docker-circleci-azure/&quot;&gt;http://www.rodrigokono.net/aspnet/assista-a-gravacao-do-workshop-de-aspnet-core-1-1-sql-server-linux-docker-circleci-azure/&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 23:30:00 -0200</pubDate>
         <link>http://www.joseotavio.com/2016/12/01/workshop-net-core-efcore-azure-circleci-xunit.html</link>
